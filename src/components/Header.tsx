@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Download } from "lucide-react";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -12,37 +13,60 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navItems = [
+    { name: "Proyectos", href: "#projects" },
+    { name: "Sobre mí", href: "#about" },
+    { name: "Skills", href: "#skills" },
+    { name: "Contacto", href: "#contact" },
+  ];
+
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? "py-4 bg-background/80 backdrop-blur-md border-b border-border" 
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
+          ? "py-4 bg-background/70 backdrop-blur-xl border-b border-primary/10"
           : "py-6 bg-transparent"
-      }`}
+        }`}
     >
-      <div className="container flex items-center justify-between">
-        <a href="#" className="font-display text-xl text-foreground hover:text-primary transition-colors duration-200">
-          AC
+      <div className="container mx-auto px-6 flex items-center justify-between">
+        {/* Logo con tus iniciales */}
+        <a href="#" className="font-display text-2xl text-foreground hover:text-primary transition-colors duration-300">
+          P<span className="text-primary">M</span>
         </a>
-        
-        <nav className="hidden md:flex items-center gap-8">
-          {["Projects", "About", "Skills", "Contact"].map((item) => (
+
+        {/* Navegación Desktop */}
+        <nav className="hidden md:flex items-center gap-10">
+          {navItems.map((item) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="text-sm font-body text-muted-foreground hover:text-foreground transition-colors duration-200"
+              key={item.name}
+              href={item.href}
+              className="text-xs font-body font-medium uppercase tracking-[0.2em] text-muted-foreground hover:text-primary transition-all duration-300"
             >
-              {item}
+              {item.name}
             </a>
           ))}
         </nav>
-        
-        <a 
-          href="#contact" 
-          className="md:hidden text-sm font-body text-muted-foreground hover:text-foreground transition-colors duration-200"
-        >
-          Contact
-        </a>
+
+        {/* Botón Descargar CV / Contacto Mobile */}
+        <div className="flex items-center gap-4">
+          <a
+            href="./cv-pablo-martinez.pdf" // Agregamos el punto inicial para rutas relativas de Vite
+            download="CV_Pablo_Martinez.pdf" // Forzamos el nombre del archivo al descargar
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-5 py-2 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 rounded-sm font-body text-[10px] uppercase tracking-widest font-bold"
+          >
+            <Download size={14} />
+            <span className="hidden sm:inline">Descargar CV</span>
+            <span className="sm:hidden">CV</span>
+          </a>
+
+          <a
+            href="#contact"
+            className="md:hidden text-xs font-body font-bold uppercase tracking-widest text-foreground border-b border-primary pb-1"
+          >
+            Let's Talk
+          </a>
+        </div>
       </div>
     </header>
   );
