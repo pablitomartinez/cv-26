@@ -1,55 +1,35 @@
-interface SkillCategory {
-  title: string;
-  skills: string[];
-}
-
-const skillCategories: SkillCategory[] = [
+const skillCategories = [
   {
-    title: "Frontend Core",
-    // Basado en tus habilidades técnicas principales [cite: 6]
-    skills: ["React", "Next.js (App Router)", "JavaScript (ES6+)", "TypeScript", "Tailwind CSS", "Responsive Design"],
+    title: "Frontend",
+    skills: ["React", "Next.js (App Router)", "JavaScript (ES6+)", "TypeScript", "Tailwind CSS"],
   },
   {
     title: "Backend & DB",
-    // Integrando tu experiencia con Node y Supabase [cite: 7, 14]
-    skills: ["Node.js", "Express", "APIs REST", "Supabase", "Auth"],
+    skills: ["Node.js", "Express", "APIs REST", "Supabase"],
   },
   {
     title: "Diseño & Herramientas",
-    // Reflejando tu formación en NUCBA y herramientas de trabajo [cite: 8, 17]
-    skills: ["UX/UI Design", "Figma", "Git/GitHub", "Vercel", "Notion", "Vite"],
-  },
-  {
-    title: "Formación & Soft Skills",
-    // Resaltando tus 700hs de Henry y tu enfoque social [cite: 16, 18]
-    skills: ["Full Stack Developer (700hs)", "Metodologías Ágiles", "Análisis de Usuario", "Trabajo en Equipo"],
-  },
+    skills: ["UX/UI Design", "Figma", "Git/GitHub", "Vercel"],
+  }
 ];
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-24 bg-background transition-colors duration-500">
+    <section id="skills" className="py-24 bg-background">
       <div className="container mx-auto px-6">
-        <p className="text-primary font-body text-xs tracking-[0.3em] uppercase mb-16">
-          Habilidades Técnicas
-        </p>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {skillCategories.map((category) => (
-            <div key={category.title} className="group">
-              <h3 className="text-xl font-display text-foreground mb-6 group-hover:text-primary transition-colors border-b border-primary/10 pb-2">
-                {category.title}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill) => (
-                  <span 
-                    key={skill} 
-                    className="px-3 py-1.5 text-[11px] font-body font-medium bg-secondary/50 text-secondary-foreground rounded-sm border border-transparent hover:border-primary/30 transition-all"
-                  >
+        <h2 className="text-primary font-body text-xs tracking-[0.3em] uppercase mb-12">Habilidades Técnicas</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          {skillCategories.map((cat) => (
+            <div key={cat.title} className="border-l border-primary/20 pl-6">
+              <h3 className="font-display text-2xl mb-6 text-foreground">{cat.title}</h3>
+              <ul className="space-y-3">
+                {cat.skills.map((skill) => (
+                  <li key={skill} className="text-muted-foreground font-body flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 bg-primary rounded-full" />
                     {skill}
-                  </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           ))}
         </div>
