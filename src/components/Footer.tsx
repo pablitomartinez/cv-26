@@ -12,14 +12,14 @@ const Footer = () => {
               Pablo Martinez <span className="text-primary/50 font-normal">© {currentYear}</span>
             </p>
             <p className="text-[10px] font-body text-muted-foreground uppercase tracking-[0.2em]">
-              Desarrollado en San Salvador de Jujuy, Argentina
+              San Salvador de Jujuy, Argentina
             </p>
           </div>
           
-          {/* Lado Derecho: Navegación Social con efecto tecnológico */}
+          {/* Lado Derecho: Navegación Social */}
           <nav className="flex items-center gap-8">
             <a 
-              href="https://github.com/pablo-emartinez" 
+              href="https://github.com/pablitomartinez" 
               target="_blank"
               rel="noopener noreferrer"
               className="group relative text-xs font-body uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors duration-300"
@@ -29,7 +29,7 @@ const Footer = () => {
             </a>
             
             <a 
-              href="https://linkedin.com/in/pablo-emartinez" 
+              href="https://www.linkedin.com/in/pablo-martinez-9b2991233/" 
               target="_blank"
               rel="noopener noreferrer"
               className="group relative text-xs font-body uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors duration-300"
@@ -49,10 +49,10 @@ const Footer = () => {
           
         </div>
         
-        {/* Frase final sutil */}
+        {/* Créditos técnicos sutiles */}
         <div className="mt-12 text-center">
           <p className="text-[9px] text-primary/20 uppercase tracking-[0.5em]">
-            Built with React · Tailwind · Love
+            React · Tailwind · Vite
           </p>
         </div>
       </div>

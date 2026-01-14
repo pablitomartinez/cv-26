@@ -14,13 +14,13 @@ const About = () => {
             
             <div className="space-y-6 text-muted-foreground font-body leading-relaxed text-lg">
               <p>
-                Soy un desarrollador especializado en React y Next.js, con una sólida trayectoria creando aplicaciones web reales para empresas e instituciones[cite: 2]. Mi enfoque principal es la construcción de interfaces claras, performantes y flujos de usuario completos[cite: 3].
+                Soy un desarrollador especializado en React y Next.js, con una sólida trayectoria creando aplicaciones web reales para empresas e instituciones. Mi enfoque principal es la construcción de interfaces claras, performantes y flujos de usuario completos.
               </p>
               <p>
-                Lo que me hace diferente es mi formación en <span className="text-foreground">Trabajo Social</span> y <span className="text-foreground">Diseño UX/UI</span>[cite: 17]. Esta combinación me permite no solo escribir código eficiente, sino entender profundamente las necesidades de las personas que usarán el software.
+                Lo que me hace diferente es mi formación en <span className="text-foreground">Trabajo Social</span> y <span className="text-foreground">Diseño UX/UI</span>. Esta combinación me permite no solo escribir código eficiente, sino entender profundamente las necesidades de las personas que usarán el software.
               </p>
               <p>
-                He trabajado digitalizando procesos administrativos complejos y colaborando directamente con clientes para transformar requerimientos en soluciones técnicas sólidas[cite: 11, 13]. Siempre estoy buscando aprender y aplicar mejores prácticas en arquitectura de componentes.
+                He trabajado digitalizando procesos administrativos complejos y colaborando directamente con clientes para transformar requerimientos en soluciones técnicas sólidas. Siempre estoy buscando aprender y aplicar mejores prácticas en arquitectura de componentes.
               </p>
             </div>
           </div>
