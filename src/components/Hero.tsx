@@ -2,29 +2,35 @@ import { ArrowDown } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex flex-col justify-center bg-background text-foreground">
+    <section className="min-h-screen flex flex-col justify-center bg-background text-foreground transition-colors duration-500">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl">
-          {/* Un detalle sutil de color para romper el monocromo */}
-          <span className="text-primary font-medium tracking-[0.2em] text-sm uppercase">
-            Disponible para nuevos proyectos
-          </span>
+          <div className="flex items-center gap-2 mb-6">
+            <span className="relative flex h-3 w-3">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+            </span>
+            <span className="text-primary font-body text-sm uppercase tracking-[0.3em]">
+              Frontend Developer // React & Next.js
+            </span>
+          </div>
           
-          <h1 className="text-7xl md:text-9xl font-display mt-4 mb-8">
-            Hola, soy <span className="text-primary">Alex</span>.
+          <h1 className="text-7xl md:text-9xl font-display mb-8 tracking-tighter">
+            Pablo <span className="italic text-primary">Martinez</span>
           </h1>
           
-          <p className="text-2xl md:text-3xl text-muted-foreground font-body leading-tight max-w-2xl">
-            Desarrollador Frontend enfocado en crear interfaces modernas, 
-            rápidas y con una experiencia de usuario impecable.
+          <p className="text-xl md:text-2xl text-muted-foreground font-body leading-relaxed max-w-2xl mb-12">
+            Desarrollador de interfaces claras y flujos de usuario completos. 
+            Especializado en digitalizar procesos con tecnologías modernas[cite: 13].
           </p>
           
-          <div className="mt-12 flex gap-6">
-            <a href="#proyectos" className="text-lg font-body border-b-2 border-primary pb-1 hover:text-primary transition-all">
-              Ver mi trabajo
+          <div className="flex flex-wrap gap-8 items-center">
+            <a href="#proyectos" className="group flex items-center gap-3 font-body text-sm uppercase tracking-[0.2em] font-bold">
+              <span className="link-underline">Explorar Proyectos</span>
+              <span className="text-primary transition-transform group-hover:translate-x-2">→</span>
             </a>
-            <a href="#contacto" className="text-lg font-body border-b-2 border-transparent pb-1 hover:border-foreground transition-all">
-              Contacto
+            <a href="mailto:pablo.emartinez.dev@gmail.com" className="text-muted-foreground hover:text-foreground transition-colors font-body text-sm uppercase tracking-[0.2em]">
+              Contactar
             </a>
           </div>
         </div>
