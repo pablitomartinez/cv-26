@@ -2,48 +2,32 @@ import { ArrowDown } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex flex-col justify-center relative">
-      <div className="container">
-        <div className="max-w-3xl">
-          {/* Subtle label */}
-          <p className="text-muted-foreground font-body text-sm tracking-wide mb-4 animate-fade-in" style={{ animationDelay: "0.1s" }}>
-            Frontend Developer
-          </p>
+    <section className="min-h-screen flex flex-col justify-center bg-background text-foreground">
+      <div className="container mx-auto px-6">
+        <div className="max-w-4xl">
+          {/* Un detalle sutil de color para romper el monocromo */}
+          <span className="text-primary font-medium tracking-[0.2em] text-sm uppercase">
+            Disponible para nuevos proyectos
+          </span>
           
-          {/* Name with serif elegance */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-display text-foreground mb-6 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-            Alex Chen
+          <h1 className="text-7xl md:text-9xl font-display mt-4 mb-8">
+            Hola, soy <span className="text-primary">Alex</span>.
           </h1>
           
-          {/* Value statement - clear and grounded */}
-          <p className="text-xl md:text-2xl text-muted-foreground font-body font-normal leading-relaxed max-w-2xl mb-10 animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
-            I build clean, functional web interfaces that solve real problems. 
-            Currently focused on React ecosystems and design systems.
+          <p className="text-2xl md:text-3xl text-muted-foreground font-body leading-tight max-w-2xl">
+            Desarrollador Frontend enfocado en crear interfaces modernas, 
+            rápidas y con una experiencia de usuario impecable.
           </p>
           
-          {/* CTA - subtle but actionable */}
-          <div className="flex flex-wrap gap-6 items-center animate-fade-in-up" style={{ animationDelay: "0.6s" }}>
-            <a 
-              href="#projects" 
-              className="inline-flex items-center gap-2 text-foreground font-body font-medium link-underline"
-            >
-              View my work
+          <div className="mt-12 flex gap-6">
+            <a href="#proyectos" className="text-lg font-body border-b-2 border-primary pb-1 hover:text-primary transition-all">
+              Ver mi trabajo
             </a>
-            <a 
-              href="#contact" 
-              className="text-muted-foreground hover:text-foreground font-body transition-colors duration-200"
-            >
-              Get in touch
+            <a href="#contacto" className="text-lg font-body border-b-2 border-transparent pb-1 hover:border-foreground transition-all">
+              Contacto
             </a>
           </div>
         </div>
-      </div>
-      
-      {/* Scroll indicator */}
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-fade-in" style={{ animationDelay: "1s" }}>
-        <a href="#projects" className="text-muted-foreground hover:text-primary transition-colors duration-200">
-          <ArrowDown size={20} className="animate-bounce" style={{ animationDuration: "2s" }} />
-        </a>
       </div>
     </section>
   );

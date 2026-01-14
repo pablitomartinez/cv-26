@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,7 +7,6 @@
    Minimalist with personality - strong typography, purposeful accents
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
 
 @layer base {
   :root {
@@ -67,42 +67,20 @@
   }
 
   .dark {
-    --background: 220 20% 10%;
-    --foreground: 40 15% 95%;
+    /* Un fondo verde petróleo muy oscuro, orgánico y profundo */
+    --background: 175 40% 4%; 
+    --foreground: 175 10% 95%;
 
-    --card: 220 18% 13%;
-    --card-foreground: 40 15% 95%;
+    --card: 175 30% 7%;
+    --card-foreground: 175 10% 95%;
 
-    --popover: 220 20% 10%;
-    --popover-foreground: 40 15% 95%;
+    /* El acento: un verde esmeralda vibrante pero accesible */
+    --primary: 160 80% 45%; 
+    --primary-foreground: 175 40% 4%;
 
-    --primary: 175 60% 45%;
-    --primary-foreground: 220 20% 10%;
-
-    --secondary: 220 15% 18%;
-    --secondary-foreground: 40 15% 85%;
-
-    --muted: 220 15% 20%;
-    --muted-foreground: 220 10% 55%;
-
-    --accent: 175 60% 45%;
-    --accent-foreground: 220 20% 10%;
-
-    --destructive: 0 62% 50%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 220 15% 20%;
-    --input: 220 15% 20%;
-    --ring: 175 60% 45%;
-
-    --sidebar-background: 220 18% 13%;
-    --sidebar-foreground: 40 15% 95%;
-    --sidebar-primary: 175 60% 45%;
-    --sidebar-primary-foreground: 220 20% 10%;
-    --sidebar-accent: 220 15% 18%;
-    --sidebar-accent-foreground: 40 15% 85%;
-    --sidebar-border: 220 15% 20%;
-    --sidebar-ring: 175 60% 45%;
+    /* Bordes sutiles para que no se vea plano */
+    --border: 175 20% 15%;
+    --ring: 160 80% 45%;
   }
 }
 
