@@ -21,7 +21,7 @@ const Hero = () => {
           
           <p className="text-xl md:text-2xl text-muted-foreground font-body leading-relaxed max-w-2xl mb-12">
             Desarrollador de interfaces claras y flujos de usuario completos. 
-            Especializado en digitalizar procesos con tecnologías modernas[cite: 13].
+            Especializado en digitalizar procesos con tecnologías modernas.
           </p>
           
           <div className="flex flex-wrap gap-8 items-center">

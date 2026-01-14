@@ -14,8 +14,8 @@ interface Project {
 const projects: Project[] = [
   {
     title: "Plataforma Ethercode",
-    problem: "Necesidad de digitalizar procesos administrativos complejos como matriculación y pagos para profesionales habilitados[cite: 13].",
-    solution: "Desarrollé áreas públicas y privadas con autenticación, implementando sistemas de consulta de profesionales y gestión de cobros[cite: 13].",
+    problem: "Necesidad de digitalizar procesos administrativos complejos como matriculación y pagos para profesionales habilitados.",
+    solution: "Desarrollé áreas públicas y privadas con autenticación, implementando sistemas de consulta de profesionales y gestión de cobros.",
     tech: ["React", "Vite", "TypeScript", "Tailwind CSS", "Supabase"], 
     links: {
       github: "#", 
@@ -23,8 +23,8 @@ const projects: Project[] = [
   },
   {
     title: "Desarrollo Frontend Freelance",
-    problem: "Clientes reales requerían aplicaciones web modernas con flujos de usuario completos y alto rendimiento[cite: 2, 3, 10].",
-    solution: "Implementación de interfaces responsivas y dinámicas, integrando APIs REST y asegurando un diseño centrado en el usuario[cite: 3, 7, 11].",
+    problem: "Clientes reales requerían aplicaciones web modernas con flujos de usuario completos y alto rendimiento.",
+    solution: "Implementación de interfaces responsivas y dinámicas, integrando APIs REST y asegurando un diseño centrado en el usuario.",
     tech: ["Next.js", "React", "JavaScript (ES6+)", "Tailwind CSS"],
     links: {
       live: "#",
