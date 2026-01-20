@@ -23,15 +23,37 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-          ? "py-4 bg-background/70 backdrop-blur-xl border-b border-primary/10"
-          : "py-6 bg-transparent"
+        ? "py-4 bg-background/70 backdrop-blur-xl border-b border-primary/10"
+        : "py-6 bg-transparent"
         }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        {/* Logo con tus iniciales */}
-        <a href="#" className="font-display text-2xl text-foreground hover:text-primary transition-colors duration-300">
-          P<span className="text-primary">M</span>
+        <a
+          href="#"
+          className="group font-display text-4xl text-foreground relative inline-flex items-center"
+        >
+          {/* PM */}
+          <span className="group-hover:opacity-0 transition-opacity duration-300">
+            P<span className="text-primary">M</span>
+          </span>
+
+          {/* Nombre letra por letra */}
+          <span className="absolute left-0 flex opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            {["P", "a", "b", "l", "o", " ", "M", "a", "r", "t", "i", "n", "e", "z"].map((char, i) => (
+              <span
+                key={i}
+                style={{ transitionDelay: `${i * 40}ms` }}
+                className={`inline-block opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${char === " " ? "w-3" : ""
+                  } ${i >= 6 ? "italic text-primary" : ""}`}
+              >
+                {char}
+              </span>
+            ))}
+          </span>
         </a>
+
+
+
 
         {/* Navegación Desktop */}
         <nav className="hidden md:flex items-center gap-10">
@@ -39,7 +61,7 @@ const Header = () => {
             <a
               key={item.name}
               href={item.href}
-              className="text-xs font-body font-medium uppercase tracking-[0.2em] text-muted-foreground hover:text-primary transition-all duration-300"
+              className="link-underline text-m font-body font-medium uppercase tracking-[0.2em] text-muted-foreground hover:text-primary transition-all duration-300"
             >
               {item.name}
             </a>
@@ -62,7 +84,7 @@ const Header = () => {
 
           <a
             href="#contact"
-            className="md:hidden text-xs font-body font-bold uppercase tracking-widest text-foreground border-b border-primary pb-1"
+            className=" md:hidden text-xs font-body font-bold uppercase tracking-widest text-foreground border-b border-primary pb-1"
           >
             Let's Talk
           </a>

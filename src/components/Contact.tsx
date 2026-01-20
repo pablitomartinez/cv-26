@@ -1,4 +1,5 @@
 import { Mail, Linkedin, Github, Send, MessageCircle } from "lucide-react";
+import Reveal from "./Reveal";
 
 const Contact = () => {
   return (
@@ -11,35 +12,41 @@ const Contact = () => {
           <div className="flex flex-col justify-between">
             <div>
               <h2 className="text-4xl md:text-6xl font-display text-foreground mb-8 leading-tight">
-                ¿Tenés un proyecto? <br />
-                <span className="italic text-primary">Hablemos.</span>
-              </h2>
+                ¿Buscás un Frontend Developer?
+                <span className="italic text-primary">Estoy disponible.</span>              </h2>
 
               <p className="text-muted-foreground font-body text-xl mb-10 max-w-md">
-                Disponible para roles en React/Next.js y proyectos freelance con enfoque en UX/UI.
+                Estoy buscando mi primera oportunidad como Frontend Developer, donde pueda aportar desde el primer día construyendo interfaces claras y flujos de usuario reales con React y Next.js.
               </p>
 
               {/* Botones de Contacto Directo */}
               <div className="space-y-4 mb-10">
-                <a
-                  href="mailto:pablo.emartinez.dev@gmail.com"
-                  className="flex items-center gap-4 p-4 border border-primary/10 rounded-sm hover:bg-primary/5 transition-all group w-fit"
-                >
-                  <Mail size={20} className="text-primary" />
-                  <span className="text-foreground font-body">pablo.emartinez.dev@gmail.com</span>
-                </a>
+                <Reveal>
+                  <a
+                    href="mailto:pablo.emartinez.dev@gmail.com"
+                    className="flex items-center gap-4 p-4 border border-primary/10 rounded-sm hover:bg-primary/5 transition-all group w-fit"
+                  >
+                    <Mail size={20} className="text-primary" />
+                    <span className="text-foreground font-body">pablo.emartinez.dev@gmail.com</span>
+                  </a>
+                </Reveal>
+                <Reveal>
 
-                <a
-                  href="https://wa.me/543884597800"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-4 border border-primary/10 rounded-sm hover:bg-primary/5 transition-all group w-fit"
-                >
-                  <MessageCircle size={20} className="text-green-500" />
-                  <span className="text-foreground font-body">+54 388 4597800</span>
-                </a>
+
+
+                  <a
+                    href="https://wa.me/543884597800"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 p-4 border border-primary/10 rounded-sm hover:bg-primary/5 transition-all group w-fit"
+                  >
+                    <MessageCircle size={20} className="text-green-500" />
+                    <span className="text-foreground font-body">+54 388 4597800</span>
+                  </a>
+                </Reveal>
               </div>
             </div>
+            <Reveal>
 
             {/* Redes Sociales al pie de la columna */}
             <div className="flex items-center gap-6">
@@ -60,11 +67,12 @@ const Contact = () => {
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary transition-colors"
                   aria-label="GitHub"
-                >
+                  >
                   <Github size={22} />
                 </a>
               </div>
             </div>
+                  </Reveal>
           </div>
 
           {/* Columna del Formulario */}
@@ -97,7 +105,7 @@ const Contact = () => {
                   id="message"
                   rows={4}
                   className="w-full bg-background/50 border border-border focus:border-primary outline-none px-4 py-3 text-sm transition-all rounded-sm resize-none"
-                  placeholder="Contame sobre tu proyecto..."
+                  placeholder="Escribime para una oportunidad laboral o para conocernos."
                 ></textarea>
               </div>
 
