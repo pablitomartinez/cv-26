@@ -1,75 +1,117 @@
-# Welcome to your Lovable project
+# Pablo Martinez — Frontend Developer
 
-## Project info
+Portfolio y CV online de Pablo Martinez.  
+Desarrollo de productos digitales con foco en usabilidad, flujos reales y calidad técnica.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+Este proyecto funciona como **presentación profesional**, **muestra de trabajo real** y **base evolutiva** para oportunidades laborales en frontend.
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## 🚀 Sobre el proyecto
 
-**Use Lovable**
+Este portfolio fue diseñado y desarrollado desde cero con una lógica clara:
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+- Mostrar **experiencia real**, no ejercicios
+- Explicar **problemas → soluciones**
+- Priorizar **claridad, performance y UX**
+- Mantener una base técnica limpia y escalable
 
-Changes made via Lovable will be committed automatically to this repo.
+No es un template.  
+No es un landing genérico.  
+Es un producto pensado como carta de presentación profesional.
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🧠 Enfoque
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- Componentes reutilizables
+- Animaciones sutiles activadas por scroll (no decorativas)
+- Tipografía y jerarquía visual como eje
+- Diseño orientado a lectura y comprensión, no a impacto vacío
+- Código mantenible y fácil de extender
 
-Follow these steps:
+---
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## 🛠️ Stack tecnológico
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+- **React**
+- **TypeScript**
+- **Vite**
+- **Tailwind CSS**
+- **Lucide Icons**
+- **Intersection Observer** (animaciones por scroll)
+- **CSS moderno y variables**
 
-# Step 3: Install the necessary dependencies.
-npm i
+---
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+## 📂 Proyectos destacados
 
-**Edit a file directly in GitHub**
+### 📰 Jujuy Conecta Diario
+Diario digital desarrollado de punta a punta.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+**Problema:**  
+Los medios locales necesitaban una plataforma propia para publicar noticias y gestionar editores sin depender de redes sociales o CMS genéricos.
 
-**Use GitHub Codespaces**
+**Solución:**  
+Diseño y desarrollo completo de un sistema con:
+- Autenticación
+- Roles (admin / editor)
+- Editor de noticias
+- UX iterada a partir de feedback real de periodistas en uso diario
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+**Tecnologías:**  
+React · TypeScript · Tailwind · Supabase · Auth · Roles · Diseño de base de datos
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+### 🏛 Plataforma Institucional — Colegio de Antropólogos de Jujuy
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+**Problema:**  
+Gestión manual de matrículas, consultas y validaciones profesionales con alta fricción administrativa.
 
-## How can I deploy this project?
+**Solución:**  
+Plataforma web institucional que:
+- Centraliza información profesional
+- Permite trámites online
+- Ofrece consultas públicas para empresas y organismos
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+**Tecnologías:**  
+React · TypeScript · Tailwind · Supabase · Autenticación · UX orientada a procesos reales
 
-## Can I connect a custom domain to my Lovable project?
+---
 
-Yes, you can!
+## 🎯 Objetivo profesional
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Busco mi **primera oportunidad formal en el sector tech** como:
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+- Frontend Developer (Junior / Trainee)
 
-# cv-26
+Aporto:
+- Experiencia construyendo productos reales
+- Mirada de usuario y de proceso
+- Capacidad de diseñar, desarrollar y mejorar sistemas completos
+- Comunicación clara y enfoque práctico
+
+---
+
+## 🌍 Ubicación
+
+Argentina — Disponible para trabajo remoto.
+
+---
+
+## 📬 Contacto
+
+- Portfolio: _(este sitio)_
+- LinkedIn: _(agregar link)_
+- Email: _(agregar email)_
+
+---
+
+## 📌 Nota final
+
+Este proyecto está en evolución constante.  
+No busca ser perfecto, sino **honesto, funcional y profesional**.
+
+Si llegaste hasta acá revisando el código:  
+gracias por tomarte el tiempo.
