@@ -53,7 +53,7 @@ const Contact = () => {
               <p className="text-[10px] uppercase tracking-widest font-bold text-muted-foreground">Social:</p>
               <div className="flex gap-4">
                 <a
-                  href="https://www.linkedin.com/in/pablo-martinez-9b2991233/"
+                  href="https://www.linkedin.com/in/pablo-ezequiel-martinez-9b2991233/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary transition-colors"

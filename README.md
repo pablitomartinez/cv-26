@@ -102,9 +102,9 @@ Argentina — Disponible para trabajo remoto.
 
 ## 📬 Contacto
 
-- Portfolio: _(este sitio)_
-- LinkedIn: _(agregar link)_
-- Email: _(agregar email)_
+- Portfolio: https://cv-26-pm.vercel.app/
+- LinkedIn: https://www.linkedin.com/in/pablo-ezequiel-martinez-9b2991233/
+- Email: pablo.emartinez.dev@gmail.com
 
 ---
 
