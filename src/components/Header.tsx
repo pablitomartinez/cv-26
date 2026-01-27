@@ -22,11 +22,10 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-        ? "py-4 bg-background/70 backdrop-blur-xl border-b border-primary/10"
-        : "py-6 bg-transparent"
-        }`}
-    >
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${isScrolled
+          ? "py-4 bg-background/80 backdrop-blur-xl border-b border-primary/10"
+          : "py-6 bg-transparent"
+        }`}    >
       <div className="container mx-auto px-6 flex items-center justify-between">
         <a
           href="#"
