@@ -4,7 +4,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="py-12 border-t border-primary/10 bg-background transition-colors duration-500">
+    <footer className="py-20 border-t border-primary/10 bg-background transition-colors duration-500">
     <Reveal>
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
@@ -53,11 +53,11 @@ const Footer = () => {
         </div>
 
         {/* Créditos técnicos sutiles */}
-        <div className="mt-12 text-center">
+        {/* <div className="mt-12 text-center">
           <p className="text-[9px] text-primary/20 uppercase tracking-[0.5em]">
             React · Tailwind · Vite
           </p>
-        </div>
+        </div> */}
       </div>
     </Reveal>
     </footer>
