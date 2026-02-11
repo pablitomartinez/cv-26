@@ -8,21 +8,21 @@ import PixelTransition from "./react-bits/PixelTransition";
 const Hero = () => {
   return (
     <section className="min-h-screen relative flex flex-col justify-center bg-background text-foreground transition-colors duration-500 overflow-hidden pt-20 lg:pt-0">
-       {/* DOT GRID FONDO */}
-  <div className="absolute inset-0 -z-0">
-    <DotGrid
-      dotSize={6}
-      gap={30}
-      baseColor="#22C55E33"   // verde suave (accent con alpha)
-      activeColor="#22C55E"
-      proximity={140}
-      shockRadius={220}
-      shockStrength={4}
-      resistance={800}
-      returnDuration={1.2}
-      className="w-full h-full"
-    />
-  </div>
+      {/* DOT GRID FONDO */}
+      <div className="absolute inset-0 -z-0">
+        <DotGrid
+          dotSize={6}
+          gap={30}
+          baseColor="#22C55E33"   // verde suave (accent con alpha)
+          activeColor="#22C55E"
+          proximity={140}
+          shockRadius={220}
+          shockStrength={4}
+          resistance={800}
+          returnDuration={1.2}
+          className="w-full h-full"
+        />
+      </div>
       {/* ^ Agregamos pt-20 (padding top) para que en mobile el texto baje y no toque la navbar */}
 
       <div className="container mx-auto px-6 relative z-10 py-12 lg:py-0">
@@ -52,7 +52,7 @@ const Hero = () => {
               </h1>
             </Reveal>
 
-            <p className="text-lg md:text-2xl text-muted-foreground font-body leading-relaxed max-w-2xl mb-10">
+            <p className="text-lg md:text-2xl text-secondary font-body leading-relaxed max-w-2xl mb-10">
               {/* Bajé el tamaño de texto en mobile de xl a lg */}
               Frontend Developer orientado a producto. Diseño y desarrollo interfaces utilizadas por medios digitales e instituciones, con foco en UX, flujos completos y mantenibilidad.
             </p>
