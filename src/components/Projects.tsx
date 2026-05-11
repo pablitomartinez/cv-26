@@ -25,67 +25,92 @@ const CONTENT: CategoryGroup[] = [
   {
     id: "systems",
     label: "Sistemas & Aplicaciones de Negocio",
-    description: "Plataformas operativas con lógica de permisos y gestión de datos compleja.",
+    description:
+      "Aplicaciones web con lógica de negocio, paneles administrativos y flujos reales de usuario.",
     icon: <Rocket className="text-primary" size={20} />,
     type: "featured",
     projects: [
       {
         title: "Plataforma Institucional – Colegio de Antropólogos",
-        problem: "Gestión manual de trámites y matrículas con alta demora administrativa.",
-        solution: "Sistema de autogestión profesional con validación de estados y consultas públicas en tiempo real.",
-        tech: ["React", "Supabase", "TypeScript", "PostgreSQL"],
-        image: "/mockups/antropologos.jpg",
-        links: { live: "#" },
+        problem:
+          "La gestión de matrículas y validaciones se realizaba manualmente, generando demoras administrativas.",
+        solution:
+          "Desarrollo de una plataforma con autenticación, estados de validación y consulta pública de profesionales habilitados.",
+        tech: ["React", "TypeScript", "Supabase", "PostgreSQL"],
+        image: "/projects/2.png",
+        links: {
+          github: "https://github.com/ethercode-tech/antropolog-a-digital",
+          live: "https://www.colegioantropologiajujuy.com.ar/"
+        }
       },
       {
         title: "Jujuy Conecta Diario",
-        problem: "Necesidad de una infraestructura propia para gestionar un flujo editorial sin CMS genéricos.",
-        solution: "Diario digital completo con roles de editor, panel administrativo y arquitectura escalable.",
-        tech: ["Vite", "TypeScript", "Tailwind CSS", "Supabase"],
-        image: "/mockups/diario.jpg",
-        links: { live: "#" },
+        problem:
+          "Se necesitaba una plataforma propia para administrar contenido periodístico sin depender de CMS tradicionales.",
+        solution:
+          "Diario digital con panel administrativo, roles de editor y arquitectura preparada para escalar contenido.",
+        tech: ["React", "Vite", "Tailwind CSS", "Supabase"],
+        image: "/projects/1.png",
+        links: {
+          github: "https://github.com/altiora-software/diario-jujuyconecta",
+          live: "https://diario.jujuyconecta.com/"
+        }
       },
-      {
-        title: "AutoDrive – Gestión Automotriz",
-        problem: "Exhibición ineficiente de stock con especificaciones técnicas complejas.",
-        solution: "Catálogo dinámico con filtrado avanzado y visualización premium de inventario.",
-        tech: ["React", "Framer Motion", "Context API"],
-        image: "/mockups/autos.jpg",
-        links: { github: "#" }
-      }
+      // {
+      //   title: "AutoDrive – Gestión Automotriz",
+      //   problem:
+      //     "La exhibición de vehículos no transmitía correctamente información técnica ni valor visual.",
+      //   solution:
+      //     "Catálogo dinámico con filtros avanzados, animaciones y experiencia enfocada en conversión visual.",
+      //   tech: ["React", "Framer Motion", "Context API"],
+      //   image: "/projects/3.png",
+      //   links: {
+      //     github: "https://github.com/pablitomartinez"
+      //   }
+      // }
     ]
   },
   {
     id: "business",
-    label: "Desarrollo Web & Clientes",
-    description: "Soluciones digitales lanzadas a producción para servicios profesionales.",
+    label: "Webs Comerciales & Clientes",
+    description:
+      "Sitios desarrollados para negocios y servicios profesionales reales.",
     icon: <Briefcase className="text-primary" size={20} />,
     type: "featured",
     projects: [
       {
-        title: "Asesoramiento Tesis – Plataforma Profesional",
-        problem: "Falta de un canal digital confiable para la captación de clientes académicos.",
-        solution: "Web institucional optimizada para conversión con una arquitectura de información de alta autoridad.",
+        title: "Asesoramiento Tesis",
+        problem:
+          "El cliente necesitaba presencia digital profesional y mejor captación de consultas.",
+        solution:
+          "Landing institucional optimizada para claridad, confianza y conversión.",
         tech: ["React", "Tailwind CSS", "SEO"],
-        image: "/mockups/tesis.jpg",
-        links: { live: "https://www.asesoramientotesis.com/" }
+        image: "/projects/3.png",
+        links: {
+          live: "https://www.asesoramientotesis.com/"
+        }
       }
     ]
   },
   {
     id: "labs",
-    label: "Laboratorio & Herramientas",
-    description: "Proyectos técnicos enfocados en resolver necesidades puntuales de usuario.",
+    label: "Laboratorio & Experimentos",
+    description:
+      "Herramientas y MVPs enfocados en resolver necesidades puntuales.",
     icon: <Beaker className="text-primary" size={20} />,
     type: "grid",
     projects: [
       {
         title: "Catálogo para Emprendedores",
-        problem: "Digitalización rápida de productos para pequeños comercios.",
-        solution: "MVP de catálogo digital ligero enfocado en velocidad de carga y facilidad de uso.",
-        tech: ["React", "Local Storage", "Tailwind"],
+        problem:
+          "Pequeños comercios necesitaban mostrar productos sin depender de marketplaces.",
+        solution:
+          "MVP liviano y responsive para exhibición rápida de productos.",
+        tech: ["React", "Tailwind", "Local Storage"],
         image: "/mockups/emprende.jpg",
-        links: { github: "#" }
+        links: {
+          github: "https://github.com/pablitomartinez"
+        }
       }
     ]
   }
@@ -178,24 +203,31 @@ const FeaturedProject = ({ project, index }: { project: Project; index: number }
               </span>
             ))}
           </div>
-          <motion.div style={{ y: yButtons }} className="flex flex-wrap gap-4 pt-6">
+          <motion.div
+            style={{ y: yButtons }}
+            className="flex flex-wrap gap-4 pt-4"
+          >
             {project.links.github && (
               <a
                 href={project.links.github}
-                className="px-8 py-3 bg-primary text-primary-foreground rounded-full text-[11px] font-black tracking-[0.2em] hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 flex items-center gap-2 group"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary px-6 py-3 text-xs font-bold tracking-[0.15em] text-primary-foreground transition-all hover:scale-[1.02] hover:bg-primary/90"
               >
-                <Github size={16} className="group-hover:rotate-12 transition-transform" />
-                CÓDIGO
+                <Github size={15} />
+                GITHUB
               </a>
             )}
 
             {project.links.live && (
               <a
                 href={project.links.live}
-                className="px-8 py-3 bg-white/5 border border-white/10 backdrop-blur-md text-white rounded-full text-[11px] font-black tracking-[0.2em] hover:bg-white/10 hover:border-primary/50 transition-all flex items-center gap-2 group"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-6 py-3 text-xs font-bold tracking-[0.15em] text-foreground transition-all hover:border-primary/40 hover:text-primary"
               >
-                <ExternalLink size={16} className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
-                EN VIVO
+                <ExternalLink size={15} />
+                VER PROYECTO
               </a>
             )}
           </motion.div>
@@ -207,20 +239,51 @@ const FeaturedProject = ({ project, index }: { project: Project; index: number }
 
 const SmallProjectCard = ({ project }: { project: Project }) => (
   <Reveal>
-    <div className="h-full p-8 rounded-2xl bg-secondary/20 border border-primary/5 hover:border-primary/20 transition-all flex flex-col justify-between group">
+    <div className="group flex h-full flex-col justify-between rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl">
       <div>
-        <h4 className="text-xl font-display mb-4 group-hover:text-primary transition-colors">{project.title}</h4>
-        <p className="text-sm text-muted-foreground leading-relaxed mb-6">{project.solution}</p>
+        <h4 className="mb-3 text-xl font-semibold tracking-tight transition-colors group-hover:text-primary">
+          {project.title}
+        </h4>
+
+        <p className="mb-6 text-sm leading-relaxed text-muted-foreground">
+          {project.solution}
+        </p>
       </div>
-      <div className="flex justify-between items-center">
-        <div className="flex gap-2 flex-wrap max-w-[70%]">
-          {project.tech.map(t => (
-            <span key={t} className="text-[9px] font-bold text-primary/60 uppercase">{t}</span>
+
+      <div className="space-y-4">
+        <div className="flex flex-wrap gap-2">
+          {project.tech.map((t) => (
+            <span
+              key={t}
+              className="rounded-full border border-primary/10 bg-primary/5 px-2 py-1 text-[10px] font-semibold text-primary"
+            >
+              {t}
+            </span>
           ))}
         </div>
-        <div className="flex gap-3 text-muted-foreground">
-          {project.links.github && <a href={project.links.github} className="hover:text-primary transition-colors"><Github size={18} /></a>}
-          {project.links.live && <a href={project.links.live} className="hover:text-primary transition-colors"><ExternalLink size={18} /></a>}
+
+        <div className="flex items-center gap-4">
+          {project.links.github && (
+            <a
+              href={project.links.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground transition-colors hover:text-primary"
+            >
+              <Github size={18} />
+            </a>
+          )}
+
+          {project.links.live && (
+            <a
+              href={project.links.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground transition-colors hover:text-primary"
+            >
+              <ExternalLink size={18} />
+            </a>
+          )}
         </div>
       </div>
     </div>
