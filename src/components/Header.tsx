@@ -70,8 +70,8 @@ const Header = () => {
         {/* Botón Descargar CV / Contacto Mobile */}
         <div className="flex items-center gap-4">
           <a
-            href="./cv-pablo-martinez.pdf" // Agregamos el punto inicial para rutas relativas de Vite
-            download="CV_Pablo_Martinez.pdf" // Forzamos el nombre del archivo al descargar
+            href="./CV_Pablo_Martinez_FRONTEND.pdf" // Agregamos el punto inicial para rutas relativas de Vite
+            download="CV_Pablo_Martinez_FRONTEND.pdf" // Forzamos el nombre del archivo al descargar
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-5 py-2 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 rounded-sm font-body text-[10px] uppercase tracking-widest font-bold"
