@@ -32,7 +32,7 @@ const Footer = () => {
             </a>
 
             <a
-              href="https://www.linkedin.com/in/pablo-martinez-9b2991233/"
+              href="https://www.linkedin.com/in/pablo-ezequiel-martinez-9b2991233/"
               target="_blank"
               rel="noopener noreferrer"
               className="group relative text-xs font-body uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors duration-300"

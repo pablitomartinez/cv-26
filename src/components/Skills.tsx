@@ -1,31 +1,31 @@
 const skillCategories = [
   {
-    title: "Frontend (Foco principal)",
+    title: "Desarrollo Frontend",
     skills: [
-      "React",
+      "React para interfaces interactivas",
       "Next.js (App Router)",
       "JavaScript (ES6+)",
-      "TypeScript",
+      "TypeScript para código escalable",
       "Tailwind CSS",
       "Componentes reutilizables y estado"
     ],
   },
   {
-    title: "Backend & Datos (Soporte)",
+    title: "Backend e Infraestructura",
     skills: [
       "Node.js",
       "Express",
       "APIs REST",
       "Supabase (Auth, DB, Storage)",
-      "Modelado básico de datos"
+      "Modelado de datos relacionales"
     ],
   },
   {
-    title: "Producto & Herramientas",
+    title: "Diseño y Herramientas",
     skills: [
-      "UX orientado a flujos reales",
+      "Comunicación orientada a flujos de usuario",
       "Figma (wireframes y handoff)",
-      "Git & GitHub",
+      "Git y GitHub",
       "Vercel (deploy y entornos)"
     ],
   }
