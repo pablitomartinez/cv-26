@@ -54,38 +54,30 @@ const Header = () => {
 
 
 
-        {/* Navegación Desktop */}
-        <nav className="hidden md:flex items-center gap-10">
+        {/* NAVEGACIÓN DESKTOP */}
+        <nav className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className="link-underline text-m font-body font-medium uppercase tracking-[0.2em] text-muted-foreground hover:text-primary transition-all duration-300"
+              className="link-underline text-muted-foreground hover:text-foreground font-body text-xs uppercase tracking-[0.2em] py-1 transition-colors duration-300"
             >
               {item.name}
             </a>
           ))}
         </nav>
 
-        {/* Botón Descargar CV / Contacto Mobile */}
+        {/* BOTÓN CV CONTRASTADO */}
         <div className="flex items-center gap-4">
           <a
-            href="./CV_FRONTEND_Pablo_Martinez.pdf" // Agregamos el punto inicial para rutas relativas de Vite
-            download="CV_FRONTEND_Pablo_Martinez.pdf" // Forzamos el nombre del archivo al descargar
+            href="/cv.pdf" // Asegúrate de tener tu archivo pdf en la carpeta public con este nombre
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-5 py-2 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 rounded-sm font-body text-[10px] uppercase tracking-widest font-bold"
+            className="flex items-center gap-2 px-5 py-2 bg-primary/10 border border-primary/20 text-primary hover:bg-primary hover:text-primary-foreground rounded-full font-body text-xs uppercase tracking-[0.15em] font-bold transition-all duration-300"
           >
             <Download size={14} />
             <span className="hidden sm:inline">Descargar CV</span>
-            <span className="sm:hidden">CV</span>
-          </a>
-
-          <a
-            href="#contact"
-            className=" md:hidden text-xs font-body font-bold uppercase tracking-widest text-foreground border-b border-primary pb-1"
-          >
-            Let's Talk
+            <span className="inline sm:hidden">CV</span>
           </a>
         </div>
       </div>

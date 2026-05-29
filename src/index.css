@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 /* Personal Portfolio Design System
    Minimalist with personality - strong typography, purposeful accents
 */
@@ -47,8 +46,8 @@
     --radius: 0.5rem;
 
     /* Custom properties for enhanced design */
-    --font-display: 'Instrument Serif', Georgia, serif;
-    --font-body: 'Inter', system-ui, sans-serif;
+--font-display: 'Syne', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
     
     /* Shadows */
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.03);
