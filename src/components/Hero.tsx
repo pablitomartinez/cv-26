@@ -49,7 +49,7 @@ const Hero = () => {
             </Reveal>
 
             {/* Copy optimizado según el reporte de Codex */}
-            <p className="text-base sm:text-lg md:text-2xl text-secondary font-body leading-relaxed max-w-2xl mb-8 lg:mb-10">
+            <p className="text-base sm:text-lg md:text-2xl text-secondary-foreground font-body leading-relaxed max-w-2xl mb-8 lg:mb-10">
               Frontend Developer orientado a producto. Construyo interfaces en React y Next.js para sistemas reales: medios digitales, instituciones y plataformas de gestión, con foco en la experiencia de usuario y la mantenibilidad.
             </p>
 
