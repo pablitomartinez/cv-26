@@ -2,9 +2,12 @@ import Reveal from "./Reveal";
 
 const About = () => {
   return (
-    <section id="about" className="py-24 bg-card transition-colors duration-500">
+    <section
+  id="about"
+  className="py-16 lg:min-h-screen bg-card transition-colors duration-500 flex items-center"
+>
       <div className="container mx-auto px-6">
-        <p className="text-primary font-body text-xs tracking-[0.3em] uppercase mb-16">
+        <p className="text-primary font-body text-xs tracking-[0.3em] uppercase mb-10">
           Sobre mí
         </p>
         <div className="grid md:grid-cols-12 gap-8 md:gap-12">
@@ -13,7 +16,7 @@ const About = () => {
               Desarrollo interfaces pensadas para usarse, mantenerse y escalar.
             </h2>
 
-            <div className="space-y-6 text-muted-foreground font-body leading-relaxed text-lg">
+            <div className="space-y-5 text-muted-foreground font-body leading-relaxed text-lg">
               <Reveal>
                 <p>
                   Soy desarrollador Frontend enfocado en el desarrollo de producto. Me especializo en construir interfaces claras y arquitecturas de UI robustas que resuelven flujos operativos complejos: desde la primera interacción del usuario hasta la gestión interna de datos.
@@ -36,12 +39,12 @@ const About = () => {
           
           <Reveal>
             <div className="md:col-span-4 md:col-start-9">
-              <div className="sticky top-24 p-8 border border-primary/10 bg-background/50 rounded-sm">
-                <p className="text-[10px] font-body font-bold uppercase tracking-[0.2em] text-primary mb-6">
+              <div className="sticky top-24 p-6 border border-primary/10 bg-background rounded-sm">
+                <p className="text-[10px] font-body font-bold uppercase tracking-[0.2em] text-primary mb-8">
                   Perfil actual
                 </p>
 
-                <ul className="space-y-6 text-foreground font-body text-sm">
+                <ul className="space-y-4 text-foreground font-body text-sm">
                   <li className="flex items-start gap-4">
                     <span className="w-2 h-2 rounded-full bg-primary mt-1.5 flex-shrink-0" />
                     <div>

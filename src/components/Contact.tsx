@@ -108,7 +108,7 @@ const Contact = () => {
                     rel="noopener noreferrer"
                     className="text-accent-foreground flex items-center gap-4 p-4 border border-ring rounded-sm hover:bg-primary/5 transition-all w-fit"
                   >
-                    <MessageCircle size={20} className="text-green-500" />
+                    <MessageCircle size={20} className="text-success" />
                     <span>+54 388 4597800</span>
                   </a>
                 </Reveal>
@@ -212,13 +212,13 @@ const Contact = () => {
 
               {/* Feedback UX */}
               {status === "error" && (
-                <p className="text-sm text-red-500">
+                <p className="text-sm text-destructive">
                   Ocurrió un error. Probá nuevamente o escribime por WhatsApp.
                 </p>
               )}
 
               {status === "success" && (
-                <p className="text-sm text-green-500">
+                <p className="text-sm text-success">
                   Gracias por escribir. Te respondo a la brevedad.
                 </p>
               )}

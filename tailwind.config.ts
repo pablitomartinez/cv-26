@@ -1,3 +1,11 @@
+// Design System Tokens
+// Estos colores NO representan colores visuales directos.
+// Representan roles semánticos dentro de la interfaz.
+//
+
+//
+// Los valores reales viven en src/index.css (:root y .dark).
+// Tailwind solamente expone esos tokens para su uso mediante clases.
 import type { Config } from "tailwindcss";
 
 export default {
@@ -36,21 +44,27 @@ export default {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
         },
+        // - success => estados exitosos
+        // - warning => advertencias
+        // - destructive => errores o acciones peligrosas
+        // - surface => capas visuales intermedias
+        // - brand => identidad visual de la marca
+        // Feedback & Semantic States
         success: {
           DEFAULT: "hsl(var(--success))",
           foreground: "hsl(var(--success-foreground))",
         },
-    
+        
         warning: {
           DEFAULT: "hsl(var(--warning))",
           foreground: "hsl(var(--warning-foreground))",
         },
-        
+        // Layout Surfaces
         surface: {
           DEFAULT: "hsl(var(--surface))",
           foreground: "hsl(var(--surface-foreground))",
         },
-        
+        // Brand Identity        
         brand: {
           DEFAULT: "hsl(var(--brand))",
           foreground: "hsl(var(--brand-foreground))",
