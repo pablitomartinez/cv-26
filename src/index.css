@@ -39,6 +39,22 @@
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
+    /* Success feedback */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    /* Warning feedback */
+    --warning: 38 92% 50%;
+    --warning-foreground: 220 20% 15%;
+
+    /* Generic surfaces */
+    --surface: 40 15% 94%;
+    --surface-foreground: 220 20% 15%;
+
+    /* Brand identity */
+    --brand: 175 65% 30%;
+    --brand-foreground: 40 20% 98%;
+
     --border: 40 15% 88%;
     --input: 40 15% 88%;
     --ring: 175 65% 30%;
@@ -96,6 +112,22 @@
     /* Feedback */
     --destructive: 0 72% 52%;
     --destructive-foreground: 0 0% 98%;
+
+    /* Success feedback */
+    --success: 142 65% 50%;
+    --success-foreground: 175 40% 4%;
+
+    /* Warning feedback */
+    --warning: 38 90% 55%;
+    --warning-foreground: 175 40% 4%;
+
+    /* Generic surfaces */
+    --surface: 175 22% 10%;
+    --surface-foreground: 175 10% 92%;
+
+    /* Brand identity */
+    --brand: 160 80% 45%;
+    --brand-foreground: 175 40% 4%;
   
     /* Borders / Inputs */
     --border: 175 20% 15%;
