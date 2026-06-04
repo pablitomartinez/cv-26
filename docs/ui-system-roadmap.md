@@ -38,17 +38,17 @@ Transformar el portfolio desde una colección de componentes visuales hacia un s
 
 ### Tokens
 
-- [ ] Crear token success
-- [ ] Crear token success-foreground
+- [x] Crear token success
+- [x] Crear token success-foreground
 
-- [ ] Crear token warning
-- [ ] Crear token warning-foreground
+- [x] Crear token warning
+- [x] Crear token warning-foreground
 
-- [ ] Crear token surface
-- [ ] Crear token surface-foreground
+- [x] Crear token surface
+- [x] Crear token surface-foreground
 
-- [ ] Crear token brand
-- [ ] Crear token brand-foreground
+- [x] Crear token brand
+- [x] Crear token brand-foreground
 
 ### Tailwind
 
@@ -63,7 +63,9 @@ Transformar el portfolio desde una colección de componentes visuales hacia un s
 - [ ] Eliminar bg-white/* en componentes propios
 - [ ] Eliminar border-white/* en componentes propios
 
-- [ ] Revisar usos de text-secondary
+- [x] Revisar usos de text-secondary
+- [x] Corregir contraste en Hero
+- [x] Corregir contraste en Contact
 
 ---
 
@@ -72,6 +74,13 @@ Transformar el portfolio desde una colección de componentes visuales hacia un s
 ## Pendiente
 
 ### Primitives
+- [x] Optimizar espaciados de About
+- [x] Reducir altura visual de About
+- [x] Mejorar aprovechamiento de viewport
+- [x] Mejorar lectura en notebooks
+ 
+
+ 
 
 - [ ] Section
 - [ ] SectionHeader
