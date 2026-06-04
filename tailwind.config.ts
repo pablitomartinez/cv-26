@@ -13,9 +13,10 @@ export default {
       },
     },
     extend: {
+      // Dentro de extend en tu tailwind.config.css:
       fontFamily: {
-        display: ['Instrument Serif', 'Georgia', 'serif'],
-        body: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Syne', 'sans-serif'],
+        body: ['Plus Jakarta Sans', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

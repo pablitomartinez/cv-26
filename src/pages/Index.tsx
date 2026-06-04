@@ -5,6 +5,8 @@ import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import LogoCarousel from "@/components/LogoCarousel";
+import ClientMarquee from "@/components/ClientMarquee";
 
 const Index = () => {
   return (
@@ -13,8 +15,10 @@ const Index = () => {
       <main>
         <Hero />
         <Projects />
+        {/* <ClientMarquee /> */}
         <About />
         <Skills />
+        {/* <LogoCarousel /> */}
         <Contact />
       </main>
       <Footer />

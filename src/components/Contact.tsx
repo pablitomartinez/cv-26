@@ -80,7 +80,7 @@ const Contact = () => {
           {/* ───────────────── INFO ───────────────── */}
           <div className="flex flex-col justify-between">
             <div>
-              <h2 className="text-4xl md:text-6xl font-display mb-8 leading-tight text-secondary">
+              <h2 className="text-4xl md:text-6xl font-display mb-8 leading-tight text-secondary-foreground">
                 ¿Buscás un Frontend Developer?
                 <span className="italic text-primary"> Estoy disponible.</span>
               </h2>
@@ -94,9 +94,9 @@ const Contact = () => {
                 <Reveal>
                   <a
                     href="mailto:pablo.emartinez.dev@gmail.com"
-                    className="text-secondary flex items-center gap-4 p-4 border border-primary/10 rounded-sm hover:bg-primary/5 transition-all w-fit"
+                    className="text-accent-foreground flex items-center gap-4 p-4 border border-ring rounded-sm hover:bg-primary/5 transition-all w-fit"
                   >
-                    <Mail size={20} className="text-primary" />
+                    <Mail size={20} className="text-accent-foreground" />
                     <span>pablo.emartinez.dev@gmail.com</span>
                   </a>
                 </Reveal>
@@ -106,7 +106,7 @@ const Contact = () => {
                     href="https://wa.me/543884597800"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-secondary flex items-center gap-4 p-4 border border-primary/10 rounded-sm hover:bg-primary/5 transition-all w-fit"
+                    className="text-accent-foreground flex items-center gap-4 p-4 border border-ring rounded-sm hover:bg-primary/5 transition-all w-fit"
                   >
                     <MessageCircle size={20} className="text-green-500" />
                     <span>+54 388 4597800</span>

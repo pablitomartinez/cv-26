@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 /* Personal Portfolio Design System
    Minimalist with personality - strong typography, purposeful accents
 */
@@ -47,8 +46,8 @@
     --radius: 0.5rem;
 
     /* Custom properties for enhanced design */
-    --font-display: 'Instrument Serif', Georgia, serif;
-    --font-body: 'Inter', system-ui, sans-serif;
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
     
     /* Shadows */
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.03);
@@ -67,20 +66,54 @@
   }
 
   .dark {
-    /* Un fondo verde petróleo muy oscuro, orgánico y profundo */
-    --background: 175 40% 4%; 
+    /* Base */
+    --background: 175 40% 4%;
     --foreground: 175 10% 95%;
-
+  
+    /* Surfaces */
     --card: 175 30% 7%;
     --card-foreground: 175 10% 95%;
-
-    /* El acento: un verde esmeralda vibrante pero accesible */
-    --primary: 160 80% 45%; 
+  
+    --popover: 175 30% 7%;
+    --popover-foreground: 175 10% 95%;
+  
+    /* Brand */
+    --primary: 160 80% 45%;
     --primary-foreground: 175 40% 4%;
-
-    /* Bordes sutiles para que no se vea plano */
+  
+    /* Secondary surfaces */
+    --secondary: 175 20% 12%;
+    --secondary-foreground: 175 10% 88%;
+  
+    /* Muted */
+    --muted: 175 15% 10%;
+    --muted-foreground: 175 8% 65%;
+  
+    /* Accent */
+    --accent: 175 25% 14%;
+    --accent-foreground: 175 10% 92%;
+  
+    /* Feedback */
+    --destructive: 0 72% 52%;
+    --destructive-foreground: 0 0% 98%;
+  
+    /* Borders / Inputs */
     --border: 175 20% 15%;
+    --input: 175 20% 15%;
     --ring: 160 80% 45%;
+  
+    /* Sidebar */
+    --sidebar-background: 175 30% 6%;
+    --sidebar-foreground: 175 10% 92%;
+  
+    --sidebar-primary: 160 80% 45%;
+    --sidebar-primary-foreground: 175 40% 4%;
+  
+    --sidebar-accent: 175 20% 12%;
+    --sidebar-accent-foreground: 175 10% 88%;
+  
+    --sidebar-border: 175 20% 15%;
+    --sidebar-ring: 160 80% 45%;
   }
 }
 

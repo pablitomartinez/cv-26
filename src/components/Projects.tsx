@@ -9,7 +9,7 @@ interface Project {
   solution: string;
   tech: string[];
   image: string;
-  links: { github?: string; live?: string };
+  links: { github?: string; live?: string; statusText?: string };
 }
 
 interface CategoryGroup {
@@ -31,27 +31,19 @@ const CONTENT: CategoryGroup[] = [
     projects: [
       {
         title: "Plataforma Institucional – Colegio de Antropólogos",
-        problem: "Gestión manual de trámites y matrículas con alta demora administrativa.",
-        solution: "Sistema de autogestión profesional con validación de estados y consultas públicas en tiempo real.",
+        problem: "Gestión manual de trámites con alta demora administrativa. Las consultas externas por profesionales se gestionaban por correo, tardando semanas en responderse y perdiendo oportunidades de contratación.",
+        solution: "Sistema de autogestión profesional con validación de estados y una plataforma de consulta pública en tiempo real. Ahora las empresas visualizan los profesionales disponibles y consultan al instante.",
         tech: ["React", "Supabase", "TypeScript", "PostgreSQL"],
-        image: "/mockups/antropologos.jpg",
-        links: { live: "#" },
+        image: "/projects/2.png",
+        links: { live: "https://www.colegioantropologiajujuy.com.ar//" },
       },
       {
         title: "Jujuy Conecta Diario",
-        problem: "Necesidad de una infraestructura propia para gestionar un flujo editorial sin CMS genéricos.",
-        solution: "Diario digital completo con roles de editor, panel administrativo y arquitectura escalable.",
+        problem: "Necesidad de una infraestructura ágil e independiente para gestionar un flujo de noticias diario, evitando la dependencia de CMS genéricos y pesados.",
+        solution: "Diario digital con arquitectura escalable. Desarrollé un panel administrativo optimizado para el trabajo simultáneo de 3 editores, garantizando la publicación y actualización de notas al instante.",
         tech: ["Vite", "TypeScript", "Tailwind CSS", "Supabase"],
-        image: "/mockups/diario.jpg",
-        links: { live: "#" },
-      },
-      {
-        title: "AutoDrive – Gestión Automotriz",
-        problem: "Exhibición ineficiente de stock con especificaciones técnicas complejas.",
-        solution: "Catálogo dinámico con filtrado avanzado y visualización premium de inventario.",
-        tech: ["React", "Framer Motion", "Context API"],
-        image: "/mockups/autos.jpg",
-        links: { github: "#" }
+        image: "/projects/1.png",
+        links: { live: "https://diario.jujuyconecta.com/" },
       }
     ]
   },
@@ -64,31 +56,31 @@ const CONTENT: CategoryGroup[] = [
     projects: [
       {
         title: "Asesoramiento Tesis – Plataforma Profesional",
-        problem: "Falta de un canal digital confiable para la captación de clientes académicos.",
-        solution: "Web institucional optimizada para conversión con una arquitectura de información de alta autoridad.",
+        problem: "Falta de un canal digital confiable y de alta autoridad para la captación de clientes en el ámbito académico.",
+        solution: "Web institucional optimizada para conversión con una arquitectura de información estratégica, facilitando el embudo de captación de leads.",
         tech: ["React", "Tailwind CSS", "SEO"],
-        image: "/mockups/tesis.jpg",
+        image: "/projects/3.png",
         links: { live: "https://www.asesoramientotesis.com/" }
       }
     ]
   },
-  {
-    id: "labs",
-    label: "Laboratorio & Herramientas",
-    description: "Proyectos técnicos enfocados en resolver necesidades puntuales de usuario.",
-    icon: <Beaker className="text-primary" size={20} />,
-    type: "grid",
-    projects: [
-      {
-        title: "Catálogo para Emprendedores",
-        problem: "Digitalización rápida de productos para pequeños comercios.",
-        solution: "MVP de catálogo digital ligero enfocado en velocidad de carga y facilidad de uso.",
-        tech: ["React", "Local Storage", "Tailwind"],
-        image: "/mockups/emprende.jpg",
-        links: { github: "#" }
-      }
-    ]
-  }
+  // {
+  //   id: "labs",
+  //   label: "Laboratorio & Herramientas",
+  //   description: "Proyectos técnicos enfocados en resolver necesidades puntuales de usuario.",
+  //   icon: <Beaker className="text-primary" size={20} />,
+  //   type: "grid",
+  //   projects: [
+  //     {
+  //       title: "Catálogo para Emprendedores",
+  //       problem: "Digitalización rápida y económica de productos para comercios locales pequeños.",
+  //       solution: "MVP de catálogo digital ligero que prioriza la velocidad de carga extrema y la facilidad de administración local mediante almacenamiento en cliente.",
+  //       tech: ["React", "Local Storage", "Tailwind"],
+  //       image: "/mockups/emprende.jpg",
+  //       links: { github: "https://github.com/tu-usuario/tu-repositorio" }
+  //     }
+  //   ]
+  // }
 ];
 
 const Projects = () => {
@@ -97,24 +89,24 @@ const Projects = () => {
       <div className="container mx-auto px-6">
 
         <Reveal>
-          <div className="mb-8 max-w-2xl">
+          <div className="mb-20 max-w-2xl">
             <p className="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-4">Portfolio</p>
-            <h2 className="text-muted text-5xl md:text-7xl font-display leading-tight">
-              Proyectos <br />
-              {/* <span className="italic text-primary/80">impacto operativo.</span> */}
+            <h2 className="text-foreground text-5xl md:text-7xl font-display leading-tight">
+              Proyectos con <br />
+              <span className="italic text-primary/80">impacto real.</span>
             </h2>
           </div>
         </Reveal>
 
         <div className="space-y-40">
           {CONTENT.map((category) => (
-            <div key={category.id} className="space-y-8">
+            <div key={category.id} className="space-y-12">
               <div className="flex flex-col gap-2 border-l-2 border-primary/20 pl-6">
                 <div className="flex items-center gap-3">
                   {category.icon}
                   <h3 className="text-xl font-display tracking-tight text-foreground">{category.label}</h3>
                 </div>
-                <p className="text-muted text-sm max-w-xl">{category.description}</p>
+                <p className="text-muted-foreground text-sm max-w-xl">{category.description}</p>
               </div>
 
               {category.type === "featured" ? (
@@ -142,7 +134,7 @@ const FeaturedProject = ({ project, index }: { project: Project; index: number }
   const ref = useRef(null);
   const isEven = index % 2 === 0;
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const yButtons = useTransform(scrollYProgress, [0, 1], [40, -40]);
+  const yButtons = useTransform(scrollYProgress, [0, 1], [20, -20]);
 
   return (
     <article ref={ref} className={`flex flex-col gap-12 items-center ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
@@ -158,33 +150,36 @@ const FeaturedProject = ({ project, index }: { project: Project; index: number }
         </Reveal>
       </div>
 
-      <div className="w-full lg:w-2/5 space-y-8">
+      <div className="w-full lg:w-2/5 space-y-6">
         <Reveal delay={200}>
-          <h4 className="text-muted text-3xl md:text-4xl font-display leading-tight">{project.title}</h4>
+          <h4 className="text-foreground text-3xl md:text-4xl font-display leading-tight mb-4">{project.title}</h4>
           <div className="space-y-4">
             <div className="relative pl-6 border-l-2 border-primary/10">
               <p className="text-[10px] uppercase font-bold tracking-widest text-primary mb-1">El Desafío</p>
-              <p className="text-muted text-sm leading-relaxed italic">{project.problem}</p>
+              <p className="text-muted-foreground text-sm leading-relaxed">{project.problem}</p>
             </div>
-            <div className="relative pl-6 border-l-2 border-primary/10">
+            <div className="relative pl-6 border-l-2 border-primary/20">
               <p className="text-[10px] uppercase font-bold tracking-widest text-primary mb-1">La Solución</p>
-              <p className="text-foreground/90 text-base leading-relaxed">{project.solution}</p>
+              <p className="text-foreground/90 text-sm md:text-base leading-relaxed">{project.solution}</p>
             </div>
           </div>
-          <div className="flex flex-wrap gap-2 py-4">
+          <div className="flex flex-wrap gap-2 py-2">
             {project.tech.map(t => (
               <span key={t} className="text-[9px] font-bold px-2 py-1 bg-primary/5 text-primary border border-primary/10 rounded">
                 {t}
               </span>
             ))}
           </div>
-          <motion.div style={{ y: yButtons }} className="flex flex-wrap gap-4 pt-6">
+          
+          <motion.div style={{ y: yButtons }} className="flex flex-wrap gap-4 pt-4">
             {project.links.github && (
               <a
                 href={project.links.github}
-                className="px-8 py-3 bg-primary text-primary-foreground rounded-full text-[11px] font-black tracking-[0.2em] hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 flex items-center gap-2 group"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-2.5 bg-primary text-primary-foreground rounded-full text-[11px] font-black tracking-[0.2em] hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 flex items-center gap-2 group"
               >
-                <Github size={16} className="group-hover:rotate-12 transition-transform" />
+                <Github size={14} className="group-hover:rotate-12 transition-transform" />
                 CÓDIGO
               </a>
             )}
@@ -192,11 +187,19 @@ const FeaturedProject = ({ project, index }: { project: Project; index: number }
             {project.links.live && (
               <a
                 href={project.links.live}
-                className="px-8 py-3 bg-white/5 border border-white/10 backdrop-blur-md text-white rounded-full text-[11px] font-black tracking-[0.2em] hover:bg-white/10 hover:border-primary/50 transition-all flex items-center gap-2 group"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-2.5 bg-white/5 border border-white/10 backdrop-blur-md text-white rounded-full text-[11px] font-black tracking-[0.2em] hover:bg-white/10 hover:border-primary/50 transition-all flex items-center gap-2 group"
               >
-                <ExternalLink size={16} className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
+                <ExternalLink size={14} className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
                 EN VIVO
               </a>
+            )}
+
+            {project.links.statusText && (
+              <span className="text-xs text-muted-foreground italic border border-white/5 px-4 py-2 rounded-full bg-white/[0.02]">
+                {project.links.statusText}
+              </span>
             )}
           </motion.div>
         </Reveal>
@@ -207,20 +210,20 @@ const FeaturedProject = ({ project, index }: { project: Project; index: number }
 
 const SmallProjectCard = ({ project }: { project: Project }) => (
   <Reveal>
-    <div className="h-full p-8 rounded-2xl bg-secondary/20 border border-primary/5 hover:border-primary/20 transition-all flex flex-col justify-between group">
+    <div className="h-full p-8 rounded-2xl bg-muted/30 border border-primary/5 hover:border-primary/20 transition-all flex flex-col justify-between group">
       <div>
-        <h4 className="text-xl font-display mb-4 group-hover:text-primary transition-colors">{project.title}</h4>
+        <h4 className="text-xl font-display mb-4 text-foreground group-hover:text-primary transition-colors">{project.title}</h4>
         <p className="text-sm text-muted-foreground leading-relaxed mb-6">{project.solution}</p>
       </div>
       <div className="flex justify-between items-center">
         <div className="flex gap-2 flex-wrap max-w-[70%]">
           {project.tech.map(t => (
-            <span key={t} className="text-[9px] font-bold text-primary/60 uppercase">{t}</span>
+            <span key={t} className="text-[9px] font-bold text-primary/60 uppercase tracking-wider">{t}</span>
           ))}
         </div>
         <div className="flex gap-3 text-muted-foreground">
-          {project.links.github && <a href={project.links.github} className="hover:text-primary transition-colors"><Github size={18} /></a>}
-          {project.links.live && <a href={project.links.live} className="hover:text-primary transition-colors"><ExternalLink size={18} /></a>}
+          {project.links.github && <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors"><Github size={18} /></a>}
+          {project.links.live && <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors"><ExternalLink size={18} /></a>}
         </div>
       </div>
     </div>
