@@ -52,7 +52,7 @@ Transformar el portfolio desde una colección de componentes visuales hacia un s
 
 ### Tailwind
 
-- [ ] Conectar nuevos tokens al tailwind.config.ts
+- [x] Conectar nuevos tokens al tailwind.config.ts
 
 ### Reemplazos
 
@@ -67,6 +67,14 @@ Transformar el portfolio desde una colección de componentes visuales hacia un s
 - [x] Corregir contraste en Hero
 - [x] Corregir contraste en Contact
 
+### Código no utilizado
+
+- [x] Detectados componentes sin uso:
+  - ClientMarquee
+  - LogoCarousel
+
+- [ ] Eliminar definitivamente si se confirma que no volverán a utilizarse
+
 ---
 
 # Fase 3 - Sistema de Componentes
@@ -78,9 +86,6 @@ Transformar el portfolio desde una colección de componentes visuales hacia un s
 - [x] Reducir altura visual de About
 - [x] Mejorar aprovechamiento de viewport
 - [x] Mejorar lectura en notebooks
- 
-
- 
 
 - [ ] Section
 - [ ] SectionHeader

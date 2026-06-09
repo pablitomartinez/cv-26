@@ -89,7 +89,7 @@ const Projects = () => {
       <div className="container mx-auto px-6">
 
         <Reveal>
-          <div className="mb-20 max-w-2xl">
+          <div className="mb-20 max-w-2xl text-right ml-auto">
             <p className="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-4">Portfolio</p>
             <h2 className="text-foreground text-5xl md:text-7xl font-display leading-tight">
               Proyectos con <br />
@@ -189,7 +189,7 @@ const FeaturedProject = ({ project, index }: { project: Project; index: number }
                 href={project.links.live}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-2.5 bg-white/5 border border-white/10 backdrop-blur-md text-white rounded-full text-[11px] font-black tracking-[0.2em] hover:bg-white/10 hover:border-primary/50 transition-all flex items-center gap-2 group"
+                className="px-6 py-2.5 bg-surface border border-border backdrop-blur-md text-foreground rounded-full text-[11px] font-black tracking-[0.2em] hover:border-primary/50 transition-all flex items-center gap-2 group"
               >
                 <ExternalLink size={14} className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
                 EN VIVO
@@ -197,7 +197,7 @@ const FeaturedProject = ({ project, index }: { project: Project; index: number }
             )}
 
             {project.links.statusText && (
-              <span className="text-xs text-muted-foreground italic border border-white/5 px-4 py-2 rounded-full bg-white/[0.02]">
+              <span className="text-xs text-muted-foreground italic border border-border px-4 py-2 rounded-full bg-surface">
                 {project.links.statusText}
               </span>
             )}
