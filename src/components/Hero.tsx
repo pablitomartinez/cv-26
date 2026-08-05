@@ -3,6 +3,7 @@ import DotGrid from "./react-bits/grid-points";
 import SplitText from "../components/react-bits/SplitText";
 import Reveal from "./Reveal";
 import PixelTransition from "./react-bits/PixelTransition";
+import SpecularButton from "./SpecularButton";
 
 const Hero = () => {
   return (
@@ -28,7 +29,7 @@ const Hero = () => {
 
           {/* COLUMNA IZQUIERDA: TEXTOS */}
           <div className="max-w-4xl text-left order-1 lg:order-1">
-            
+
             <div className="flex items-center gap-2 mb-4 lg:mb-6">
               <span className="relative flex h-3 w-3 shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
@@ -40,7 +41,7 @@ const Hero = () => {
             </div>
 
             <Reveal>
-              <h1 className="text-4xl md:text-7xl font-display text-foreground mb-4 lg:mb-6 leading-tight">
+              <h1 className="text-4xl md:text-6xl font-display text-foreground mb-4 lg:mb-6 leading-tight">
                 <span className="flex flex-wrap gap-x-3 md:gap-x-4">
                   <SplitText text="Pablo" className="text-foreground" delay={80} tag="span" textAlign="left" />
                   <SplitText text="Martinez" className="text-primary italic" delay={120} tag="span" textAlign="left" />
@@ -53,15 +54,46 @@ const Hero = () => {
               Frontend Developer orientado a producto. Construyo interfaces en React y Next.js para sistemas reales: medios digitales, instituciones y plataformas de gestión, con foco en la experiencia de usuario y la mantenibilidad.
             </p>
 
-            <div className="flex flex-row gap-6 sm:gap-8 items-center flex-wrap">
-              <a href="#projects" className="group flex items-center gap-3 font-body text-xs uppercase tracking-[0.2em] font-bold">
-                <span className="link-underline">Ver Proyectos</span>
-                <span className="text-primary transition-transform group-hover:translate-x-2">→</span>
+            <div className="flex flex-wrap items-center gap-6 sm:gap-8">
+
+              <a
+                href="#projects"
+                className="group relative inline-flex items-center overflow-hidden rounded-xl border border-primary/20 bg-zinc-950 px-7 py-3.5"
+              >
+
+                {/* Glow */}
+                <span className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/50 to-transparent translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000" />
+                </span>
+
+                <span className="relative flex items-center gap-3">
+                  <span className="font-medium">
+                    Ver proyectos
+                  </span>
+
+                  <ArrowDown
+                    className="h-4 w-4 -rotate-90 text-primary transition-transform duration-300 group-hover:translate-x-1"
+                  />
+                </span>
+
               </a>
-              <a href="#contact" className="link-underline text-muted-foreground hover:text-foreground transition-colors font-body text-xs uppercase tracking-[0.2em]">
-                Escribime
-              </a>
+
+              <a
+  href="#contact"
+  className="group inline-flex items-center gap-2 rounded-xl px-2 py-2 text-sm font-medium text-muted-foreground transition-all duration-300 hover:text-foreground"
+>
+  <span className="relative">
+    ESCRIBIME
+
+    <span className="absolute left-0 -bottom-1 h-px w-0 bg-primary transition-all duration-300 group-hover:w-full" />
+  </span>
+
+  <ArrowDown className="h-4 w-4 text-primary transition-transform duration-300 group-hover:translate-x-1" />
+</a>
+
             </div>
+
+
           </div>
 
           {/* COLUMNA DERECHA: FOTO (Responsiva para que entre todo de una sola vez) */}
