@@ -2,6 +2,8 @@ import { ExternalLink, Github, Rocket, Beaker, Briefcase } from "lucide-react";
 import Reveal from "./Reveal";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import SectionHeader from "./ui-system/SectionHeader";
+import TechBadge from "./ui-system/TechBadge";
 
 interface Project {
   title: string;
@@ -48,6 +50,26 @@ const CONTENT: CategoryGroup[] = [
     ]
   },
   {
+    id: "ecommerce",
+    label: "E-commerce & Plataformas B2C",
+    description: "Soluciones de venta digital enfocadas en la conversión, SEO y autogestión del cliente.",
+    icon: <Beaker className="text-primary" size={20} />, // Puedes usar otro ícono como ShoppingCart de lucide-react
+    type: "featured",
+    projects: [
+      {
+        title: "Catálogo Digital Autogestionable – Tierra Arcilla",
+        problem: "Una emprendedora local necesitaba digitalizar su inventario para compartirlo por WhatsApp, pero los CMS tradicionales (WordPress/Tiendanube) resultaban costosos y complejos de mantener.",
+        solution: "Desarrollé una SPA (Single Page Application) desde cero con un panel de administración intuitivo. Implementé carga masiva de productos (CSV), optimización SEO dinámica (Open Graph) para previsualizaciones impecables en WhatsApp, y base de datos en tiempo real. Proyecto acelerado utilizando metodologías de AI Pair Programming.",
+        tech: ["React", "Vite", "TypeScript", "Supabase", "Tailwind", "AI-Assisted Dev"],
+        image: "/projects/4.png", // Asegúrate de agregar una buena captura del catálogo o del dashboard
+        links: { 
+          live: "https://tierra-arcilla.vercel.app/",
+          github: "https://github.com/pablitomartinez/tierra-arcilla-catalog" 
+          }
+      }
+    ]
+  },
+  {
     id: "business",
     label: "Desarrollo Web & Clientes",
     description: "Soluciones digitales lanzadas a producción para servicios profesionales.",
@@ -63,24 +85,7 @@ const CONTENT: CategoryGroup[] = [
         links: { live: "https://www.asesoramientotesis.com/" }
       }
     ]
-  },
-  // {
-  //   id: "labs",
-  //   label: "Laboratorio & Herramientas",
-  //   description: "Proyectos técnicos enfocados en resolver necesidades puntuales de usuario.",
-  //   icon: <Beaker className="text-primary" size={20} />,
-  //   type: "grid",
-  //   projects: [
-  //     {
-  //       title: "Catálogo para Emprendedores",
-  //       problem: "Digitalización rápida y económica de productos para comercios locales pequeños.",
-  //       solution: "MVP de catálogo digital ligero que prioriza la velocidad de carga extrema y la facilidad de administración local mediante almacenamiento en cliente.",
-  //       tech: ["React", "Local Storage", "Tailwind"],
-  //       image: "/mockups/emprende.jpg",
-  //       links: { github: "https://github.com/tu-usuario/tu-repositorio" }
-  //     }
-  //   ]
-  // }
+  }
 ];
 
 const Projects = () => {
@@ -89,10 +94,19 @@ const Projects = () => {
       <div className="container mx-auto px-6">
 
         <Reveal>
-          <div className="mb-20 max-w-2xl">
+          {/* <div className="mb-20 max-w-2xl text-right ml-auto">
             <p className="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-4">Portfolio</p>
             <h2 className="text-foreground text-5xl md:text-7xl font-display leading-tight">
               Proyectos con <br />
+              <span className="italic text-primary/80">impacto real.</span>
+            </h2>
+          </div> */}
+          <div className="mb-20 max-w-2xl text-left md:text-right md:ml-auto">
+            <p className="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-4">
+              Portfolio
+            </p>
+            <h2 className="text-foreground text-3xl sm:text-5xl md:text-7xl font-display leading-tight">
+              Proyectos con <br className="hidden md:inline" />{" "}
               <span className="italic text-primary/80">impacto real.</span>
             </h2>
           </div>
@@ -164,10 +178,10 @@ const FeaturedProject = ({ project, index }: { project: Project; index: number }
             </div>
           </div>
           <div className="flex flex-wrap gap-2 py-2">
-            {project.tech.map(t => (
-              <span key={t} className="text-[9px] font-bold px-2 py-1 bg-primary/5 text-primary border border-primary/10 rounded">
+            {project.tech.map((t) => (
+              <TechBadge key={t}>
                 {t}
-              </span>
+              </TechBadge>
             ))}
           </div>
           
@@ -189,7 +203,7 @@ const FeaturedProject = ({ project, index }: { project: Project; index: number }
                 href={project.links.live}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-2.5 bg-white/5 border border-white/10 backdrop-blur-md text-white rounded-full text-[11px] font-black tracking-[0.2em] hover:bg-white/10 hover:border-primary/50 transition-all flex items-center gap-2 group"
+                className="px-6 py-2.5 bg-surface border border-border backdrop-blur-md text-foreground rounded-full text-[11px] font-black tracking-[0.2em] hover:border-primary/50 transition-all flex items-center gap-2 group"
               >
                 <ExternalLink size={14} className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
                 EN VIVO
@@ -197,7 +211,7 @@ const FeaturedProject = ({ project, index }: { project: Project; index: number }
             )}
 
             {project.links.statusText && (
-              <span className="text-xs text-muted-foreground italic border border-white/5 px-4 py-2 rounded-full bg-white/[0.02]">
+              <span className="text-xs text-muted-foreground italic border border-border px-4 py-2 rounded-full bg-surface">
                 {project.links.statusText}
               </span>
             )}
