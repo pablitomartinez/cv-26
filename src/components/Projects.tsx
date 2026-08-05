@@ -2,16 +2,28 @@ import { ExternalLink, Github, Rocket, Beaker, Briefcase } from "lucide-react";
 import Reveal from "./Reveal";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import ProjectGallery from "./ProjectGallery";
 import SectionHeader from "./ui-system/SectionHeader";
 import TechBadge from "./ui-system/TechBadge";
+
+interface ProjectImage {
+  src: string;
+  title: string;
+}
 
 interface Project {
   title: string;
   problem: string;
   solution: string;
   tech: string[];
-  image: string;
-  links: { github?: string; live?: string; statusText?: string };
+
+  images: ProjectImage[];
+
+  links: {
+    github?: string;
+    live?: string;
+    statusText?: string;
+  };
 }
 
 interface CategoryGroup {
@@ -36,7 +48,24 @@ const CONTENT: CategoryGroup[] = [
         problem: "Gestión manual de trámites con alta demora administrativa. Las consultas externas por profesionales se gestionaban por correo, tardando semanas en responderse y perdiendo oportunidades de contratación.",
         solution: "Sistema de autogestión profesional con validación de estados y una plataforma de consulta pública en tiempo real. Ahora las empresas visualizan los profesionales disponibles y consultan al instante.",
         tech: ["React", "Supabase", "TypeScript", "PostgreSQL"],
-        image: "/projects/2.png",
+        images: [
+          {
+            src: "/projects/antropologia/2.png",
+            title: "Plataforma Institucional - Colegio de Antropólogos"
+          },
+          {
+            src: "/projects/antropologia/3.png",
+            title: "Plataforma Institucional - Colegio de Antropólogos"
+          },
+          {
+            src: "/projects/antropologia/4.png",
+            title: "Plataforma Institucional - Colegio de Antropólogos"
+          },          {
+            src: "/projects/antropologia/5.png",
+            title: "Plataforma Institucional - Colegio de Antropólogos"
+          },
+          
+        ],
         links: { live: "https://www.colegioantropologiajujuy.com.ar//" },
       },
       {
@@ -44,7 +73,20 @@ const CONTENT: CategoryGroup[] = [
         problem: "Necesidad de una infraestructura ágil e independiente para gestionar un flujo de noticias diario, evitando la dependencia de CMS genéricos y pesados.",
         solution: "Diario digital con arquitectura escalable. Desarrollé un panel administrativo optimizado para el trabajo simultáneo de 3 editores, garantizando la publicación y actualización de notas al instante.",
         tech: ["Vite", "TypeScript", "Tailwind CSS", "Supabase"],
-        image: "/projects/1.png",
+        images: [
+          { 
+            src: "/projects/jc/1.png", 
+            title: "Diario Digital - Jujuy Conecta" 
+          },
+          { 
+            src: "/projects/jc/2.png", 
+            title: "Diario Digital - Jujuy Conecta" 
+          },
+          { 
+            src: "/projects/jc/3.png", 
+            title: "Diario Digital - Jujuy Conecta" 
+          },
+        ],
         links: { live: "https://diario.jujuyconecta.com/" },
       }
     ]
@@ -61,11 +103,11 @@ const CONTENT: CategoryGroup[] = [
         problem: "Una emprendedora local necesitaba digitalizar su inventario para compartirlo por WhatsApp, pero los CMS tradicionales (WordPress/Tiendanube) resultaban costosos y complejos de mantener.",
         solution: "Desarrollé una SPA (Single Page Application) desde cero con un panel de administración intuitivo. Implementé carga masiva de productos (CSV), optimización SEO dinámica (Open Graph) para previsualizaciones impecables en WhatsApp, y base de datos en tiempo real. Proyecto acelerado utilizando metodologías de AI Pair Programming.",
         tech: ["React", "Vite", "TypeScript", "Supabase", "Tailwind", "AI-Assisted Dev"],
-        image: "/projects/4.png", // Asegúrate de agregar una buena captura del catálogo o del dashboard
-        links: { 
+        images: [{ src: "/projects/4.png", title: "Catálogo Digital Autogestionable - Tierra Arcilla" }], // Asegúrate de agregar una buena captura del catálogo o del dashboard
+        links: {
           live: "https://tierra-arcilla.vercel.app/",
-          github: "https://github.com/pablitomartinez/tierra-arcilla-catalog" 
-          }
+          github: "https://github.com/pablitomartinez/tierra-arcilla-catalog"
+        }
       }
     ]
   },
@@ -81,7 +123,7 @@ const CONTENT: CategoryGroup[] = [
         problem: "Falta de un canal digital confiable y de alta autoridad para la captación de clientes en el ámbito académico.",
         solution: "Web institucional optimizada para conversión con una arquitectura de información estratégica, facilitando el embudo de captación de leads.",
         tech: ["React", "Tailwind CSS", "SEO"],
-        image: "/projects/3.png",
+        images: [{ src: "/projects/3.png", title: "Asesoramiento Tesis - Plataforma Profesional" }],
         links: { live: "https://www.asesoramientotesis.com/" }
       }
     ]
@@ -152,15 +194,9 @@ const FeaturedProject = ({ project, index }: { project: Project; index: number }
 
   return (
     <article ref={ref} className={`flex flex-col gap-12 items-center ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
-      <div className="w-full lg:w-3/5 group">
+      <div className="w-full lg:w-3/5">
         <Reveal>
-          <div className="relative overflow-hidden rounded-2xl border border-primary/10 shadow-2xl bg-muted aspect-video">
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-            />
-          </div>
+          <ProjectGallery images={project.images} />
         </Reveal>
       </div>
 
@@ -184,7 +220,7 @@ const FeaturedProject = ({ project, index }: { project: Project; index: number }
               </TechBadge>
             ))}
           </div>
-          
+
           <motion.div style={{ y: yButtons }} className="flex flex-wrap gap-4 pt-4">
             {project.links.github && (
               <a
