@@ -103,7 +103,18 @@ const CONTENT: CategoryGroup[] = [
         problem: "Una emprendedora local necesitaba digitalizar su inventario para compartirlo por WhatsApp, pero los CMS tradicionales (WordPress/Tiendanube) resultaban costosos y complejos de mantener.",
         solution: "Desarrollé una SPA (Single Page Application) desde cero con un panel de administración intuitivo. Implementé carga masiva de productos (CSV), optimización SEO dinámica (Open Graph) para previsualizaciones impecables en WhatsApp, y base de datos en tiempo real. Proyecto acelerado utilizando metodologías de AI Pair Programming.",
         tech: ["React", "Vite", "TypeScript", "Supabase", "Tailwind", "AI-Assisted Dev"],
-        images: [{ src: "/projects/4.png", title: "Catálogo Digital Autogestionable - Tierra Arcilla" }], // Asegúrate de agregar una buena captura del catálogo o del dashboard
+        images: [
+          { src: "/projects/ta/4.png", title: "Catálogo Digital Autogestionable - Tierra Arcilla" 
+          },
+          { src: "/projects/ta/10.png", title: "Catálogo Digital Autogestionable - Tierra Arcilla" 
+          },
+          { src: "/projects/ta/11.png", title: "Catálogo Digital Autogestionable - Tierra Arcilla" 
+          },
+          { src: "/projects/ta/12.png", title: "Catálogo Digital Autogestionable - Tierra Arcilla" 
+          },
+          
+
+        ], // Asegúrate de agregar una buena captura del catálogo o del dashboard
         links: {
           live: "https://tierra-arcilla.vercel.app/",
           github: "https://github.com/pablitomartinez/tierra-arcilla-catalog"
