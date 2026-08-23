@@ -72,7 +72,7 @@ const Contact = () => {
   return (
     <section id="contact" className="py-24 bg-card transition-colors duration-500">
       <div className="container mx-auto px-6">
-        <p className="text-primary text-xs tracking-[0.3em] uppercase mb-8">
+        <p className="text-primary text-xs tracking-[0.3em] uppercase font-bold mb-8">
           Contacto
         </p>
 
@@ -85,7 +85,7 @@ const Contact = () => {
                 <span className="italic text-primary"> Estoy disponible.</span>
               </h2>
 
-              <p className="text-muted-foreground text-xl mb-10 max-w-md">
+              <p className="text-foreground text-xl mb-10 max-w-md">
                 Busco mi primera oportunidad formal como Frontend Developer,
                 aportando desde el primer día con React, UX y productos reales.
               </p>
@@ -94,9 +94,9 @@ const Contact = () => {
                 <Reveal>
                   <a
                     href="mailto:pablo.emartinez.dev@gmail.com"
-                    className="text-accent-foreground flex items-center gap-4 p-4 border border-ring rounded-sm hover:bg-primary/5 transition-all w-fit"
+                    className="text-foreground flex items-center gap-4 p-4 border border-ring rounded-sm hover:bg-primary/5 transition-all w-fit"
                   >
-                    <Mail size={20} className="text-accent-foreground" />
+                    <Mail size={20} className="text-primary" />
                     <span>pablo.emartinez.dev@gmail.com</span>
                   </a>
                 </Reveal>
@@ -106,9 +106,9 @@ const Contact = () => {
                     href="https://wa.me/543884597800"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-accent-foreground flex items-center gap-4 p-4 border border-ring rounded-sm hover:bg-primary/5 transition-all w-fit"
+                    className="text-foreground flex items-center gap-4 p-4 border border-ring rounded-sm hover:bg-primary/5 transition-all w-fit"
                   >
-                    <MessageCircle size={20} className="text-success" />
+                    <MessageCircle size={20} className="text-primary" />
                     <span>+54 388 4597800</span>
                   </a>
                 </Reveal>
@@ -158,7 +158,7 @@ const Contact = () => {
                     type="text"
                     value={form.name}
                     onChange={handleChange}
-                    className="w-full bg-background/50 border px-4 py-3 text-sm rounded-sm text-primary"
+                    className="w-full bg-background border px-4 py-3 text-sm rounded-sm text-primary"
                     placeholder="Tu nombre"
                   />
                 </div>
@@ -175,7 +175,7 @@ const Contact = () => {
                     type="email"
                     value={form.email}
                     onChange={handleChange}
-                    className="w-full bg-background/50 border px-4 py-3 text-sm rounded-sm  text-primary"
+                    className="w-full bg-background border px-4 py-3 text-sm rounded-sm  text-primary"
                     placeholder="email@ejemplo.com"
                   />
                 </div>
@@ -193,7 +193,7 @@ const Contact = () => {
                   rows={4}
                   value={form.message}
                   onChange={handleChange}
-                  className="w-full bg-background/50 border px-4 py-3 text-sm rounded-sm resize-none text-primary"
+                  className="w-full bg-background border px-4 py-3 text-sm rounded-sm resize-none text-primary"
                   placeholder="Escribime para una oportunidad laboral."
                 />
               </div>

@@ -35,7 +35,7 @@ const Hero = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
               </span>
-              <span className="text-primary font-body text-xs md:text-sm uppercase tracking-[0.2em] md:tracking-[0.3em]">
+              <span className="text-primary font-bold text-xs md:text-sm uppercase tracking-[0.2em] md:tracking-[0.3em]">
                 Frontend Developer // React & Next.js
               </span>
             </div>
@@ -58,7 +58,7 @@ const Hero = () => {
 
               <a
                 href="#projects"
-                className="group relative inline-flex items-center overflow-hidden rounded-xl border border-primary/20 bg-zinc-950 px-7 py-3.5"
+                className="group relative inline-flex items-center overflow-hidden rounded-xl border border-primary/20 bg-primary px-7 py-3.5 text-primary-foreground transition-colors duration-300 hover:bg-primary/90"
               >
 
                 {/* Glow */}
@@ -72,7 +72,7 @@ const Hero = () => {
                   </span>
 
                   <ArrowDown
-                    className="h-4 w-4 -rotate-90 text-primary transition-transform duration-300 group-hover:translate-x-1"
+                    className="h-4 w-4 -rotate-90 text-secondary transition-transform duration-300 group-hover:translate-x-1"
                   />
                 </span>
 
