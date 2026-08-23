@@ -10,7 +10,7 @@
 @layer base {
   :root {
     /* Warm, inviting background */
-    --background: 40 20% 98%;
+    --background: 45 25% 88%;
     --foreground: 220 20% 15%;
 
     /* Card surfaces */
@@ -164,6 +164,16 @@
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-display tracking-tight;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    @apply text-foreground/55;
+  }
+
+  .dark input::placeholder,
+  .dark textarea::placeholder {
+    @apply text-foreground;
   }
 }
 

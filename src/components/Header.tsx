@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Download } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,7 +30,7 @@ const Header = () => {
       <div className="container mx-auto px-6 flex items-center justify-between">
         <a
           href="#"
-          className="group font-display text-4xl text-foreground relative inline-flex items-center"
+          className="group font-display text-3xl text-foreground relative inline-flex items-center"
         >
           {/* PM */}
           <span className="group-hover:opacity-0 transition-opacity duration-300">
@@ -60,7 +61,7 @@ const Header = () => {
             <a
               key={item.name}
               href={item.href}
-              className="link-underline text-muted-foreground hover:text-foreground font-body text-xs uppercase tracking-[0.2em] py-1 transition-colors duration-300"
+             className="link-underline text-foreground/95 dark:text-muted-foreground hover:text-foreground font-bold text-xs uppercase tracking-[0.2em] py-1 transition-colors duration-300"
             >
               {item.name}
             </a>
@@ -68,7 +69,8 @@ const Header = () => {
         </nav>
 
         {/* BOTÓN CV CONTRASTADO */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
+          <ThemeToggle />
           <a
             href="/cv.pdf" // Asegúrate de tener tu archivo pdf en la carpeta public con este nombre
             target="_blank"
