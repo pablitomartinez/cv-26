@@ -44,6 +44,35 @@ const CONTENT: CategoryGroup[] = [
     type: "featured",
     projects: [
       {
+        title: "Balance – Gestión de Gastos Compartidos",
+        problem:
+          "Administrar gastos en pareja o dentro de un hogar suele terminar en cuentas dispersas, transferencias difíciles de seguir y dudas sobre quién pagó, cuánto corresponde a cada persona o qué gastos siguen pendientes.",
+        solution:
+          "Desarrollé una aplicación web para centralizar la economía compartida de un hogar. Implementé autenticación, creación e invitación a hogares, registro de gastos, distribución de importes, aprobaciones y seguimiento de movimientos, con una arquitectura segura basada en PostgreSQL, Row Level Security y operaciones controladas mediante RPCs.",
+        tech: [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Supabase",
+          "PostgreSQL",
+          "Tailwind CSS",
+          "PWA"
+        ],
+        images: [
+          {
+            src: "/projects/balance/1.png",
+            title: "Balance - Dashboard de gastos compartidos"
+          },
+          {
+            src: "/projects/balance/2.png",
+            title: "Balance - Gestión de servicios y gastos"
+          },
+        ],
+        links: {
+          live: "https://balance-app-indol.vercel.app/"
+        }
+      },
+      {
         title: "Plataforma Institucional – Colegio de Antropólogos",
         problem: "Gestión manual de trámites con alta demora administrativa. Las consultas externas por profesionales se gestionaban por correo, tardando semanas en responderse y perdiendo oportunidades de contratación.",
         solution: "Sistema de autogestión profesional con validación de estados y una plataforma de consulta pública en tiempo real. Ahora las empresas visualizan los profesionales disponibles y consultan al instante.",
