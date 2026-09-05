@@ -36,7 +36,7 @@ const Hero = () => {
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
               </span>
               <span className="text-primary font-bold text-xs md:text-sm uppercase tracking-[0.2em] md:tracking-[0.3em]">
-                Frontend Developer // React & Next.js
+                Full Stack Developer // React & Next.js
               </span>
             </div>
 
@@ -51,7 +51,7 @@ const Hero = () => {
 
             {/* Copy optimizado según el reporte de Codex */}
             <p className="text-base sm:text-lg md:text-2xl text-secondary-foreground font-body leading-relaxed max-w-2xl mb-8 lg:mb-10">
-              Frontend Developer orientado a producto. Construyo interfaces en React y Next.js para sistemas reales: medios digitales, instituciones y plataformas de gestión, con foco en la experiencia de usuario y la mantenibilidad.
+              Full Stack Developer con fortaleza en Frontend. Desarrollo productos web de punta a punta con React, Next.js y TypeScript, integrando interfaces, autenticación, lógica de negocio, bases de datos y APIs con foco en crear soluciones claras, mantenibles y listas para producción.
             </p>
 
             <div className="flex flex-wrap items-center gap-6 sm:gap-8">

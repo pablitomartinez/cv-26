@@ -17,20 +17,26 @@ const About = () => {
           <div className="md:col-span-7">
 
             <h2 className="text-3xl md:text-5xl font-display text-foreground leading-tight mb-8">
-              Construyo productos digitales que combinan diseño, rendimiento y una gran experiencia de usuario.
+              Desarrollo productos web completos, desde la interfaz hasta los datos y la lógica que los sostiene.
             </h2>
 
             <div className="space-y-6 text-muted-foreground font-body leading-relaxed text-lg">
 
               <Reveal>
                 <p>
-                  Soy <span className="text-foreground">Frontend Developer</span> especializado en React, Next.js y TypeScript. Disfruto crear interfaces modernas, intuitivas y escalables que resuelvan problemas reales. Me motiva trabajar cerca del producto, entender las necesidades de los usuarios y convertir ideas en experiencias rápidas, claras y fáciles de mantener.
+                  Soy <span className="text-foreground">Full Stack Developer</span> con fortaleza en Frontend, especializado en React, Next.js y TypeScript. Desarrollo aplicaciones web combinando interfaces claras y mantenibles con autenticación, lógica de negocio, bases de datos e integraciones.
                 </p>
               </Reveal>
 
               <Reveal>
                 <p>
-                  Antes de dedicarme al desarrollo me formé en <span className="text-foreground">Trabajo Social</span>, una experiencia que fortaleció mi comunicación, la empatía y el trabajo en equipo. Fuera del código, soy un apasionado del fútbol y mi mayor objetivo es crecer profesionalmente mientras viajo por el mundo como <span className="text-foreground">nómada digital</span>, colaborando con equipos internacionales y aprendiendo de cada nuevo desafío.
+                  Me interesa trabajar cerca del producto: entender el problema, traducirlo en funcionalidades y participar en todo el proceso de desarrollo, desde la definición de requerimientos hasta la implementación, el despliegue y la mejora continua.
+                </p>
+              </Reveal>
+
+              <Reveal>
+                <p>
+                  Antes de dedicarme al desarrollo me formé en <span className="text-foreground">Trabajo Social</span>, una experiencia que fortaleció mi comunicación, la comprensión de necesidades y el trabajo con personas y equipos diversos.
                 </p>
               </Reveal>
 
@@ -69,7 +75,7 @@ const About = () => {
                         Especialidad
                       </p>
                       <p className="text-muted-foreground">
-                        Frontend · React · Next.js · TypeScript
+                        Full Stack · React · Next.js · TypeScript
                       </p>
                     </div>
                   </li>
@@ -81,7 +87,7 @@ const About = () => {
                         Enfoque
                       </p>
                       <p className="text-muted-foreground">
-                        Producto · UX · Performance · Código mantenible
+                        Producto · UX · Datos · Código mantenible
                       </p>
                     </div>
                   </li>
@@ -93,7 +99,7 @@ const About = () => {
                         Objetivo
                       </p>
                       <p className="text-muted-foreground">
-                        Integrarme a un equipo internacional y crecer como desarrollador Full Stack mientras trabajo de forma remota.
+                        Integrarme a un equipo de producto donde pueda aportar en el desarrollo completo de aplicaciones web y seguir profundizando mis habilidades Full Stack.
                       </p>
                     </div>
                   </li>

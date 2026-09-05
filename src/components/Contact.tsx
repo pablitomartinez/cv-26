@@ -81,13 +81,12 @@ const Contact = () => {
           <div className="flex flex-col justify-between">
             <div>
               <h2 className="text-4xl md:text-6xl font-display mb-8 leading-tight text-secondary-foreground">
-                ¿Buscás un Frontend Developer?
-                <span className="italic text-primary"> Estoy disponible.</span>
+                ¿Buscás un Full Stack Developer?
+                <span className="italic text-primary"> Hablemos.</span>
               </h2>
 
               <p className="text-foreground text-xl mb-10 max-w-md">
-                Busco mi primera oportunidad formal como Frontend Developer,
-                aportando desde el primer día con React, UX y productos reales.
+                Estoy buscando oportunidades donde pueda aportar desarrollando productos web completos, combinando mi fortaleza en Frontend con experiencia en datos, autenticación, lógica de negocio e integraciones.
               </p>
 
               <div className="space-y-4 mb-10">

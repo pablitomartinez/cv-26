@@ -1,9 +1,9 @@
-# Pablo Martinez — Frontend Developer
+# Pablo Martinez — Full Stack Developer
 
 Portfolio y CV online de Pablo Martinez.  
 Desarrollo de productos digitales con foco en usabilidad, flujos reales y calidad técnica.
 
-Este proyecto funciona como **presentación profesional**, **muestra de trabajo real** y **base evolutiva** para oportunidades laborales en frontend.
+Este proyecto funciona como **presentación profesional**, **muestra de trabajo real** y **base evolutiva** para oportunidades laborales como Full Stack Developer con fortaleza en Frontend.
 
 ---
 
@@ -82,9 +82,7 @@ React · TypeScript · Tailwind · Supabase · Autenticación · UX orientada a 
 
 ## 🎯 Objetivo profesional
 
-Busco mi **primera oportunidad formal en el sector tech** como:
-
-- Frontend Developer (Junior / Trainee)
+Busco oportunidades profesionales como **Full Stack Developer**, con una fortaleza clara en Frontend.
 
 Aporto:
 - Experiencia construyendo productos reales

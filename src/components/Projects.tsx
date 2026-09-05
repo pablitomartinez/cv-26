@@ -55,6 +55,7 @@ const CONTENT: CategoryGroup[] = [
           "TypeScript",
           "Supabase",
           "PostgreSQL",
+          "SQL",
           "Tailwind CSS",
           "PWA"
         ],
@@ -75,7 +76,7 @@ const CONTENT: CategoryGroup[] = [
       {
         title: "Plataforma Institucional – Colegio de Antropólogos",
         problem: "Gestión manual de trámites con alta demora administrativa. Las consultas externas por profesionales se gestionaban por correo, tardando semanas en responderse y perdiendo oportunidades de contratación.",
-        solution: "Sistema de autogestión profesional con validación de estados y una plataforma de consulta pública en tiempo real. Ahora las empresas visualizan los profesionales disponibles y consultan al instante.",
+        solution: "Desarrollé una plataforma de autogestión profesional con autenticación, panel administrativo, gestión dinámica de datos y consulta pública de profesionales. El sistema centraliza trámites y estados, permitiendo al Colegio administrar la información y a terceros consultar profesionales disponibles en tiempo real.",
         tech: ["React", "Supabase", "TypeScript", "PostgreSQL"],
         images: [
           {
@@ -100,8 +101,8 @@ const CONTENT: CategoryGroup[] = [
       {
         title: "Jujuy Conecta Diario",
         problem: "Necesidad de una infraestructura ágil e independiente para gestionar un flujo de noticias diario, evitando la dependencia de CMS genéricos y pesados.",
-        solution: "Diario digital con arquitectura escalable. Desarrollé un panel administrativo optimizado para el trabajo simultáneo de 3 editores, garantizando la publicación y actualización de notas al instante.",
-        tech: ["Vite", "TypeScript", "Tailwind CSS", "Supabase"],
+        solution: "Desarrollé un diario digital con CMS propio para la publicación y gestión dinámica de contenido. Implementé panel administrativo, SEO técnico y un flujo automatizado de scraping, procesamiento y publicación de noticias utilizando Python y GitHub Actions.",
+        tech: ["Vite", "TypeScript", "Tailwind CSS", "Supabase", "Python", "GitHub Actions"],
         images: [
           { 
             src: "/projects/jc/1.png", 
@@ -130,8 +131,8 @@ const CONTENT: CategoryGroup[] = [
       {
         title: "Catálogo Digital Autogestionable – Tierra Arcilla",
         problem: "Una emprendedora local necesitaba digitalizar su inventario para compartirlo por WhatsApp, pero los CMS tradicionales (WordPress/Tiendanube) resultaban costosos y complejos de mantener.",
-        solution: "Desarrollé una SPA (Single Page Application) desde cero con un panel de administración intuitivo. Implementé carga masiva de productos (CSV), optimización SEO dinámica (Open Graph) para previsualizaciones impecables en WhatsApp, y base de datos en tiempo real. Proyecto acelerado utilizando metodologías de AI Pair Programming.",
-        tech: ["React", "Vite", "TypeScript", "Supabase", "Tailwind", "AI-Assisted Dev"],
+        solution: "Desarrollé una aplicación web autogestionable con panel de administración, carga masiva de productos mediante CSV, base de datos en tiempo real y metadata dinámica para optimizar la visualización de productos al compartirlos por WhatsApp.",
+        tech: ["React", "Vite", "TypeScript", "Supabase", "Tailwind"],
         images: [
           { src: "/projects/ta/4.png", title: "Catálogo Digital Autogestionable - Tierra Arcilla" 
           },
