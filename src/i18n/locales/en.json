@@ -4,6 +4,7 @@
     "es": "Switch to Spanish",
     "en": "Switch to English"
   },
+  "backToTop": "Back to top",
   "header": {
     "projects": "Projects",
     "about": "About me",
@@ -123,7 +124,10 @@
       "sent": "Message sent ✓",
       "retry": "Try again",
       "error": "Something went wrong. Please try again or contact me on WhatsApp.",
-      "success": "Thanks for reaching out. I’ll get back to you soon."
+      "terminal": {
+        "command": "message.sent()",
+        "message": "✓ Delivered successfully"
+      }
     }
   },
   "footer": {

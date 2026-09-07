@@ -4,6 +4,7 @@
     "es": "Cambiar a español",
     "en": "Cambiar a inglés"
   },
+  "backToTop": "Volver arriba",
   "header": {
     "projects": "Proyectos",
     "about": "Sobre mí",
@@ -123,7 +124,10 @@
       "sent": "Mensaje enviado ✓",
       "retry": "Reintentar",
       "error": "Ocurrió un error. Probá nuevamente o escribime por WhatsApp.",
-      "success": "Gracias por escribir. Te respondo a la brevedad."
+      "terminal": {
+        "command": "message.sent()",
+        "message": "✓ Mensaje entregado correctamente"
+      }
     }
   },
   "footer": {

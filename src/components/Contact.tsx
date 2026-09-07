@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { Mail, Linkedin, Github, Send, MessageCircle } from "lucide-react";
 import Reveal from "./Reveal";
+import TerminalToast from "./TerminalToast";
 
 /**
  * Componente Contact
@@ -219,15 +220,17 @@ const Contact = () => {
                 </p>
               )}
 
-              {status === "success" && (
-                <p className="text-sm text-success">
-                  {t("contact.form.success")}
-                </p>
-              )}
             </form>
           </div>
         </div>
       </div>
+
+      {status === "success" && (
+        <TerminalToast
+          command={t("contact.form.terminal.command")}
+          message={t("contact.form.terminal.message")}
+        />
+      )}
     </section>
   );
 };
