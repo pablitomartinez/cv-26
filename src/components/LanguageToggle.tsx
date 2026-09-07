@@ -8,7 +8,7 @@ const LanguageToggle = () => {
     <div
       role="group"
       aria-label={t("language.label")}
-      className="inline-flex shrink-0 items-center rounded-full border border-primary/20 bg-primary/10 p-0.5"
+      className="pointer-events-auto inline-flex shrink-0 items-center rounded-full border border-primary/20 bg-primary/10 p-0.5"
     >
       {supportedLanguages.map((language) => (
         <button

@@ -40,13 +40,18 @@ const Header = () => {
           href="#"
           className="group font-display text-3xl text-foreground relative inline-flex items-center"
         >
+          {/* Iniciales estáticas en mobile */}
+          <span className="pointer-events-none md:hidden">
+            P<span className="text-primary">M</span>
+          </span>
+
           {/* Iniciales */}
-          <span className="group-hover:opacity-0 transition-opacity duration-300">
+          <span className="hidden md:inline-block group-hover:opacity-0 transition-opacity duration-300">
             P<span className="text-primary">M</span>
           </span>
 
           {/* Nombre completo al hacer hover */}
-          <span className="absolute left-0 flex opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <span className="hidden md:flex pointer-events-none absolute left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             {[
               "P",
               "a",
