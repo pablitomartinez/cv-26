@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+import type { TFunction } from "i18next";
 import { ExternalLink, Github, Rocket, Beaker, Briefcase } from "lucide-react";
 import Reveal from "./Reveal";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -35,20 +37,18 @@ interface CategoryGroup {
   projects: Project[];
 }
 
-const CONTENT: CategoryGroup[] = [
+const getContent = (t: TFunction): CategoryGroup[] => [
   {
     id: "systems",
-    label: "Sistemas & Aplicaciones de Negocio",
-    description: "Plataformas operativas con lógica de permisos y gestión de datos compleja.",
+    label: t("projects.categories.systems.label"),
+    description: t("projects.categories.systems.description"),
     icon: <Rocket className="text-primary" size={20} />,
     type: "featured",
     projects: [
       {
         title: "Balance – Gestión de Gastos Compartidos",
-        problem:
-          "Administrar gastos en pareja o dentro de un hogar suele terminar en cuentas dispersas, transferencias difíciles de seguir y dudas sobre quién pagó, cuánto corresponde a cada persona o qué gastos siguen pendientes.",
-        solution:
-          "Desarrollé una aplicación web para centralizar la economía compartida de un hogar. Implementé autenticación, creación e invitación a hogares, registro de gastos, distribución de importes, aprobaciones y seguimiento de movimientos, con una arquitectura segura basada en PostgreSQL, Row Level Security y operaciones controladas mediante RPCs.",
+        problem: t("projects.items.balance.problem"),
+        solution: t("projects.items.balance.solution"),
         tech: [
           "Next.js",
           "React",
@@ -62,11 +62,11 @@ const CONTENT: CategoryGroup[] = [
         images: [
           {
             src: "/projects/balance/1.png",
-            title: "Balance - Dashboard de gastos compartidos"
+            title: t("projects.captions.balanceDashboard")
           },
           {
             src: "/projects/balance/2.png",
-            title: "Balance - Gestión de servicios y gastos"
+            title: t("projects.captions.balanceExpenses")
           },
         ],
         links: {
@@ -75,8 +75,8 @@ const CONTENT: CategoryGroup[] = [
       },
       {
         title: "Plataforma Institucional – Colegio de Antropólogos",
-        problem: "Gestión manual de trámites con alta demora administrativa. Las consultas externas por profesionales se gestionaban por correo, tardando semanas en responderse y perdiendo oportunidades de contratación.",
-        solution: "Desarrollé una plataforma de autogestión profesional con autenticación, panel administrativo, gestión dinámica de datos y consulta pública de profesionales. El sistema centraliza trámites y estados, permitiendo al Colegio administrar la información y a terceros consultar profesionales disponibles en tiempo real.",
+        problem: t("projects.items.anthropology.problem"),
+        solution: t("projects.items.anthropology.solution"),
         tech: ["React", "Supabase", "TypeScript", "PostgreSQL"],
         images: [
           {
@@ -100,21 +100,21 @@ const CONTENT: CategoryGroup[] = [
       },
       {
         title: "Jujuy Conecta Diario",
-        problem: "Necesidad de una infraestructura ágil e independiente para gestionar un flujo de noticias diario, evitando la dependencia de CMS genéricos y pesados.",
-        solution: "Desarrollé un diario digital con CMS propio para la publicación y gestión dinámica de contenido. Implementé panel administrativo, SEO técnico y un flujo automatizado de scraping, procesamiento y publicación de noticias utilizando Python y GitHub Actions.",
+        problem: t("projects.items.jujuyConecta.problem"),
+        solution: t("projects.items.jujuyConecta.solution"),
         tech: ["Vite", "TypeScript", "Tailwind CSS", "Supabase", "Python", "GitHub Actions"],
         images: [
           { 
             src: "/projects/jc/1.png", 
-            title: "Diario Digital - Jujuy Conecta" 
+            title: t("projects.captions.jujuyConecta")
           },
           { 
             src: "/projects/jc/2.png", 
-            title: "Diario Digital - Jujuy Conecta" 
+            title: t("projects.captions.jujuyConecta")
           },
           { 
             src: "/projects/jc/3.png", 
-            title: "Diario Digital - Jujuy Conecta" 
+            title: t("projects.captions.jujuyConecta")
           },
         ],
         links: { live: "https://diario.jujuyconecta.com/" },
@@ -123,15 +123,15 @@ const CONTENT: CategoryGroup[] = [
   },
   {
     id: "ecommerce",
-    label: "E-commerce & Plataformas B2C",
-    description: "Soluciones de venta digital enfocadas en la conversión, SEO y autogestión del cliente.",
+    label: t("projects.categories.ecommerce.label"),
+    description: t("projects.categories.ecommerce.description"),
     icon: <Beaker className="text-primary" size={20} />, // Puedes usar otro ícono como ShoppingCart de lucide-react
     type: "featured",
     projects: [
       {
         title: "Catálogo Digital Autogestionable – Tierra Arcilla",
-        problem: "Una emprendedora local necesitaba digitalizar su inventario para compartirlo por WhatsApp, pero los CMS tradicionales (WordPress/Tiendanube) resultaban costosos y complejos de mantener.",
-        solution: "Desarrollé una aplicación web autogestionable con panel de administración, carga masiva de productos mediante CSV, base de datos en tiempo real y metadata dinámica para optimizar la visualización de productos al compartirlos por WhatsApp.",
+        problem: t("projects.items.tierraArcilla.problem"),
+        solution: t("projects.items.tierraArcilla.solution"),
         tech: ["React", "Vite", "TypeScript", "Supabase", "Tailwind"],
         images: [
           { src: "/projects/ta/4.png", title: "Catálogo Digital Autogestionable - Tierra Arcilla" 
@@ -154,15 +154,15 @@ const CONTENT: CategoryGroup[] = [
   },
   {
     id: "business",
-    label: "Desarrollo Web & Clientes",
-    description: "Soluciones digitales lanzadas a producción para servicios profesionales.",
+    label: t("projects.categories.business.label"),
+    description: t("projects.categories.business.description"),
     icon: <Briefcase className="text-primary" size={20} />,
     type: "featured",
     projects: [
       {
         title: "Asesoramiento Tesis – Plataforma Profesional",
-        problem: "Falta de un canal digital confiable y de alta autoridad para la captación de clientes en el ámbito académico.",
-        solution: "Web institucional optimizada para conversión con una arquitectura de información estratégica, facilitando el embudo de captación de leads.",
+        problem: t("projects.items.thesis.problem"),
+        solution: t("projects.items.thesis.solution"),
         tech: ["React", "Tailwind CSS", "SEO"],
         images: [{ src: "/projects/3.png", title: "Asesoramiento Tesis - Plataforma Profesional" }],
         links: { live: "https://www.asesoramientotesis.com/" }
@@ -172,8 +172,11 @@ const CONTENT: CategoryGroup[] = [
 ];
 
 const Projects = () => {
+  const { t, i18n } = useTranslation();
+  const language = i18n.resolvedLanguage ?? "es";
+  const content = getContent(i18n.getFixedT(language));
   return (
-    <section id="projects" className="py-32 bg-background transition-colors duration-500">
+    <section key={language} id="projects" className="py-32 bg-background transition-colors duration-500">
       <div className="container mx-auto px-6">
 
         <Reveal>
@@ -186,17 +189,17 @@ const Projects = () => {
           </div> */}
           <div className="mb-20 max-w-2xl text-left md:text-right md:ml-auto">
             <p className="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-4">
-              Portfolio
+              {t("projects.eyebrow")}
             </p>
             <h2 className="text-foreground text-3xl sm:text-5xl md:text-7xl font-display leading-tight">
-              Proyectos con <br className="hidden md:inline" />{" "}
-              <span className="italic text-primary/80">impacto real.</span>
+              {t("projects.title")} <br className="hidden md:inline" />{" "}
+              <span className="italic text-primary/80">{t("projects.titleHighlight")}</span>
             </h2>
           </div>
         </Reveal>
 
         <div className="space-y-40">
-          {CONTENT.map((category) => (
+          {content.map((category) => (
             <div key={category.id} className="space-y-12">
               <div className="flex flex-col gap-2 border-l-2 border-primary/20 pl-6">
                 <div className="flex items-center gap-3">
@@ -228,6 +231,7 @@ const Projects = () => {
 };
 
 const FeaturedProject = ({ project, index }: { project: Project; index: number }) => {
+  const { t } = useTranslation();
   const ref = useRef(null);
   const isEven = index % 2 === 0;
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
@@ -246,11 +250,11 @@ const FeaturedProject = ({ project, index }: { project: Project; index: number }
           <h4 className="text-foreground text-3xl md:text-4xl font-display leading-tight mb-4">{project.title}</h4>
           <div className="space-y-4">
             <div className="relative pl-6 border-l-2 border-primary/10">
-              <p className="text-[10px] uppercase font-bold tracking-widest text-primary mb-1">El Desafío</p>
+              <p className="text-[10px] uppercase font-bold tracking-widest text-primary mb-1">{t("projects.challenge")}</p>
               <p className="text-muted-foreground text-sm leading-relaxed">{project.problem}</p>
             </div>
             <div className="relative pl-6 border-l-2 border-primary/20">
-              <p className="text-[10px] uppercase font-bold tracking-widest text-primary mb-1">La Solución</p>
+              <p className="text-[10px] uppercase font-bold tracking-widest text-primary mb-1">{t("projects.solution")}</p>
               <p className="text-foreground/90 text-sm md:text-base leading-relaxed">{project.solution}</p>
             </div>
           </div>
@@ -271,7 +275,7 @@ const FeaturedProject = ({ project, index }: { project: Project; index: number }
                 className="px-6 py-2.5 bg-primary text-primary-foreground rounded-full text-[11px] font-black tracking-[0.2em] hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 flex items-center gap-2 group"
               >
                 <Github size={14} className="group-hover:rotate-12 transition-transform" />
-                CÓDIGO
+                {t("projects.code")}
               </a>
             )}
 
@@ -283,7 +287,7 @@ const FeaturedProject = ({ project, index }: { project: Project; index: number }
                 className="px-6 py-2.5 bg-surface border border-border backdrop-blur-md text-foreground rounded-full text-[11px] font-black tracking-[0.2em] hover:border-primary/50 transition-all flex items-center gap-2 group"
               >
                 <ExternalLink size={14} className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
-                EN VIVO
+                {t("projects.live")}
               </a>
             )}
 

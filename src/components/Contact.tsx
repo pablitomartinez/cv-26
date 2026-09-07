@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { Mail, Linkedin, Github, Send, MessageCircle } from "lucide-react";
 import Reveal from "./Reveal";
@@ -9,6 +10,8 @@ import Reveal from "./Reveal";
  * - Conectado a API externa (Vercel + Resend)
  */
 const Contact = () => {
+  const { t, i18n } = useTranslation();
+  const language = i18n.resolvedLanguage ?? "es";
   // Estado del formulario (inputs controlados)
   const [form, setForm] = useState({
     name: "",
@@ -70,10 +73,10 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-card transition-colors duration-500">
+    <section key={language} id="contact" className="py-24 bg-card transition-colors duration-500">
       <div className="container mx-auto px-6">
         <p className="text-primary text-xs tracking-[0.3em] uppercase font-bold mb-8">
-          Contacto
+          {t("contact.label")}
         </p>
 
         <div className="grid lg:grid-cols-2 gap-16">
@@ -81,12 +84,12 @@ const Contact = () => {
           <div className="flex flex-col justify-between">
             <div>
               <h2 className="text-4xl md:text-6xl font-display mb-8 leading-tight text-secondary-foreground">
-                ¿Buscás un Full Stack Developer?
-                <span className="italic text-primary"> Hablemos.</span>
+                {t("contact.title")}
+                <span className="italic text-primary">{t("contact.titleHighlight")}</span>
               </h2>
 
               <p className="text-foreground text-xl mb-10 max-w-md">
-                Estoy buscando oportunidades donde pueda aportar desarrollando productos web completos, combinando mi fortaleza en Frontend con experiencia en datos, autenticación, lógica de negocio e integraciones.
+                {t("contact.description")}
               </p>
 
               <div className="space-y-4 mb-10">
@@ -117,7 +120,7 @@ const Contact = () => {
             <Reveal>
               <div className="flex items-center gap-6">
                 <p className="text-[10px] uppercase tracking-widest font-bold text-muted-foreground">
-                  Social
+                  {t("contact.social")}
                 </p>
                 <div className="flex gap-4">
                   <a
@@ -150,7 +153,7 @@ const Contact = () => {
                     htmlFor="name"
                     className="block text-[10px] uppercase tracking-widest font-bold mb-2 text-primary"
                   >
-                    Nombre
+                    {t("contact.form.name")}
                   </label>
                   <input
                     id="name"
@@ -158,7 +161,7 @@ const Contact = () => {
                     value={form.name}
                     onChange={handleChange}
                     className="w-full bg-background border px-4 py-3 text-sm rounded-sm text-primary"
-                    placeholder="Tu nombre"
+                    placeholder={t("contact.form.namePlaceholder")}
                   />
                 </div>
 
@@ -167,7 +170,7 @@ const Contact = () => {
                     htmlFor="email"
                     className="block text-[10px] uppercase tracking-widest font-bold mb-2 text-primary"
                   >
-                    Email
+                    {t("contact.form.email")}
                   </label>
                   <input
                     id="email"
@@ -175,7 +178,7 @@ const Contact = () => {
                     value={form.email}
                     onChange={handleChange}
                     className="w-full bg-background border px-4 py-3 text-sm rounded-sm  text-primary"
-                    placeholder="email@ejemplo.com"
+                    placeholder={t("contact.form.emailPlaceholder")}
                   />
                 </div>
               </div>
@@ -185,7 +188,7 @@ const Contact = () => {
                   htmlFor="message"
                   className="block text-[10px] uppercase tracking-widest font-bold mb-2 text-primary"
                 >
-                  Mensaje
+                  {t("contact.form.message")}
                 </label>
                 <textarea
                   id="message"
@@ -193,7 +196,7 @@ const Contact = () => {
                   value={form.message}
                   onChange={handleChange}
                   className="w-full bg-background border px-4 py-3 text-sm rounded-sm resize-none text-primary"
-                  placeholder="Escribime para una oportunidad laboral."
+                  placeholder={t("contact.form.messagePlaceholder")}
                 />
               </div>
 
@@ -202,23 +205,23 @@ const Contact = () => {
                 disabled={status === "loading"}
                 className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-primary text-primary-foreground font-bold uppercase tracking-widest rounded-sm disabled:opacity-50 transition-all"
               >
-                {status === "idle" && "Enviar mensaje"}
-                {status === "loading" && "Enviando..."}
-                {status === "success" && "Mensaje enviado ✓"}
-                {status === "error" && "Reintentar"}
+                {status === "idle" && t("contact.form.submit")}
+                {status === "loading" && t("contact.form.loading")}
+                {status === "success" && t("contact.form.sent")}
+                {status === "error" && t("contact.form.retry")}
                 <Send size={16} />
               </button>
 
               {/* Feedback UX */}
               {status === "error" && (
                 <p className="text-sm text-destructive">
-                  Ocurrió un error. Probá nuevamente o escribime por WhatsApp.
+                  {t("contact.form.error")}
                 </p>
               )}
 
               {status === "success" && (
                 <p className="text-sm text-success">
-                  Gracias por escribir. Te respondo a la brevedad.
+                  {t("contact.form.success")}
                 </p>
               )}
             </form>

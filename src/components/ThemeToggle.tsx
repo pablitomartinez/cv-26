@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 
@@ -9,6 +10,7 @@ const getCurrentTheme = (): Theme =>
   document.documentElement.classList.contains("dark") ? "dark" : "light";
 
 const ThemeToggle = () => {
+  const { t } = useTranslation();
   const [theme, setTheme] = useState<Theme>(getCurrentTheme);
 
   useEffect(() => {
@@ -36,7 +38,7 @@ const ThemeToggle = () => {
     setTheme(nextTheme);
   };
 
-  const nextThemeLabel = theme === "dark" ? "claro" : "oscuro";
+  const nextThemeLabel = t(theme === "dark" ? "header.theme.light" : "header.theme.dark");
 
   return (
     <Button
@@ -44,8 +46,8 @@ const ThemeToggle = () => {
       variant="ghost"
       size="icon"
       onClick={toggleTheme}
-      aria-label={`Activar modo ${nextThemeLabel}`}
-      title={`Activar modo ${nextThemeLabel}`}
+      aria-label={nextThemeLabel}
+      title={nextThemeLabel}
       className="h-9 w-9 rounded-full text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors duration-200"
     >
       {theme === "dark" ? <Sun aria-hidden="true" /> : <Moon aria-hidden="true" />}

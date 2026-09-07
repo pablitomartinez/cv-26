@@ -1,8 +1,11 @@
+import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import { Download } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
+import LanguageToggle from "./LanguageToggle";
 
 const Header = () => {
+  const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -18,10 +21,10 @@ const Header = () => {
   }, []);
 
   const navItems = [
-    { name: "Proyectos", href: "#projects" },
-    { name: "Sobre mí", href: "#about" },
-    { name: "Skills", href: "#skills" },
-    { name: "Contacto", href: "#contact" },
+    { name: t("header.projects"), href: "#projects" },
+    { name: t("header.about"), href: "#about" },
+    { name: t("header.skills"), href: "#skills" },
+    { name: t("header.contact"), href: "#contact" },
   ];
 
   return (
@@ -74,10 +77,10 @@ const Header = () => {
         </a>
 
         {/* Navegación desktop */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-4 lg:gap-8">
           {navItems.map((item) => (
             <a
-              key={item.name}
+              key={item.href}
               href={item.href}
               className="link-underline text-foreground/95 dark:text-muted-foreground hover:text-foreground font-bold text-xs uppercase tracking-[0.2em] py-1 transition-colors duration-300"
             >
@@ -87,6 +90,7 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-4">
+          <LanguageToggle />
           <ThemeToggle />
 
           <a
@@ -95,8 +99,8 @@ const Header = () => {
             className="flex items-center gap-2 px-5 py-2 bg-primary/10 border border-primary/20 text-primary hover:bg-primary hover:text-primary-foreground rounded-full font-body text-xs uppercase tracking-[0.15em] font-bold transition-all duration-300"
           >
             <Download size={14} />
-            <span className="hidden sm:inline">Descargar CV</span>
-            <span className="inline sm:hidden">CV</span>
+            <span className="hidden sm:inline">{t("header.downloadCv")}</span>
+            <span className="inline sm:hidden">{t("header.cv")}</span>
           </a>
         </div>
       </div>

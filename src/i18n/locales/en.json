@@ -1,0 +1,148 @@
+{
+  "language": {
+    "label": "Language",
+    "es": "Switch to Spanish",
+    "en": "Switch to English"
+  },
+  "header": {
+    "projects": "Projects",
+    "about": "About me",
+    "skills": "Skills",
+    "contact": "Contact",
+    "downloadCv": "Download CV",
+    "cv": "CV",
+    "theme": {
+      "light": "Switch to light mode",
+      "dark": "Switch to dark mode"
+    }
+  },
+  "hero": {
+    "role": "Full Stack Developer // React & Next.js",
+    "description": "Full Stack Developer with a strong frontend focus. I build end-to-end web products with React, Next.js and TypeScript, bringing together user interfaces, authentication, business logic, databases and APIs to deliver intuitive, maintainable, production-ready solutions.",
+    "viewProjects": "View projects",
+    "contact": "GET IN TOUCH"
+  },
+  "about": {
+    "label": "About me",
+    "title": "I build complete web products, from the interface to the data and logic behind them.",
+    "introduction": "I’m a <highlight>Full Stack Developer</highlight> with a strong frontend focus, specializing in React, Next.js and TypeScript. I build web applications that combine intuitive, maintainable interfaces with authentication, business logic, databases and integrations.",
+    "product": "I enjoy working closely with product teams: understanding the problem, turning it into features and contributing throughout the development lifecycle, from defining requirements to implementation, deployment and continuous improvement.",
+    "background": "Before moving into software development, I studied <highlight>Social Work</highlight>. That experience strengthened my communication skills, my ability to understand people’s needs and my approach to collaborating with diverse individuals and teams.",
+    "profile": {
+      "title": "At a glance",
+      "locationLabel": "Location",
+      "location": "Argentina · Available for remote work",
+      "specialtyLabel": "Specialization",
+      "specialty": "Full Stack · React · Next.js · TypeScript",
+      "focusLabel": "Focus",
+      "focus": "Product · UX · Data · Maintainable code",
+      "goalLabel": "Goal",
+      "goal": "To join a product team where I can contribute to end-to-end web application development and continue growing my full stack skills."
+    }
+  },
+  "skills": {
+    "title": "Tech stack & skills",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend & Data",
+      "security": "Security, Tools & Deployment"
+    },
+    "items": {
+      "reusableComponents": "Reusable components & responsive design",
+      "restApis": "REST APIs",
+      "relationalDataModeling": "Relational data modeling",
+      "authentication": "Authentication & Authorization",
+      "rowLevelSecurity": "Row Level Security (RLS)"
+    }
+  },
+  "projects": {
+    "categories": {
+      "systems": {
+        "label": "Business Systems & Applications",
+        "description": "Operational platforms with permission-based access and complex data management."
+      },
+      "ecommerce": {
+        "label": "E-commerce & B2C Platforms",
+        "description": "Digital commerce solutions focused on conversion, SEO and customer self-service."
+      },
+      "business": {
+        "label": "Web Development & Client Work",
+        "description": "Digital solutions deployed to production for professional services."
+      }
+    },
+    "items": {
+      "balance": {
+        "problem": "Managing shared expenses as a couple or household often leads to scattered records, transfers that are hard to track and uncertainty about who paid, how much each person owes or which expenses are still outstanding.",
+        "solution": "I built a web application to bring shared household finances into one place. I implemented authentication, household creation and invitations, expense tracking, cost splitting, approvals and transaction history, with a secure architecture built on PostgreSQL, Row Level Security and controlled operations through RPCs."
+      },
+      "anthropology": {
+        "problem": "Manual processing of administrative requests caused long delays. External inquiries about professionals were handled by email, with responses taking weeks and resulting in missed hiring opportunities.",
+        "solution": "I built a self-service platform for professionals with authentication, an admin dashboard, dynamic data management and a public professional directory. The system centralizes administrative requests and their status, allowing the Colegio to manage its information and external users to find available professionals in real time."
+      },
+      "jujuyConecta": {
+        "problem": "The project needed a lightweight, independent platform to manage a daily news publishing workflow without relying on heavyweight, general-purpose CMS platforms.",
+        "solution": "I built a digital newspaper with a custom CMS for publishing and managing content. I implemented an admin dashboard, technical SEO and an automated workflow for scraping, processing and publishing news using Python and GitHub Actions."
+      },
+      "tierraArcilla": {
+        "problem": "A local entrepreneur needed to digitize her inventory to share it on WhatsApp, but traditional CMS platforms (WordPress/Tiendanube) were costly and difficult to maintain.",
+        "solution": "I built a self-managed web application with an admin dashboard, bulk product uploads via CSV, a real-time database and dynamic metadata to improve product previews when shared on WhatsApp."
+      },
+      "thesis": {
+        "problem": "The business lacked a trustworthy, authoritative digital presence to attract clients in the academic sector.",
+        "solution": "I built a business website optimized for conversion, with a strategically structured information architecture designed to support lead generation."
+      }
+    },
+    "captions": {
+      "balanceDashboard": "Balance - Shared expense dashboard",
+      "balanceExpenses": "Balance - Bills and expense management",
+      "jujuyConecta": "Digital Newspaper - Jujuy Conecta"
+    },
+    "eyebrow": "Portfolio",
+    "title": "Projects with",
+    "titleHighlight": "real impact.",
+    "challenge": "The Challenge",
+    "solution": "The Solution",
+    "code": "SOURCE CODE",
+    "live": "LIVE SITE"
+  },
+  "contact": {
+    "label": "Contact",
+    "title": "Looking for a Full Stack Developer?",
+    "titleHighlight": " Let’s talk.",
+    "description": "I’m looking for opportunities to contribute to end-to-end web product development, combining my frontend strengths with experience in data, authentication, business logic and integrations.",
+    "social": "Social",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "email@example.com",
+      "message": "Message",
+      "messagePlaceholder": "Get in touch about a job opportunity.",
+      "submit": "Send message",
+      "loading": "Sending...",
+      "sent": "Message sent ✓",
+      "retry": "Try again",
+      "error": "Something went wrong. Please try again or contact me on WhatsApp.",
+      "success": "Thanks for reaching out. I’ll get back to you soon."
+    }
+  },
+  "footer": {
+    "email": "Email"
+  },
+  "notFound": {
+    "message": "Oops! Page not found",
+    "home": "Return to Home"
+  },
+  "carousel": {
+    "label": "carousel",
+    "slide": "slide",
+    "previous": "Previous slide",
+    "next": "Next slide"
+  },
+  "metadata": {
+    "title": "Pablo Martinez — Full Stack Developer",
+    "description": "Full Stack Developer with a strong frontend focus. Based in Argentina, I build web applications with React, Next.js, TypeScript, Supabase and PostgreSQL.",
+    "ogDescription": "Full Stack Developer specializing in web products built with React, Next.js, TypeScript, Supabase and PostgreSQL.",
+    "twitterDescription": "Full Stack Developer with a strong frontend focus, specializing in React, Next.js and TypeScript."
+  }
+}

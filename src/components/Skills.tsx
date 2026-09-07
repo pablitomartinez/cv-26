@@ -1,45 +1,49 @@
-const skillCategories = [
-  {
-    title: "Frontend",
-    skills: [
-      "React",
-      "Next.js (App Router)",
-      "TypeScript",
-      "JavaScript (ES6+)",
-      "Tailwind CSS",
-      "Componentes reutilizables y Responsive Design"
-    ],
-  },
-  {
-    title: "Backend & Data",
-    skills: [
-      "Node.js",
-      "Supabase (Auth, Database, Storage)",
-      "PostgreSQL",
-      "SQL",
-      "APIs REST",
-      "Modelado de datos relacionales"
-    ],
-  },
-  {
-    title: "Seguridad, Tools & Deployment",
-    skills: [
-      "Authentication & Authorization",
-      "Row Level Security (RLS)",
-      "Git & GitHub",
-      "GitHub Actions",
-      "Vercel",
-      "Figma"
-    ],
-  }
-];
+import { useTranslation } from "react-i18next";
 
 const Skills = () => {
+  const { t } = useTranslation();
+
+  const skillCategories = [
+    {
+      title: t("skills.categories.frontend"),
+      skills: [
+        "React",
+        "Next.js (App Router)",
+        "TypeScript",
+        "JavaScript (ES6+)",
+        "Tailwind CSS",
+        t("skills.items.reusableComponents")
+      ],
+    },
+    {
+      title: t("skills.categories.backend"),
+      skills: [
+        "Node.js",
+        "Supabase (Auth, Database, Storage)",
+        "PostgreSQL",
+        "SQL",
+        t("skills.items.restApis"),
+        t("skills.items.relationalDataModeling")
+      ],
+    },
+    {
+      title: t("skills.categories.security"),
+      skills: [
+        t("skills.items.authentication"),
+        t("skills.items.rowLevelSecurity"),
+        "Git & GitHub",
+        "GitHub Actions",
+        "Vercel",
+        "Figma"
+      ],
+    }
+  ];
+
   return (
     <section id="skills" className="py-24 bg-background">
       <div className="container mx-auto px-6">
         <h2 className="text-primary font-body text-xs tracking-[0.3em] uppercase mb-12">
-          Stack y habilidades
+          {t("skills.title")}
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">

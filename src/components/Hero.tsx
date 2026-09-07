@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { ArrowDown } from "lucide-react";
 import DotGrid from "./react-bits/grid-points";
 import SplitText from "../components/react-bits/SplitText";
@@ -6,6 +7,7 @@ import PixelTransition from "./react-bits/PixelTransition";
 import SpecularButton from "./SpecularButton";
 
 const Hero = () => {
+  const { t } = useTranslation();
   return (
     <section className="min-h-screen lg:h-screen relative flex flex-col justify-center bg-background text-foreground transition-colors duration-500 overflow-hidden pt-24 lg:pt-0 pb-12 lg:pb-0">
       {/* DOT GRID FONDO */}
@@ -36,7 +38,7 @@ const Hero = () => {
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
               </span>
               <span className="text-primary font-bold text-xs md:text-sm uppercase tracking-[0.2em] md:tracking-[0.3em]">
-                Full Stack Developer // React & Next.js
+                {t("hero.role")}
               </span>
             </div>
 
@@ -51,7 +53,7 @@ const Hero = () => {
 
             {/* Copy optimizado según el reporte de Codex */}
             <p className="text-base sm:text-lg md:text-2xl text-secondary-foreground font-body leading-relaxed max-w-2xl mb-8 lg:mb-10">
-              Full Stack Developer con fortaleza en Frontend. Desarrollo productos web de punta a punta con React, Next.js y TypeScript, integrando interfaces, autenticación, lógica de negocio, bases de datos y APIs con foco en crear soluciones claras, mantenibles y listas para producción.
+              {t("hero.description")}
             </p>
 
             <div className="flex flex-wrap items-center gap-6 sm:gap-8">
@@ -68,7 +70,7 @@ const Hero = () => {
 
                 <span className="relative flex items-center gap-3">
                   <span className="font-medium">
-                    Ver proyectos
+                    {t("hero.viewProjects")}
                   </span>
 
                   <ArrowDown
@@ -83,7 +85,7 @@ const Hero = () => {
   className="group inline-flex items-center gap-2 rounded-xl px-2 py-2 text-sm font-medium text-muted-foreground transition-all duration-300 hover:text-foreground"
 >
   <span className="relative">
-    ESCRIBIME
+    {t("hero.contact")}
 
     <span className="absolute left-0 -bottom-1 h-px w-0 bg-primary transition-all duration-300 group-hover:w-full" />
   </span>

@@ -1,6 +1,8 @@
+import { useTranslation } from "react-i18next";
 import Reveal from "./Reveal";
 
 const Footer = () => {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -45,7 +47,7 @@ const Footer = () => {
               href="mailto:pablo.emartinez.dev@gmail.com"
               className="group relative text-xs font-body uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors duration-300"
             >
-              <span className="relative z-10">Email</span>
+              <span className="relative z-10">{t("footer.email")}</span>
               <span className="absolute bottom-[-4px] left-0 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full" />
             </a>
           </nav>

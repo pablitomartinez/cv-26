@@ -1,0 +1,148 @@
+{
+  "language": {
+    "label": "Idioma",
+    "es": "Cambiar a español",
+    "en": "Cambiar a inglés"
+  },
+  "header": {
+    "projects": "Proyectos",
+    "about": "Sobre mí",
+    "skills": "Skills",
+    "contact": "Contacto",
+    "downloadCv": "Descargar CV",
+    "cv": "CV",
+    "theme": {
+      "light": "Activar modo claro",
+      "dark": "Activar modo oscuro"
+    }
+  },
+  "hero": {
+    "role": "Full Stack Developer // React & Next.js",
+    "description": "Full Stack Developer con fortaleza en Frontend. Desarrollo productos web de punta a punta con React, Next.js y TypeScript, integrando interfaces, autenticación, lógica de negocio, bases de datos y APIs con foco en crear soluciones claras, mantenibles y listas para producción.",
+    "viewProjects": "Ver proyectos",
+    "contact": "ESCRIBIME"
+  },
+  "about": {
+    "label": "Sobre mí",
+    "title": "Desarrollo productos web completos, desde la interfaz hasta los datos y la lógica que los sostiene.",
+    "introduction": "Soy <highlight>Full Stack Developer</highlight> con fortaleza en Frontend, especializado en React, Next.js y TypeScript. Desarrollo aplicaciones web combinando interfaces claras y mantenibles con autenticación, lógica de negocio, bases de datos e integraciones.",
+    "product": "Me interesa trabajar cerca del producto: entender el problema, traducirlo en funcionalidades y participar en todo el proceso de desarrollo, desde la definición de requerimientos hasta la implementación, el despliegue y la mejora continua.",
+    "background": "Antes de dedicarme al desarrollo me formé en <highlight>Trabajo Social</highlight>, una experiencia que fortaleció mi comunicación, la comprensión de necesidades y el trabajo con personas y equipos diversos.",
+    "profile": {
+      "title": "Perfil actual",
+      "locationLabel": "Ubicación",
+      "location": "Argentina · Disponible para trabajo remoto",
+      "specialtyLabel": "Especialidad",
+      "specialty": "Full Stack · React · Next.js · TypeScript",
+      "focusLabel": "Enfoque",
+      "focus": "Producto · UX · Datos · Código mantenible",
+      "goalLabel": "Objetivo",
+      "goal": "Integrarme a un equipo de producto donde pueda aportar en el desarrollo completo de aplicaciones web y seguir profundizando mis habilidades Full Stack."
+    }
+  },
+  "skills": {
+    "title": "Stack y habilidades",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend & Data",
+      "security": "Seguridad, Tools & Deployment"
+    },
+    "items": {
+      "reusableComponents": "Componentes reutilizables y Responsive Design",
+      "restApis": "APIs REST",
+      "relationalDataModeling": "Modelado de datos relacionales",
+      "authentication": "Authentication & Authorization",
+      "rowLevelSecurity": "Row Level Security (RLS)"
+    }
+  },
+  "projects": {
+    "categories": {
+      "systems": {
+        "label": "Sistemas & Aplicaciones de Negocio",
+        "description": "Plataformas operativas con lógica de permisos y gestión de datos compleja."
+      },
+      "ecommerce": {
+        "label": "E-commerce & Plataformas B2C",
+        "description": "Soluciones de venta digital enfocadas en la conversión, SEO y autogestión del cliente."
+      },
+      "business": {
+        "label": "Desarrollo Web & Clientes",
+        "description": "Soluciones digitales lanzadas a producción para servicios profesionales."
+      }
+    },
+    "items": {
+      "balance": {
+        "problem": "Administrar gastos en pareja o dentro de un hogar suele terminar en cuentas dispersas, transferencias difíciles de seguir y dudas sobre quién pagó, cuánto corresponde a cada persona o qué gastos siguen pendientes.",
+        "solution": "Desarrollé una aplicación web para centralizar la economía compartida de un hogar. Implementé autenticación, creación e invitación a hogares, registro de gastos, distribución de importes, aprobaciones y seguimiento de movimientos, con una arquitectura segura basada en PostgreSQL, Row Level Security y operaciones controladas mediante RPCs."
+      },
+      "anthropology": {
+        "problem": "Gestión manual de trámites con alta demora administrativa. Las consultas externas por profesionales se gestionaban por correo, tardando semanas en responderse y perdiendo oportunidades de contratación.",
+        "solution": "Desarrollé una plataforma de autogestión profesional con autenticación, panel administrativo, gestión dinámica de datos y consulta pública de profesionales. El sistema centraliza trámites y estados, permitiendo al Colegio administrar la información y a terceros consultar profesionales disponibles en tiempo real."
+      },
+      "jujuyConecta": {
+        "problem": "Necesidad de una infraestructura ágil e independiente para gestionar un flujo de noticias diario, evitando la dependencia de CMS genéricos y pesados.",
+        "solution": "Desarrollé un diario digital con CMS propio para la publicación y gestión dinámica de contenido. Implementé panel administrativo, SEO técnico y un flujo automatizado de scraping, procesamiento y publicación de noticias utilizando Python y GitHub Actions."
+      },
+      "tierraArcilla": {
+        "problem": "Una emprendedora local necesitaba digitalizar su inventario para compartirlo por WhatsApp, pero los CMS tradicionales (WordPress/Tiendanube) resultaban costosos y complejos de mantener.",
+        "solution": "Desarrollé una aplicación web autogestionable con panel de administración, carga masiva de productos mediante CSV, base de datos en tiempo real y metadata dinámica para optimizar la visualización de productos al compartirlos por WhatsApp."
+      },
+      "thesis": {
+        "problem": "Falta de un canal digital confiable y de alta autoridad para la captación de clientes en el ámbito académico.",
+        "solution": "Web institucional optimizada para conversión con una arquitectura de información estratégica, facilitando el embudo de captación de leads."
+      }
+    },
+    "captions": {
+      "balanceDashboard": "Balance - Dashboard de gastos compartidos",
+      "balanceExpenses": "Balance - Gestión de servicios y gastos",
+      "jujuyConecta": "Diario Digital - Jujuy Conecta"
+    },
+    "eyebrow": "Portfolio",
+    "title": "Proyectos con",
+    "titleHighlight": "impacto real.",
+    "challenge": "El Desafío",
+    "solution": "La Solución",
+    "code": "CÓDIGO",
+    "live": "EN VIVO"
+  },
+  "contact": {
+    "label": "Contacto",
+    "title": "¿Buscás un Full Stack Developer?",
+    "titleHighlight": " Hablemos.",
+    "description": "Estoy buscando oportunidades donde pueda aportar desarrollando productos web completos, combinando mi fortaleza en Frontend con experiencia en datos, autenticación, lógica de negocio e integraciones.",
+    "social": "Social",
+    "form": {
+      "name": "Nombre",
+      "namePlaceholder": "Tu nombre",
+      "email": "Email",
+      "emailPlaceholder": "email@ejemplo.com",
+      "message": "Mensaje",
+      "messagePlaceholder": "Escribime para una oportunidad laboral.",
+      "submit": "Enviar mensaje",
+      "loading": "Enviando...",
+      "sent": "Mensaje enviado ✓",
+      "retry": "Reintentar",
+      "error": "Ocurrió un error. Probá nuevamente o escribime por WhatsApp.",
+      "success": "Gracias por escribir. Te respondo a la brevedad."
+    }
+  },
+  "footer": {
+    "email": "Email"
+  },
+  "notFound": {
+    "message": "¡Ups! Página no encontrada",
+    "home": "Volver al inicio"
+  },
+  "carousel": {
+    "label": "carrusel",
+    "slide": "diapositiva",
+    "previous": "Diapositiva anterior",
+    "next": "Diapositiva siguiente"
+  },
+  "metadata": {
+    "title": "Pablo Martinez — Full Stack Developer",
+    "description": "Full Stack Developer con fortaleza en Frontend. Desarrollo aplicaciones web con React, Next.js, TypeScript, Supabase y PostgreSQL desde Argentina.",
+    "ogDescription": "Full Stack Developer especializado en productos web con React, Next.js, TypeScript, Supabase y PostgreSQL.",
+    "twitterDescription": "Full Stack Developer con fortaleza en Frontend, especializado en React, Next.js y TypeScript."
+  }
+}
