@@ -73,22 +73,27 @@
     },
     "items": {
       "balance": {
+        "title": "Balance – Gestión de Gastos Compartidos",
         "problem": "Administrar gastos en pareja o dentro de un hogar suele terminar en cuentas dispersas, transferencias difíciles de seguir y dudas sobre quién pagó, cuánto corresponde a cada persona o qué gastos siguen pendientes.",
         "solution": "Desarrollé una aplicación web para centralizar la economía compartida de un hogar. Implementé autenticación, creación e invitación a hogares, registro de gastos, distribución de importes, aprobaciones y seguimiento de movimientos, con una arquitectura segura basada en PostgreSQL, Row Level Security y operaciones controladas mediante RPCs."
       },
       "anthropology": {
+        "title": "Plataforma Institucional – Colegio de Antropólogos",
         "problem": "Gestión manual de trámites con alta demora administrativa. Las consultas externas por profesionales se gestionaban por correo, tardando semanas en responderse y perdiendo oportunidades de contratación.",
         "solution": "Desarrollé una plataforma de autogestión profesional con autenticación, panel administrativo, gestión dinámica de datos y consulta pública de profesionales. El sistema centraliza trámites y estados, permitiendo al Colegio administrar la información y a terceros consultar profesionales disponibles en tiempo real."
       },
       "jujuyConecta": {
+        "title": "Jujuy Conecta Diario",
         "problem": "Necesidad de una infraestructura ágil e independiente para gestionar un flujo de noticias diario, evitando la dependencia de CMS genéricos y pesados.",
         "solution": "Desarrollé un diario digital con CMS propio para la publicación y gestión dinámica de contenido. Implementé panel administrativo, SEO técnico y un flujo automatizado de scraping, procesamiento y publicación de noticias utilizando Python y GitHub Actions."
       },
       "tierraArcilla": {
+        "title": "Catálogo Digital Autogestionable – Tierra Arcilla",
         "problem": "Una emprendedora local necesitaba digitalizar su inventario para compartirlo por WhatsApp, pero los CMS tradicionales (WordPress/Tiendanube) resultaban costosos y complejos de mantener.",
         "solution": "Desarrollé una aplicación web autogestionable con panel de administración, carga masiva de productos mediante CSV, base de datos en tiempo real y metadata dinámica para optimizar la visualización de productos al compartirlos por WhatsApp."
       },
       "thesis": {
+        "title": "Asesoramiento Tesis – Plataforma Profesional",
         "problem": "Falta de un canal digital confiable y de alta autoridad para la captación de clientes en el ámbito académico.",
         "solution": "Web institucional optimizada para conversión con una arquitectura de información estratégica, facilitando el embudo de captación de leads."
       }

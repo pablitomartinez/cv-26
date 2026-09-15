@@ -46,7 +46,7 @@ const getContent = (t: TFunction): CategoryGroup[] => [
     type: "featured",
     projects: [
       {
-        title: "Balance – Gestión de Gastos Compartidos",
+        title: t("projects.items.balance.title"),
         problem: t("projects.items.balance.problem"),
         solution: t("projects.items.balance.solution"),
         tech: [
@@ -74,32 +74,32 @@ const getContent = (t: TFunction): CategoryGroup[] => [
         }
       },
       {
-        title: "Plataforma Institucional – Colegio de Antropólogos",
+        title: t("projects.items.anthropology.title"),
         problem: t("projects.items.anthropology.problem"),
         solution: t("projects.items.anthropology.solution"),
         tech: ["React", "Supabase", "TypeScript", "PostgreSQL"],
         images: [
           {
             src: "/projects/antropologia/2.png",
-            title: "Plataforma Institucional - Colegio de Antropólogos"
+            title: t("projects.items.anthropology.title")
           },
           {
             src: "/projects/antropologia/3.png",
-            title: "Plataforma Institucional - Colegio de Antropólogos"
+            title: t("projects.items.anthropology.title")
           },
           {
             src: "/projects/antropologia/4.png",
-            title: "Plataforma Institucional - Colegio de Antropólogos"
+            title: t("projects.items.anthropology.title")
           },          {
             src: "/projects/antropologia/5.png",
-            title: "Plataforma Institucional - Colegio de Antropólogos"
+            title: t("projects.items.anthropology.title")
           },
           
         ],
         links: { live: "https://www.colegioantropologiajujuy.com.ar//" },
       },
       {
-        title: "Jujuy Conecta Diario",
+        title: t("projects.items.jujuyConecta.title"),
         problem: t("projects.items.jujuyConecta.problem"),
         solution: t("projects.items.jujuyConecta.solution"),
         tech: ["Vite", "TypeScript", "Tailwind CSS", "Supabase", "Python", "GitHub Actions"],
@@ -129,18 +129,18 @@ const getContent = (t: TFunction): CategoryGroup[] => [
     type: "featured",
     projects: [
       {
-        title: "Catálogo Digital Autogestionable – Tierra Arcilla",
+        title: t("projects.items.tierraArcilla.title"),
         problem: t("projects.items.tierraArcilla.problem"),
         solution: t("projects.items.tierraArcilla.solution"),
         tech: ["React", "Vite", "TypeScript", "Supabase", "Tailwind"],
         images: [
-          { src: "/projects/ta/4.png", title: "Catálogo Digital Autogestionable - Tierra Arcilla" 
+          { src: "/projects/ta/4.png", title: t("projects.items.tierraArcilla.title")
           },
-          { src: "/projects/ta/10.png", title: "Catálogo Digital Autogestionable - Tierra Arcilla" 
+          { src: "/projects/ta/10.png", title: t("projects.items.tierraArcilla.title")
           },
-          { src: "/projects/ta/11.png", title: "Catálogo Digital Autogestionable - Tierra Arcilla" 
+          { src: "/projects/ta/11.png", title: t("projects.items.tierraArcilla.title")
           },
-          { src: "/projects/ta/12.png", title: "Catálogo Digital Autogestionable - Tierra Arcilla" 
+          { src: "/projects/ta/12.png", title: t("projects.items.tierraArcilla.title")
           },
           
 
@@ -160,11 +160,11 @@ const getContent = (t: TFunction): CategoryGroup[] => [
     type: "featured",
     projects: [
       {
-        title: "Asesoramiento Tesis – Plataforma Profesional",
+        title: t("projects.items.thesis.title"),
         problem: t("projects.items.thesis.problem"),
         solution: t("projects.items.thesis.solution"),
         tech: ["React", "Tailwind CSS", "SEO"],
-        images: [{ src: "/projects/3.png", title: "Asesoramiento Tesis - Plataforma Profesional" }],
+        images: [{ src: "/projects/3.png", title: t("projects.items.thesis.title") }],
         links: { live: "https://www.asesoramientotesis.com/" }
       }
     ]
