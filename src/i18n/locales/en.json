@@ -85,7 +85,12 @@
       "jujuyConecta": {
         "title": "Jujuy Conecta Digital Newspaper",
         "problem": "The project needed a lightweight, independent platform to manage a daily news publishing workflow without relying on heavyweight, general-purpose CMS platforms.",
-        "solution": "I built a digital newspaper with a custom CMS for publishing and managing content. I implemented an admin dashboard, technical SEO and an automated workflow for scraping, processing and publishing news using Python and GitHub Actions."
+        "solution": "I built a digital newspaper with a custom CMS for publishing and managing content. I implemented an admin dashboard, technical SEO and an automated workflow for scraping, processing and publishing news using Python and GitHub Actions.",
+        "highlights": {
+          "editorial": "Manual publishing through an editor dashboard",
+          "automation": "Automated news scraping and publishing",
+          "management": "Authentication, roles and centralized content management"
+        }
       },
       "tierraArcilla": {
         "title": "Self-Managed Digital Catalog – Tierra Arcilla",

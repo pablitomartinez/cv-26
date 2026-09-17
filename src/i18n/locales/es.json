@@ -85,7 +85,12 @@
       "jujuyConecta": {
         "title": "Jujuy Conecta Diario",
         "problem": "Necesidad de una infraestructura ágil e independiente para gestionar un flujo de noticias diario, evitando la dependencia de CMS genéricos y pesados.",
-        "solution": "Desarrollé un diario digital con CMS propio para la publicación y gestión dinámica de contenido. Implementé panel administrativo, SEO técnico y un flujo automatizado de scraping, procesamiento y publicación de noticias utilizando Python y GitHub Actions."
+        "solution": "Desarrollé un diario digital con CMS propio para la publicación y gestión dinámica de contenido. Implementé panel administrativo, SEO técnico y un flujo automatizado de scraping, procesamiento y publicación de noticias utilizando Python y GitHub Actions.",
+        "highlights": {
+          "editorial": "Publicación manual desde un panel para editores",
+          "automation": "Scraping y publicación automatizada de noticias",
+          "management": "Autenticación, roles y gestión centralizada de contenido"
+        }
       },
       "tierraArcilla": {
         "title": "Catálogo Digital Autogestionable – Tierra Arcilla",
