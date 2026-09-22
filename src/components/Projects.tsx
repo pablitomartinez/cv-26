@@ -112,6 +112,8 @@ const getContent = (t: TFunction): CategoryGroup[] => [
 
         links: {
           live: "https://balance-app-indol.vercel.app/",
+          github:
+            "https://github.com/pablitomartinez/balance-app/",
         },
       },
 
@@ -145,7 +147,9 @@ const getContent = (t: TFunction): CategoryGroup[] => [
         ],
 
         links: {
-          live: "https://www.colegioantropologiajujuy.com.ar//",
+          live: "https://www.colegioantropologiajujuy.com.ar/",
+          github:
+            "https://github.com/ethercode-tech/antropolog-a-digital",
         },
       },
 
@@ -194,6 +198,8 @@ const getContent = (t: TFunction): CategoryGroup[] => [
 
         links: {
           live: "https://diario.jujuyconecta.com/",
+          github:
+            "https://github.com/altiora-software/diario-jujuyconecta",
         },
       },
     ],
@@ -272,6 +278,8 @@ const getContent = (t: TFunction): CategoryGroup[] => [
 
         links: {
           live: "https://www.asesoramientotesis.com/",
+          github:
+            "https://github.com/ethercode-tech/fernanda-herrera-asesoramiento-tesis",
         },
       },
     ],
