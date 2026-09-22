@@ -1,3 +1,4 @@
+import { trackEvent } from "@/lib/analytics";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { Mail, Linkedin, Github, Send, MessageCircle } from "lucide-react";
@@ -63,6 +64,9 @@ const Contact = () => {
       );
 
       if (!response.ok) throw new Error();
+      trackEvent("contact_form_success", {
+        form_name: "portfolio_contact",
+      });
 
       // Éxito
       setStatus("success");

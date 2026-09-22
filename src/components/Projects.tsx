@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import type { TFunction } from "i18next";
-
+import { trackEvent } from "@/lib/analytics";
 import {
   ExternalLink,
   Github,
@@ -112,6 +112,8 @@ const getContent = (t: TFunction): CategoryGroup[] => [
 
         links: {
           live: "https://balance-app-indol.vercel.app/",
+          github:
+            "https://github.com/pablitomartinez/balance-app/",
         },
       },
 
@@ -145,7 +147,9 @@ const getContent = (t: TFunction): CategoryGroup[] => [
         ],
 
         links: {
-          live: "https://www.colegioantropologiajujuy.com.ar//",
+          live: "https://www.colegioantropologiajujuy.com.ar/",
+          github:
+            "https://github.com/ethercode-tech/antropolog-a-digital",
         },
       },
 
@@ -194,6 +198,8 @@ const getContent = (t: TFunction): CategoryGroup[] => [
 
         links: {
           live: "https://diario.jujuyconecta.com/",
+          github:
+            "https://github.com/altiora-software/diario-jujuyconecta",
         },
       },
     ],
@@ -272,6 +278,8 @@ const getContent = (t: TFunction): CategoryGroup[] => [
 
         links: {
           live: "https://www.asesoramientotesis.com/",
+          github:
+            "https://github.com/ethercode-tech/fernanda-herrera-asesoramiento-tesis",
         },
       },
     ],
@@ -290,6 +298,20 @@ const Projects = () => {
      --------------------------------------------------------- */
 
   const [activeProject, setActiveProject] = useState(0);
+
+  const selectProject = (projectIndex: number) => {
+    if (projectIndex === activeProject) return;
+
+    const project = projects[projectIndex];
+
+    setActiveProject(projectIndex);
+
+    trackEvent("select_project", {
+      project_name: project.title,
+      project_position: projectIndex + 1,
+    });
+  };
+
   const projectIndexRef = useRef<HTMLDivElement>(null);
 
   /* ---------------------------------------------------------
@@ -327,7 +349,7 @@ const Projects = () => {
 
     if (nextProject < 0 || nextProject >= projects.length) return;
 
-    setActiveProject(nextProject);
+    selectProject(nextProject);
 
     const index = projectIndexRef.current;
     const card = index?.children.item(nextProject);
@@ -499,9 +521,7 @@ const Projects = () => {
                     key={project.title}
                     type="button"
                     aria-pressed={isActive}
-                    onClick={() =>
-                      setActiveProject(index)
-                    }
+                    onClick={() => selectProject(index)}
                     className={`
                     group
                     min-h-20
@@ -815,6 +835,12 @@ const FeaturedProject = ({
                 }
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() =>
+                  trackEvent("project_code_click", {
+                    project_name: project.title,
+                    project_position: index + 1,
+                  })
+                }
                 className="
                   px-6
                   py-2.5
@@ -843,7 +869,7 @@ const FeaturedProject = ({
               </a>
             )}
 
-            {/* Demo en vivo */}
+            {/* Proyecto publicado */}
 
             {project.links.live && (
               <a
@@ -852,6 +878,12 @@ const FeaturedProject = ({
                 }
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() =>
+                  trackEvent("project_visit", {
+                    project_name: project.title,
+                    project_position: index + 1,
+                  })
+                }
                 className="
                   px-6
                   py-2.5

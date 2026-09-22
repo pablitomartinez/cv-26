@@ -1,8 +1,21 @@
+import { trackEvent } from "@/lib/analytics";
 import { useTranslation } from "react-i18next";
 import { supportedLanguages } from "@/i18n";
 
 const LanguageToggle = () => {
   const { t, i18n } = useTranslation();
+  const changeLanguage = (language: string) => {
+    const previousLanguage = i18n.resolvedLanguage;
+
+    if (previousLanguage === language) return;
+
+    void i18n.changeLanguage(language).then(() => {
+      trackEvent("language_change", {
+        from_language: previousLanguage ?? "unknown",
+        to_language: language,
+      });
+    });
+  };
 
   return (
     <div
@@ -17,7 +30,7 @@ const LanguageToggle = () => {
           aria-label={t(`language.${language}`)}
           title={t(`language.${language}`)}
           aria-pressed={i18n.resolvedLanguage === language}
-          onClick={() => void i18n.changeLanguage(language)}
+          onClick={() => changeLanguage(language)}
           className={`rounded-full px-2 py-2 font-body text-xs font-bold uppercase transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
             i18n.resolvedLanguage === language
               ? "bg-primary text-primary-foreground"
