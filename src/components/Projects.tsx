@@ -835,6 +835,12 @@ const FeaturedProject = ({
                 }
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() =>
+                  trackEvent("project_code_click", {
+                    project_name: project.title,
+                    project_position: index + 1,
+                  })
+                }
                 className="
                   px-6
                   py-2.5
@@ -863,7 +869,7 @@ const FeaturedProject = ({
               </a>
             )}
 
-            {/* Demo en vivo */}
+            {/* Proyecto publicado */}
 
             {project.links.live && (
               <a
@@ -872,6 +878,12 @@ const FeaturedProject = ({
                 }
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() =>
+                  trackEvent("project_visit", {
+                    project_name: project.title,
+                    project_position: index + 1,
+                  })
+                }
                 className="
                   px-6
                   py-2.5
