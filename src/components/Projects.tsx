@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import type { TFunction } from "i18next";
-
+import { trackEvent } from "@/lib/analytics";
 import {
   ExternalLink,
   Github,
@@ -290,6 +290,20 @@ const Projects = () => {
      --------------------------------------------------------- */
 
   const [activeProject, setActiveProject] = useState(0);
+
+  const selectProject = (projectIndex: number) => {
+    if (projectIndex === activeProject) return;
+
+    const project = projects[projectIndex];
+
+    setActiveProject(projectIndex);
+
+    trackEvent("select_project", {
+      project_name: project.title,
+      project_position: projectIndex + 1,
+    });
+  };
+
   const projectIndexRef = useRef<HTMLDivElement>(null);
 
   /* ---------------------------------------------------------
@@ -327,7 +341,7 @@ const Projects = () => {
 
     if (nextProject < 0 || nextProject >= projects.length) return;
 
-    setActiveProject(nextProject);
+    selectProject(nextProject);
 
     const index = projectIndexRef.current;
     const card = index?.children.item(nextProject);
@@ -499,9 +513,7 @@ const Projects = () => {
                     key={project.title}
                     type="button"
                     aria-pressed={isActive}
-                    onClick={() =>
-                      setActiveProject(index)
-                    }
+                    onClick={() => selectProject(index)}
                     className={`
                     group
                     min-h-20
