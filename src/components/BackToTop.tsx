@@ -72,7 +72,7 @@ const BackToTop = () => {
       type="button"
       aria-label={t("backToTop")}
       onClick={handleClick}
-      className={`fixed bottom-5 right-5 z-40 flex h-11 w-11 items-center justify-center rounded-full border border-primary/25 bg-card/75 text-primary backdrop-blur-sm transition-all duration-300 hover:border-primary/40 hover:bg-card/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none md:bottom-8 md:right-8 ${
+      className={`fixed bottom-5 right-20 z-40 flex h-11 w-11 items-center justify-center rounded-full border border-primary/25 bg-card/75 text-primary backdrop-blur-sm transition-all duration-300 hover:border-primary/40 hover:bg-card/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none md:bottom-8 md:right-36 ${
         isVisible
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-2 opacity-0"
