@@ -1,5 +1,5 @@
-import { buildAssistantContext } from "../src/data/assistant/assistantContext";
-import { assistantInstructions } from "../src/data/assistant/assistantInstructions";
+import { buildAssistantContext } from "./_lib/assistant/assistantContext.js";
+import { assistantInstructions } from "./_lib/assistant/assistantInstructions.js";
 
 const MAX_MESSAGE_LENGTH = 500;
 const MAX_OUTPUT_TOKENS = 240;

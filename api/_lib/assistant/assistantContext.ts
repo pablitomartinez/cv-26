@@ -1,8 +1,8 @@
-import { education, type EducationEntry } from "./education";
-import { experience, type ProfessionalExperience } from "./experience";
-import { profile, type AssistantProfile } from "./profile";
-import { projects, type AssistantProject } from "./projects";
-import { skills, type SkillCategory } from "./skills";
+import { education, type EducationEntry } from "./education.js";
+import { experience, type ProfessionalExperience } from "./experience.js";
+import { profile, type AssistantProfile } from "./profile.js";
+import { projects, type AssistantProject } from "./projects.js";
+import { skills, type SkillCategory } from "./skills.js";
 
 export interface AssistantKnowledge {
   profile: AssistantProfile;
