@@ -1,8 +1,6 @@
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { Bot, Send, X } from "lucide-react";
 
-import { assistantKnowledge } from "@/data/assistant/assistantContext";
-
 type MessageRole = "user" | "assistant";
 
 interface ChatMessage {
@@ -25,55 +23,30 @@ const suggestedQuestions = [
   "¿Qué experiencia tiene?",
 ];
 
-const normalizeQuestion = (question: string) =>
-  question
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLocaleLowerCase("es")
-    .replace(/[¿?¡!.,]/g, "")
-    .trim();
+interface AssistantApiResponse {
+  message: string;
+  mode: "ai";
+}
 
-const getMockResponse = (question: string): string => {
-  const normalizedQuestion = normalizeQuestion(question);
-  const { profile, projects, skills, experience } = assistantKnowledge;
+const isAssistantApiResponse = (
+  value: unknown,
+): value is AssistantApiResponse => {
+  if (typeof value !== "object" || value === null) return false;
 
-  if (normalizedQuestion === "quien es pablo") {
-    return `${profile.professionalName}: ${profile.summary} Vive en ${profile.location}.`;
-  }
-
-  if (normalizedQuestion === "que proyectos desarrollo") {
-    const projectNames = projects.map((project) => project.name).join("; ");
-    return `Entre sus proyectos se encuentran: ${projectNames}.`;
-  }
-
-  if (normalizedQuestion === "con que tecnologias trabaja") {
-    const skillSummary = skills
-      .map((category) => `${category.name}: ${category.skills.join(", ")}`)
-      .join(". ");
-
-    return skillSummary;
-  }
-
-  if (normalizedQuestion === "que experiencia tiene") {
-    return experience
-      .map(
-        (item) =>
-          `${item.role} (${item.startDate} - ${item.current ? "actualidad" : item.endDate}). ${item.description}`,
-      )
-      .join(" ");
-  }
-
-  return "Esta versión del asistente todavía está en modo demostración. La integración con IA se incorporará en la siguiente etapa.";
+  const response = value as Record<string, unknown>;
+  return typeof response.message === "string" && response.mode === "ai";
 };
 
 const PortfolioAssistant = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([initialMessage]);
+  const [isSending, setIsSending] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const nextMessageId = useRef(2);
+  const requestInFlightRef = useRef(false);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -102,34 +75,63 @@ const PortfolioAssistant = () => {
       behavior: reducedMotion ? "auto" : "smooth",
       block: "nearest",
     });
-  }, [isOpen, messages]);
+  }, [isOpen, isSending, messages]);
 
   const closeAssistant = () => {
     setIsOpen(false);
     triggerRef.current?.focus();
   };
 
-  const sendMessage = (content: string) => {
+  const sendMessage = async (content: string) => {
     const trimmedContent = content.trim();
-    if (!trimmedContent) return;
+    if (!trimmedContent || requestInFlightRef.current) return;
+
+    requestInFlightRef.current = true;
+    setIsSending(true);
 
     const userMessage: ChatMessage = {
       id: nextMessageId.current++,
       role: "user",
       content: trimmedContent,
     };
-    const assistantMessage: ChatMessage = {
-      id: nextMessageId.current++,
-      role: "assistant",
-      content: getMockResponse(trimmedContent),
-    };
 
-    setMessages((currentMessages) => [
-      ...currentMessages,
-      userMessage,
-      assistantMessage,
-    ]);
+    setMessages((currentMessages) => [...currentMessages, userMessage]);
     setInput("");
+
+    try {
+      const response = await fetch("/api/assistant", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: trimmedContent }),
+      });
+      const data: unknown = await response.json();
+
+      if (!response.ok || !isAssistantApiResponse(data)) {
+        throw new Error("Invalid assistant response");
+      }
+
+      setMessages((currentMessages) => [
+        ...currentMessages,
+        {
+          id: nextMessageId.current++,
+          role: "assistant",
+          content: data.message,
+        },
+      ]);
+    } catch {
+      setMessages((currentMessages) => [
+        ...currentMessages,
+        {
+          id: nextMessageId.current++,
+          role: "assistant",
+          content: "El asistente no pudo responder en este momento.",
+        },
+      ]);
+    } finally {
+      requestInFlightRef.current = false;
+      setIsSending(false);
+      inputRef.current?.focus();
+    }
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -161,7 +163,7 @@ const PortfolioAssistant = () => {
                   Asistente de Pablo
                 </h2>
                 <span className="rounded-full border border-primary/20 bg-primary/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest text-primary">
-                  Demo local
+                  IA activa
                 </span>
               </div>
               <p
@@ -207,6 +209,16 @@ const PortfolioAssistant = () => {
               </div>
             ))}
 
+            {isSending && (
+              <div className="flex justify-start" role="status">
+                <div className="rounded-2xl rounded-bl-md border border-border bg-card px-4 py-3 text-sm text-muted-foreground shadow-sm">
+                  <span className="animate-pulse motion-reduce:animate-none">
+                    Conectando con el asistente…
+                  </span>
+                </div>
+              </div>
+            )}
+
             {messages.length === 1 && (
               <div className="space-y-2 pt-1" aria-label="Preguntas sugeridas">
                 <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
@@ -218,6 +230,7 @@ const PortfolioAssistant = () => {
                       key={question}
                       type="button"
                       onClick={() => sendMessage(question)}
+                      disabled={isSending}
                       className="rounded-full border border-primary/25 bg-card px-3 py-2 text-left text-xs font-medium text-foreground transition-colors hover:border-primary/50 hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none"
                     >
                       {question}
@@ -246,11 +259,13 @@ const PortfolioAssistant = () => {
                 onChange={(event) => setInput(event.target.value)}
                 placeholder="Preguntá sobre Pablo..."
                 autoComplete="off"
+                maxLength={500}
+                disabled={isSending}
                 className="min-w-0 flex-1 bg-transparent px-3 py-2 text-sm text-foreground outline-none"
               />
               <button
                 type="submit"
-                disabled={!input.trim()}
+                disabled={!input.trim() || isSending}
                 aria-label="Enviar mensaje"
                 className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-40 motion-reduce:transition-none"
               >

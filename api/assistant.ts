@@ -2,6 +2,24 @@ import { buildAssistantContext } from "../src/data/assistant/assistantContext.ts
 import { assistantInstructions } from "../src/data/assistant/assistantInstructions.ts";
 
 const MAX_MESSAGE_LENGTH = 500;
+const MAX_OUTPUT_TOKENS = 240;
+const OPENAI_RESPONSES_URL = "https://api.openai.com/v1/responses";
+const GENERIC_ERROR = "El asistente no pudo responder en este momento.";
+
+interface OpenAITextContent {
+  type: "output_text";
+  text: string;
+}
+
+interface OpenAIMessageOutput {
+  type: "message";
+  content?: OpenAITextContent[];
+}
+
+interface OpenAIResponsesPayload {
+  output?: OpenAIMessageOutput[];
+  output_text?: string;
+}
 
 const jsonResponse = (
   body: Record<string, unknown>,
@@ -18,6 +36,86 @@ const jsonResponse = (
 
 const isObject = (value: unknown): value is Record<string, unknown> =>
   typeof value === "object" && value !== null && !Array.isArray(value);
+
+const getRequiredEnv = (name: "OPENAI_API_KEY" | "OPENAI_MODEL"): string => {
+  const value = process.env[name]?.trim();
+  if (!value) {
+    throw new Error(`${name} is not configured`);
+  }
+
+  return value;
+};
+
+const buildModelInstructions = (assistantContext: string): string =>
+  [
+    "INSTRUCCIONES DEL SISTEMA",
+    assistantInstructions,
+    "",
+    "CONTEXTO PROFESIONAL",
+    assistantContext,
+  ].join("\n");
+
+const extractAssistantMessage = (payload: unknown): string | null => {
+  if (!isObject(payload)) return null;
+
+  if (typeof payload.output_text === "string" && payload.output_text.trim()) {
+    return payload.output_text.trim();
+  }
+
+  const responsePayload = payload as OpenAIResponsesPayload;
+  const outputText = responsePayload.output
+    ?.flatMap((item) => item.content ?? [])
+    .filter((content): content is OpenAITextContent => content.type === "output_text")
+    .map((content) => content.text)
+    .join("")
+    .trim();
+
+  return outputText || null;
+};
+
+const createAssistantResponse = async (message: string): Promise<string> => {
+  const apiKey = getRequiredEnv("OPENAI_API_KEY");
+  const model = getRequiredEnv("OPENAI_MODEL");
+  const assistantContext = buildAssistantContext();
+
+  const response = await fetch(OPENAI_RESPONSES_URL, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model,
+      instructions: buildModelInstructions(assistantContext),
+      input: [
+        {
+          role: "user",
+          content: [
+            {
+              type: "input_text",
+              text: message,
+            },
+          ],
+        },
+      ],
+      max_output_tokens: MAX_OUTPUT_TOKENS,
+      store: false,
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`OpenAI request failed with status ${response.status}`);
+  }
+
+  const payload: unknown = await response.json();
+  const assistantMessage = extractAssistantMessage(payload);
+
+  if (!assistantMessage) {
+    throw new Error("OpenAI response did not include text output");
+  }
+
+  return assistantMessage;
+};
 
 export default {
   async fetch(request: Request): Promise<Response> {
@@ -67,19 +165,20 @@ export default {
       );
     }
 
-    const assistantContext = buildAssistantContext();
+    let assistantMessage: string;
 
-    if (!assistantInstructions || !assistantContext) {
-      return jsonResponse(
-        { error: "El asistente no pudo responder en este momento." },
-        500,
-      );
+    try {
+      assistantMessage = await createAssistantResponse(trimmedMessage);
+    } catch {
+      console.error("Assistant provider error");
+
+      return jsonResponse({ error: GENERIC_ERROR }, 502);
     }
 
     return jsonResponse(
       {
-        message: "Backend del asistente conectado correctamente.",
-        mode: "mock",
+        message: assistantMessage,
+        mode: "ai",
       },
       200,
     );
