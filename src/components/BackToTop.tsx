@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 const BackToTop = () => {
   const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
+  const [isAssistantOpen, setIsAssistantOpen] = useState(false);
   const animationFrameRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -24,6 +25,24 @@ const BackToTop = () => {
         window.cancelAnimationFrame(animationFrameRef.current);
       }
     };
+  }, []);
+
+  useEffect(() => {
+    const handleAssistantOpenChange = (event: Event) => {
+      const { detail } = event as CustomEvent<{ isOpen?: boolean }>;
+      setIsAssistantOpen(Boolean(detail?.isOpen));
+    };
+
+    window.addEventListener(
+      "portfolio-assistant-open-change",
+      handleAssistantOpenChange,
+    );
+
+    return () =>
+      window.removeEventListener(
+        "portfolio-assistant-open-change",
+        handleAssistantOpenChange,
+      );
   }, []);
 
   const handleClick = () => {
@@ -72,8 +91,8 @@ const BackToTop = () => {
       type="button"
       aria-label={t("backToTop")}
       onClick={handleClick}
-      className={`fixed bottom-5 right-20 z-40 flex h-11 w-11 items-center justify-center rounded-full border border-primary/25 bg-card/75 text-primary backdrop-blur-sm transition-all duration-300 hover:border-primary/40 hover:bg-card/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none md:bottom-8 md:right-36 ${
-        isVisible
+      className={`fixed bottom-[calc(1.25rem+3rem+0.75rem)] right-5 z-40 flex h-11 w-11 items-center justify-center rounded-full border border-primary/25 bg-card/75 text-primary backdrop-blur-sm transition-all duration-300 hover:border-primary/40 hover:bg-card/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none md:bottom-[calc(2rem+3rem+0.75rem)] md:right-8 ${
+        isVisible && !isAssistantOpen
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-2 opacity-0"
       }`}

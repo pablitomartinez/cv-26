@@ -8,6 +8,8 @@ interface ChatMessage {
   id: number;
   role: MessageRole;
   content: string;
+  fullContent?: string;
+  isRevealing?: boolean;
 }
 
 const initialMessage: ChatMessage = {
@@ -25,6 +27,8 @@ const suggestedQuestions = [
 ];
 
 const MAX_HISTORY_ITEMS = 8;
+const REVEAL_CHUNK_SIZE = 3;
+const REVEAL_INTERVAL_MS = 28;
 const genericErrorMessage = "El asistente no pudo responder en este momento.";
 
 interface AssistantApiResponse {
@@ -150,6 +154,7 @@ const PortfolioAssistant = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const nextMessageId = useRef(2);
   const requestInFlightRef = useRef(false);
+  const revealTimeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -166,6 +171,23 @@ const PortfolioAssistant = () => {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen]);
+
+  useEffect(() => {
+    window.dispatchEvent(
+      new CustomEvent("portfolio-assistant-open-change", {
+        detail: { isOpen },
+      }),
+    );
+  }, [isOpen]);
+
+  useEffect(
+    () => () => {
+      if (revealTimeoutRef.current !== null) {
+        window.clearTimeout(revealTimeoutRef.current);
+      }
+    },
+    [],
+  );
 
   useEffect(() => {
     if (!isOpen) return;
@@ -186,9 +208,9 @@ const PortfolioAssistant = () => {
   };
 
   const buildHistoryPayload = (currentMessages: ChatMessage[]) =>
-    currentMessages.slice(-MAX_HISTORY_ITEMS).map(({ role, content }) => ({
+    currentMessages.slice(-MAX_HISTORY_ITEMS).map(({ role, content, fullContent }) => ({
       role,
-      content,
+      content: fullContent ?? content,
     }));
 
   const buildRateLimitMessage = (retryAfterHeader: string | null): string => {
@@ -202,6 +224,55 @@ const PortfolioAssistant = () => {
     }
 
     return "Alcanzaste el límite de mensajes. Probá nuevamente más tarde.";
+  };
+
+  const revealAssistantMessage = (messageId: number, fullContent: string) => {
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (reducedMotion) {
+      setMessages((currentMessages) =>
+        currentMessages.map((message) =>
+          message.id === messageId
+            ? { ...message, content: fullContent, isRevealing: false }
+            : message,
+        ),
+      );
+      return;
+    }
+
+    const parts = fullContent.split(/(\s+)/);
+    let nextIndex = 0;
+
+    const revealNextChunk = () => {
+      nextIndex = Math.min(nextIndex + REVEAL_CHUNK_SIZE, parts.length);
+      const visibleContent = parts.slice(0, nextIndex).join("");
+      const isComplete = nextIndex >= parts.length;
+
+      setMessages((currentMessages) =>
+        currentMessages.map((message) =>
+          message.id === messageId
+            ? {
+                ...message,
+                content: visibleContent,
+                isRevealing: !isComplete,
+              }
+            : message,
+        ),
+      );
+
+      if (!isComplete) {
+        revealTimeoutRef.current = window.setTimeout(
+          revealNextChunk,
+          REVEAL_INTERVAL_MS,
+        );
+      } else {
+        revealTimeoutRef.current = null;
+      }
+    };
+
+    revealNextChunk();
   };
 
   const sendMessage = async (content: string) => {
@@ -241,11 +312,15 @@ const PortfolioAssistant = () => {
       setMessages((currentMessages) => [
         ...currentMessages,
         {
-          id: nextMessageId.current++,
+          id: nextMessageId.current,
           role: "assistant",
-          content: data.message,
+          content: "",
+          fullContent: data.message,
+          isRevealing: true,
         },
       ]);
+      revealAssistantMessage(nextMessageId.current, data.message);
+      nextMessageId.current += 1;
     } catch (error) {
       const errorKind: AssistantApiError =
         error instanceof Error && error.message.startsWith("rate_limit:")
