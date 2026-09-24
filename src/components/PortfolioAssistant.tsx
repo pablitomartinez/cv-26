@@ -1,7 +1,8 @@
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { FormEvent, ReactNode, useEffect, useRef, useState } from "react";
 import { Bot, Send, X } from "lucide-react";
 
 type MessageRole = "user" | "assistant";
+type AssistantApiError = "rate_limit" | "generic";
 
 interface ChatMessage {
   id: number;
@@ -23,6 +24,9 @@ const suggestedQuestions = [
   "¿Qué experiencia tiene?",
 ];
 
+const MAX_HISTORY_ITEMS = 8;
+const genericErrorMessage = "El asistente no pudo responder en este momento.";
+
 interface AssistantApiResponse {
   message: string;
   mode: "ai";
@@ -35,6 +39,105 @@ const isAssistantApiResponse = (
 
   const response = value as Record<string, unknown>;
   return typeof response.message === "string" && response.mode === "ai";
+};
+
+const isSafeLink = (url: string): boolean => {
+  try {
+    const parsedUrl = new URL(url);
+    return ["http:", "https:", "mailto:"].includes(parsedUrl.protocol);
+  } catch {
+    return false;
+  }
+};
+
+const renderLink = (href: string, label: string, key: string): ReactNode => (
+  <a
+    key={key}
+    href={href}
+    target="_blank"
+    rel="noreferrer noopener"
+    className="font-semibold underline decoration-current/40 underline-offset-2 break-all hover:decoration-current"
+  >
+    {label}
+  </a>
+);
+
+const renderInlineContent = (text: string, keyPrefix: string): ReactNode[] => {
+  const nodes: ReactNode[] = [];
+  const pattern = /(\*\*[^*]+\*\*|\[[^\]]+\]\(https?:\/\/[^)\s]+\)|https?:\/\/[^\s)]+)/g;
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = pattern.exec(text)) !== null) {
+    const token = match[0];
+
+    if (match.index > lastIndex) {
+      nodes.push(text.slice(lastIndex, match.index));
+    }
+
+    const key = `${keyPrefix}-${match.index}`;
+    const markdownLink = token.match(/^\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)$/);
+
+    if (markdownLink && isSafeLink(markdownLink[2])) {
+      nodes.push(renderLink(markdownLink[2], markdownLink[1], key));
+    } else if (token.startsWith("http") && isSafeLink(token)) {
+      nodes.push(renderLink(token, token, key));
+    } else if (token.startsWith("**") && token.endsWith("**")) {
+      nodes.push(<strong key={key}>{token.slice(2, -2)}</strong>);
+    } else {
+      nodes.push(token);
+    }
+
+    lastIndex = match.index + token.length;
+  }
+
+  if (lastIndex < text.length) {
+    nodes.push(text.slice(lastIndex));
+  }
+
+  return nodes;
+};
+
+const RichMessageContent = ({ content }: { content: string }) => {
+  const lines = content.split(/\r?\n/);
+  const rendered: ReactNode[] = [];
+  let listItems: string[] = [];
+
+  const flushList = (key: string) => {
+    if (listItems.length === 0) return;
+
+    rendered.push(
+      <ul key={key} className="my-2 list-disc space-y-1 pl-4">
+        {listItems.map((item, index) => (
+          <li key={`${key}-${index}`}>
+            {renderInlineContent(item, `${key}-${index}`)}
+          </li>
+        ))}
+      </ul>,
+    );
+    listItems = [];
+  };
+
+  lines.forEach((line, index) => {
+    const listMatch = line.match(/^\s*(?:[-*]|\d+\.)\s+(.+)$/);
+
+    if (listMatch) {
+      listItems.push(listMatch[1]);
+      return;
+    }
+
+    flushList(`list-${index}`);
+
+    rendered.push(
+      <p key={`p-${index}`} className={line ? "my-2 first:mt-0 last:mb-0" : "my-3"}>
+        {line ? renderInlineContent(line, `p-${index}`) : "\u00A0"}
+      </p>,
+    );
+  });
+
+  flushList("list-final");
+
+  return <>{rendered}</>;
 };
 
 const PortfolioAssistant = () => {
@@ -82,6 +185,25 @@ const PortfolioAssistant = () => {
     triggerRef.current?.focus();
   };
 
+  const buildHistoryPayload = (currentMessages: ChatMessage[]) =>
+    currentMessages.slice(-MAX_HISTORY_ITEMS).map(({ role, content }) => ({
+      role,
+      content,
+    }));
+
+  const buildRateLimitMessage = (retryAfterHeader: string | null): string => {
+    const retryAfter = retryAfterHeader
+      ? Number.parseInt(retryAfterHeader, 10)
+      : Number.NaN;
+
+    if (Number.isInteger(retryAfter) && retryAfter > 0) {
+      const minutes = Math.max(1, Math.ceil(retryAfter / 60));
+      return `Alcanzaste el límite de mensajes. Probá nuevamente en aproximadamente ${minutes} min.`;
+    }
+
+    return "Alcanzaste el límite de mensajes. Probá nuevamente más tarde.";
+  };
+
   const sendMessage = async (content: string) => {
     const trimmedContent = content.trim();
     if (!trimmedContent || requestInFlightRef.current) return;
@@ -95,6 +217,8 @@ const PortfolioAssistant = () => {
       content: trimmedContent,
     };
 
+    const history = buildHistoryPayload(messages);
+
     setMessages((currentMessages) => [...currentMessages, userMessage]);
     setInput("");
 
@@ -102,9 +226,13 @@ const PortfolioAssistant = () => {
       const response = await fetch("/api/assistant", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: trimmedContent }),
+        body: JSON.stringify({ message: trimmedContent, history }),
       });
       const data: unknown = await response.json();
+
+      if (response.status === 429) {
+        throw new Error(`rate_limit:${response.headers.get("Retry-After") ?? ""}`);
+      }
 
       if (!response.ok || !isAssistantApiResponse(data)) {
         throw new Error("Invalid assistant response");
@@ -118,13 +246,27 @@ const PortfolioAssistant = () => {
           content: data.message,
         },
       ]);
-    } catch {
+    } catch (error) {
+      const errorKind: AssistantApiError =
+        error instanceof Error && error.message.startsWith("rate_limit:")
+          ? "rate_limit"
+          : "generic";
+      const retryAfter =
+        errorKind === "rate_limit"
+          ? error instanceof Error
+            ? error.message.replace("rate_limit:", "") || null
+            : null
+          : null;
+
       setMessages((currentMessages) => [
         ...currentMessages,
         {
           id: nextMessageId.current++,
           role: "assistant",
-          content: "El asistente no pudo responder en este momento.",
+          content:
+            errorKind === "rate_limit"
+              ? buildRateLimitMessage(retryAfter)
+              : genericErrorMessage,
         },
       ]);
     } finally {
@@ -198,13 +340,17 @@ const PortfolioAssistant = () => {
                 }`}
               >
                 <div
-                  className={`max-w-[88%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${{
-                    user: "rounded-br-md bg-primary text-primary-foreground",
+                  className={`max-w-[88%] overflow-hidden rounded-2xl px-4 py-3 text-sm leading-relaxed [overflow-wrap:anywhere] ${{
+                    user: "rounded-br-md bg-primary text-primary-foreground whitespace-pre-wrap",
                     assistant:
                       "rounded-bl-md border border-border bg-card text-card-foreground shadow-sm",
                   }[message.role]}`}
                 >
-                  {message.content}
+                  {message.role === "assistant" ? (
+                    <RichMessageContent content={message.content} />
+                  ) : (
+                    message.content
+                  )}
                 </div>
               </div>
             ))}

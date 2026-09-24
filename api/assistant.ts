@@ -2,8 +2,11 @@ import { buildAssistantContext } from "./_lib/assistant/assistantContext.js";
 import { assistantInstructions } from "./_lib/assistant/assistantInstructions.js";
 
 const MAX_MESSAGE_LENGTH = 500;
+const MAX_HISTORY_ITEMS = 8;
+const MAX_HISTORY_ITEM_LENGTH = 1000;
+const MAX_HISTORY_TOTAL_LENGTH = 4000;
 const MAX_OUTPUT_TOKENS = 240;
-const RATE_LIMIT_MAX_REQUESTS = 10;
+const RATE_LIMIT_MAX_REQUESTS = 20;
 const RATE_LIMIT_WINDOW_SECONDS = 10 * 60;
 const OPENAI_RESPONSES_URL = "https://api.openai.com/v1/responses";
 const GENERIC_ERROR = "El asistente no pudo responder en este momento.";
@@ -22,6 +25,13 @@ interface OpenAIMessageOutput {
 interface OpenAIResponsesPayload {
   output?: OpenAIMessageOutput[];
   output_text?: string;
+}
+
+type AssistantMessageRole = "user" | "assistant";
+
+interface AssistantHistoryItem {
+  role: AssistantMessageRole;
+  content: string;
 }
 
 interface RateLimitResult {
@@ -148,6 +158,50 @@ const buildModelInstructions = (assistantContext: string): string =>
     assistantContext,
   ].join("\n");
 
+const parseHistory = (value: unknown): AssistantHistoryItem[] => {
+  if (value === undefined) return [];
+
+  if (!Array.isArray(value) || value.length > MAX_HISTORY_ITEMS) {
+    throw new Error("Invalid assistant history");
+  }
+
+  const history = value.map((item): AssistantHistoryItem => {
+    if (!isObject(item)) {
+      throw new Error("Invalid assistant history item");
+    }
+
+    if (item.role !== "user" && item.role !== "assistant") {
+      throw new Error("Invalid assistant history role");
+    }
+
+    if (typeof item.content !== "string") {
+      throw new Error("Invalid assistant history content");
+    }
+
+    const content = item.content.trim();
+
+    if (!content || content.length > MAX_HISTORY_ITEM_LENGTH) {
+      throw new Error("Invalid assistant history content length");
+    }
+
+    return {
+      role: item.role,
+      content,
+    };
+  });
+
+  const totalLength = history.reduce(
+    (total, item) => total + item.content.length,
+    0,
+  );
+
+  if (totalLength > MAX_HISTORY_TOTAL_LENGTH) {
+    throw new Error("Assistant history is too large");
+  }
+
+  return history;
+};
+
 const extractAssistantMessage = (payload: unknown): string | null => {
   if (!isObject(payload)) return null;
 
@@ -166,7 +220,10 @@ const extractAssistantMessage = (payload: unknown): string | null => {
   return outputText || null;
 };
 
-const createAssistantResponse = async (message: string): Promise<string> => {
+const createAssistantResponse = async (
+  message: string,
+  history: AssistantHistoryItem[],
+): Promise<string> => {
   const apiKey = getRequiredEnv("OPENAI_API_KEY");
   const model = getRequiredEnv("OPENAI_MODEL");
   const assistantContext = buildAssistantContext();
@@ -181,6 +238,16 @@ const createAssistantResponse = async (message: string): Promise<string> => {
       model,
       instructions: buildModelInstructions(assistantContext),
       input: [
+        ...history.map((item) => ({
+          role: item.role,
+          content: [
+            {
+              type:
+                item.role === "assistant" ? "output_text" : "input_text",
+              text: item.content,
+            },
+          ],
+        })),
         {
           role: "user",
           content: [
@@ -244,6 +311,7 @@ export default {
 
     const message = body.message;
     const trimmedMessage = message.trim();
+    let history: AssistantHistoryItem[];
 
     if (!trimmedMessage) {
       return jsonResponse({ error: "El mensaje no puede estar vacío." }, 400);
@@ -256,6 +324,12 @@ export default {
         },
         413,
       );
+    }
+
+    try {
+      history = parseHistory(body.history);
+    } catch {
+      return jsonResponse({ error: "El historial enviado no es válido." }, 400);
     }
 
     let rateLimit: RateLimitResult;
@@ -281,7 +355,7 @@ export default {
     let assistantMessage: string;
 
     try {
-      assistantMessage = await createAssistantResponse(trimmedMessage);
+      assistantMessage = await createAssistantResponse(trimmedMessage, history);
     } catch {
       console.error("Assistant provider error");
 
