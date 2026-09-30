@@ -12,23 +12,32 @@ const GLASSES_UNLOCK_INTERACTIONS = 3;
 const Hero = () => {
   const { t } = useTranslation();
   const [photoInteractions, setPhotoInteractions] = useState(0);
+  const [glassesIntroDone, setGlassesIntroDone] = useState(false);
   const showGlasses = photoInteractions >= GLASSES_UNLOCK_INTERACTIONS;
 
   const handlePhotoInteraction = () => {
     setPhotoInteractions((count) => Math.min(count + 1, GLASSES_UNLOCK_INTERACTIONS));
   };
 
-  // Posición relativa a /foto.sinfondo.png (400x400), alineada con los ojos
-  const glassesOverlay = showGlasses ? (
-    <img
-      src="/lentes-deal-with-it-overlay.png"
-      alt=""
-      aria-hidden="true"
-      draggable={false}
-      className="absolute pointer-events-none select-none animate-in fade-in slide-in-from-top-8 duration-700 motion-reduce:animate-none"
-      style={{ left: "30.2%", top: "26.7%", width: "42.1%" }}
-    />
-  ) : null;
+  // La capa a color se oculta con display:none y eso reinicia las animaciones CSS,
+  // por eso la animación de entrada se quita una vez que terminó en esa capa.
+  const renderGlasses = (onIntroEnd?: () => void) =>
+    showGlasses ? (
+      <img
+        src="/lentes-deal-with-it-overlay.png"
+        alt=""
+        aria-hidden="true"
+        draggable={false}
+        onAnimationEnd={onIntroEnd}
+        className={`absolute pointer-events-none select-none ${
+          glassesIntroDone
+            ? ""
+            : "animate-in fade-in slide-in-from-top-8 duration-700 motion-reduce:animate-none"
+        }`}
+        // Posición relativa a /foto.sinfondo.png (400x400), alineada con los ojos
+        style={{ left: "30.2%", top: "26.7%", width: "42.1%" }}
+      />
+    ) : null;
 
   return (
     <section className="min-h-screen lg:h-screen relative flex flex-col justify-center bg-background text-foreground transition-colors duration-500 overflow-hidden pt-24 lg:pt-0 pb-12 lg:pb-0">
@@ -136,13 +145,13 @@ const Hero = () => {
                 firstContent={
                   <>
                     <img src="/foto.sinfondo.png" alt="Pablo Martínez" className="w-full h-full object-contain grayscale opacity-80" />
-                    {glassesOverlay}
+                    {renderGlasses()}
                   </>
                 }
                 secondContent={
                   <>
                     <img src="/foto.sinfondo.png" alt="Pablo Martínez" className="w-full h-full object-contain grayscale-0" />
-                    {glassesOverlay}
+                    {renderGlasses(() => setGlassesIntroDone(true))}
                   </>
                 }
               />
