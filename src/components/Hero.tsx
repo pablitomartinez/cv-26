@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ArrowDown } from "lucide-react";
 import DotGrid from "./react-bits/grid-points";
@@ -6,8 +7,29 @@ import Reveal from "./Reveal";
 import PixelTransition from "./react-bits/PixelTransition";
 import SpecularButton from "./SpecularButton";
 
+const GLASSES_UNLOCK_INTERACTIONS = 3;
+
 const Hero = () => {
   const { t } = useTranslation();
+  const [photoInteractions, setPhotoInteractions] = useState(0);
+  const showGlasses = photoInteractions >= GLASSES_UNLOCK_INTERACTIONS;
+
+  const handlePhotoInteraction = () => {
+    setPhotoInteractions((count) => Math.min(count + 1, GLASSES_UNLOCK_INTERACTIONS));
+  };
+
+  // Posición relativa a /foto.sinfondo.png (400x400), alineada con los ojos
+  const glassesOverlay = showGlasses ? (
+    <img
+      src="/lentes-deal-with-it-overlay.png"
+      alt=""
+      aria-hidden="true"
+      draggable={false}
+      className="absolute pointer-events-none select-none animate-in fade-in slide-in-from-top-8 duration-700 motion-reduce:animate-none"
+      style={{ left: "30.2%", top: "26.7%", width: "42.1%" }}
+    />
+  ) : null;
+
   return (
     <section className="min-h-screen lg:h-screen relative flex flex-col justify-center bg-background text-foreground transition-colors duration-500 overflow-hidden pt-24 lg:pt-0 pb-12 lg:pb-0">
       {/* DOT GRID FONDO */}
@@ -107,14 +129,21 @@ const Hero = () => {
                 pixelColor="#10B981"
                 animationStepDuration={0.4}
                 className="w-full h-full"
+                onInteraction={handlePhotoInteraction}
                 style={{
                   WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)',
                 }}
                 firstContent={
-                  <img src="/foto.sinfondo.png" alt="Pablo Martínez" className="w-full h-full object-contain grayscale opacity-80" />
+                  <>
+                    <img src="/foto.sinfondo.png" alt="Pablo Martínez" className="w-full h-full object-contain grayscale opacity-80" />
+                    {glassesOverlay}
+                  </>
                 }
                 secondContent={
-                  <img src="/foto.sinfondo.png" alt="Pablo Martínez" className="w-full h-full object-contain grayscale-0" />
+                  <>
+                    <img src="/foto.sinfondo.png" alt="Pablo Martínez" className="w-full h-full object-contain grayscale-0" />
+                    {glassesOverlay}
+                  </>
                 }
               />
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-primary/5 rounded-full -z-10 blur-3xl"></div>
