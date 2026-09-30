@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState, type Ref } from "react";
 import { useTranslation } from "react-i18next";
 import { ArrowDown } from "lucide-react";
 import DotGrid from "./react-bits/grid-points";
@@ -15,6 +15,7 @@ const Hero = () => {
   const { t } = useTranslation();
   const [glassesCycleStep, setGlassesCycleStep] = useState(0);
   const [glassesIntroDone, setGlassesIntroDone] = useState(false);
+  const colorGlassesRef = useRef<HTMLImageElement | null>(null);
   const showGlasses = glassesCycleStep >= GLASSES_SHOW_FROM_STEP;
 
   const handlePhotoInteraction = () => {
@@ -24,10 +25,20 @@ const Hero = () => {
   };
 
   // La capa a color se oculta con display:none y eso reinicia las animaciones CSS,
-  // por eso la animación de entrada se quita una vez que terminó en esa capa.
-  const renderGlasses = (onIntroEnd?: () => void) =>
+  // por eso la animación de entrada se quita una vez que terminó en la capa visible.
+  const handleColorIntroEnd = () => setGlassesIntroDone(true);
+  const handleGrayIntroEnd = () => {
+    // offsetParent es null cuando la capa a color está oculta: la entrada se vio en gris
+    if (!colorGlassesRef.current?.offsetParent) setGlassesIntroDone(true);
+  };
+
+  const renderGlasses = (
+    onIntroEnd: () => void,
+    ref?: Ref<HTMLImageElement>,
+  ) =>
     showGlasses ? (
       <img
+        ref={ref}
         src="/lentes-deal-with-it-overlay.png"
         alt=""
         aria-hidden="true"
@@ -149,13 +160,13 @@ const Hero = () => {
                 firstContent={
                   <>
                     <img src="/foto.sinfondo.png" alt="Pablo Martínez" className="w-full h-full object-contain grayscale opacity-80" />
-                    {renderGlasses()}
+                    {renderGlasses(handleGrayIntroEnd)}
                   </>
                 }
                 secondContent={
                   <>
                     <img src="/foto.sinfondo.png" alt="Pablo Martínez" className="w-full h-full object-contain grayscale-0" />
-                    {renderGlasses(() => setGlassesIntroDone(true))}
+                    {renderGlasses(handleColorIntroEnd, colorGlassesRef)}
                   </>
                 }
               />
