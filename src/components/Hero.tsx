@@ -7,16 +7,20 @@ import Reveal from "./Reveal";
 import PixelTransition from "./react-bits/PixelTransition";
 import SpecularButton from "./SpecularButton";
 
-const GLASSES_UNLOCK_INTERACTIONS = 3;
+// Ciclo de 5 interacciones: los anteojos se ven en la 3ª y la 4ª, y desaparecen en la 5ª
+const GLASSES_CYCLE_LENGTH = 5;
+const GLASSES_SHOW_FROM_STEP = 3;
 
 const Hero = () => {
   const { t } = useTranslation();
-  const [photoInteractions, setPhotoInteractions] = useState(0);
+  const [glassesCycleStep, setGlassesCycleStep] = useState(0);
   const [glassesIntroDone, setGlassesIntroDone] = useState(false);
-  const showGlasses = photoInteractions >= GLASSES_UNLOCK_INTERACTIONS;
+  const showGlasses = glassesCycleStep >= GLASSES_SHOW_FROM_STEP;
 
   const handlePhotoInteraction = () => {
-    setPhotoInteractions((count) => Math.min(count + 1, GLASSES_UNLOCK_INTERACTIONS));
+    const nextStep = (glassesCycleStep + 1) % GLASSES_CYCLE_LENGTH;
+    setGlassesCycleStep(nextStep);
+    if (nextStep === 0) setGlassesIntroDone(false);
   };
 
   // La capa a color se oculta con display:none y eso reinicia las animaciones CSS,
