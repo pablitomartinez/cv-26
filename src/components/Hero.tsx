@@ -1,3 +1,4 @@
+import { useRef, useState, type Ref } from "react";
 import { useTranslation } from "react-i18next";
 import { ArrowDown } from "lucide-react";
 import DotGrid from "./react-bits/grid-points";
@@ -6,8 +7,53 @@ import Reveal from "./Reveal";
 import PixelTransition from "./react-bits/PixelTransition";
 import SpecularButton from "./SpecularButton";
 
+// Ciclo de 5 interacciones: los anteojos se ven en la 3ª y la 4ª, y desaparecen en la 5ª
+const GLASSES_CYCLE_LENGTH = 5;
+const GLASSES_SHOW_FROM_STEP = 3;
+
 const Hero = () => {
   const { t } = useTranslation();
+  const [glassesCycleStep, setGlassesCycleStep] = useState(0);
+  const [glassesIntroDone, setGlassesIntroDone] = useState(false);
+  const colorGlassesRef = useRef<HTMLImageElement | null>(null);
+  const showGlasses = glassesCycleStep >= GLASSES_SHOW_FROM_STEP;
+
+  const handlePhotoInteraction = () => {
+    const nextStep = (glassesCycleStep + 1) % GLASSES_CYCLE_LENGTH;
+    setGlassesCycleStep(nextStep);
+    if (nextStep === 0) setGlassesIntroDone(false);
+  };
+
+  // La capa a color se oculta con display:none y eso reinicia las animaciones CSS,
+  // por eso la animación de entrada se quita una vez que terminó en la capa visible.
+  const handleColorIntroEnd = () => setGlassesIntroDone(true);
+  const handleGrayIntroEnd = () => {
+    // offsetParent es null cuando la capa a color está oculta: la entrada se vio en gris
+    if (!colorGlassesRef.current?.offsetParent) setGlassesIntroDone(true);
+  };
+
+  const renderGlasses = (
+    onIntroEnd: () => void,
+    ref?: Ref<HTMLImageElement>,
+  ) =>
+    showGlasses ? (
+      <img
+        ref={ref}
+        src="/lentes-deal-with-it-overlay.png"
+        alt=""
+        aria-hidden="true"
+        draggable={false}
+        onAnimationEnd={onIntroEnd}
+        className={`absolute pointer-events-none select-none ${
+          glassesIntroDone
+            ? ""
+            : "animate-in fade-in slide-in-from-top-8 duration-700 motion-reduce:animate-none"
+        }`}
+        // Posición relativa a /foto.sinfondo.png (400x400), alineada con los ojos
+        style={{ left: "30.2%", top: "26.7%", width: "42.1%" }}
+      />
+    ) : null;
+
   return (
     <section className="min-h-screen lg:h-screen relative flex flex-col justify-center bg-background text-foreground transition-colors duration-500 overflow-hidden pt-24 lg:pt-0 pb-12 lg:pb-0">
       {/* DOT GRID FONDO */}
@@ -107,14 +153,21 @@ const Hero = () => {
                 pixelColor="#10B981"
                 animationStepDuration={0.4}
                 className="w-full h-full"
+                onInteraction={handlePhotoInteraction}
                 style={{
                   WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)',
                 }}
                 firstContent={
-                  <img src="/foto.sinfondo.png" alt="Pablo Martínez" className="w-full h-full object-contain grayscale opacity-80" />
+                  <>
+                    <img src="/foto.sinfondo.png" alt="Pablo Martínez" className="w-full h-full object-contain grayscale opacity-80" />
+                    {renderGlasses(handleGrayIntroEnd)}
+                  </>
                 }
                 secondContent={
-                  <img src="/foto.sinfondo.png" alt="Pablo Martínez" className="w-full h-full object-contain grayscale-0" />
+                  <>
+                    <img src="/foto.sinfondo.png" alt="Pablo Martínez" className="w-full h-full object-contain grayscale-0" />
+                    {renderGlasses(handleColorIntroEnd, colorGlassesRef)}
+                  </>
                 }
               />
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-primary/5 rounded-full -z-10 blur-3xl"></div>

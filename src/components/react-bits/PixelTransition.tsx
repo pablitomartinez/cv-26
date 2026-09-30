@@ -11,6 +11,7 @@ interface PixelTransitionProps {
   className?: string;
   style?: CSSProperties;
   aspectRatio?: string;
+  onInteraction?: () => void;
 }
 
 const PixelTransition: React.FC<PixelTransitionProps> = ({
@@ -22,7 +23,8 @@ const PixelTransition: React.FC<PixelTransitionProps> = ({
   once = false,
   aspectRatio = '10%',
   className = '',
-  style = {}
+  style = {},
+  onInteraction
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const pixelGridRef = useRef<HTMLDivElement | null>(null);
@@ -104,12 +106,14 @@ const PixelTransition: React.FC<PixelTransitionProps> = ({
   };
 
   const handleEnter = (): void => {
+    onInteraction?.();
     if (!isActive) animatePixels(true);
   };
   const handleLeave = (): void => {
     if (isActive && !once) animatePixels(false);
   };
   const handleClick = (): void => {
+    onInteraction?.();
     if (!isActive) animatePixels(true);
     else if (isActive && !once) animatePixels(false);
   };
