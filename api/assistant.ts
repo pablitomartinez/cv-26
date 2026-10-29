@@ -12,21 +12,6 @@ const OPENAI_RESPONSES_URL = "https://api.openai.com/v1/responses";
 const GENERIC_ERROR = "El asistente no pudo responder en este momento.";
 const RATE_LIMIT_ERROR = "Demasiadas solicitudes. Intentá nuevamente más tarde.";
 
-interface OpenAITextContent {
-  type: "output_text";
-  text: string;
-}
-
-interface OpenAIMessageOutput {
-  type: "message";
-  content?: OpenAITextContent[];
-}
-
-interface OpenAIResponsesPayload {
-  output?: OpenAIMessageOutput[];
-  output_text?: string;
-}
-
 type AssistantMessageRole = "user" | "assistant";
 
 interface AssistantHistoryItem {
@@ -209,11 +194,15 @@ const extractAssistantMessage = (payload: unknown): string | null => {
     return payload.output_text.trim();
   }
 
-  const responsePayload = payload as OpenAIResponsesPayload;
-  const outputText = responsePayload.output
-    ?.flatMap((item) => item.content ?? [])
-    .filter((content): content is OpenAITextContent => content.type === "output_text")
-    .map((content) => content.text)
+  if (!Array.isArray(payload.output)) return null;
+
+  const outputText = payload.output
+    .filter(isObject)
+    .filter((item) => item.type === "message")
+    .flatMap((item) => Array.isArray(item.content) ? item.content : [])
+    .filter(isObject)
+    .filter((content) => content.type === "output_text")
+    .map((content) => typeof content.text === "string" ? content.text : "")
     .join("")
     .trim();
 
@@ -267,7 +256,12 @@ const createAssistantResponse = async (
     throw new Error(`OpenAI request failed with status ${response.status}`);
   }
 
-  const payload: unknown = await response.json();
+  let payload: unknown;
+  try {
+    payload = await response.json();
+  } catch {
+    throw new Error("OpenAI returned invalid JSON");
+  }
   const assistantMessage = extractAssistantMessage(payload);
 
   if (!assistantMessage) {
