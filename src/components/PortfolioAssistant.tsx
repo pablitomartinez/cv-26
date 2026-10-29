@@ -1,5 +1,11 @@
 import { FormEvent, ReactNode, useEffect, useRef, useState } from "react";
 import { Bot, Send, X } from "lucide-react";
+import {
+  AssistantRequestError,
+  getVisibleAssistantContent,
+  genericAssistantError,
+  requestAssistantMessage,
+} from "@/lib/assistantApi";
 
 type MessageRole = "user" | "assistant";
 type AssistantApiError = "rate_limit" | "generic";
@@ -10,6 +16,7 @@ interface ChatMessage {
   content: string;
   fullContent?: string;
   isRevealing?: boolean;
+  retryContent?: string;
 }
 
 const initialMessage: ChatMessage = {
@@ -29,22 +36,6 @@ const suggestedQuestions = [
 const MAX_HISTORY_ITEMS = 8;
 const REVEAL_CHUNK_SIZE = 3;
 const REVEAL_INTERVAL_MS = 28;
-const genericErrorMessage = "El asistente no pudo responder en este momento.";
-
-interface AssistantApiResponse {
-  message: string;
-  mode: "ai";
-}
-
-const isAssistantApiResponse = (
-  value: unknown,
-): value is AssistantApiResponse => {
-  if (typeof value !== "object" || value === null) return false;
-
-  const response = value as Record<string, unknown>;
-  return typeof response.message === "string" && response.mode === "ai";
-};
-
 const isSafeLink = (url: string): boolean => {
   try {
     const parsedUrl = new URL(url);
@@ -154,7 +145,9 @@ const PortfolioAssistant = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const nextMessageId = useRef(2);
   const requestInFlightRef = useRef(false);
-  const revealTimeoutRef = useRef<number | null>(null);
+  const revealingMessage = messages.find((message) => message.isRevealing);
+  const revealingMessageId = revealingMessage?.id;
+  const revealingContent = revealingMessage?.fullContent;
 
   useEffect(() => {
     if (!isOpen) return;
@@ -180,14 +173,65 @@ const PortfolioAssistant = () => {
     );
   }, [isOpen]);
 
-  useEffect(
-    () => () => {
-      if (revealTimeoutRef.current !== null) {
-        window.clearTimeout(revealTimeoutRef.current);
+  useEffect(() => {
+    if (revealingMessageId === undefined || revealingContent === undefined) return;
+
+    const messageId = revealingMessageId;
+    const fullContent = revealingContent;
+    let interval: number | undefined;
+    let watchdog: number | undefined;
+    const finish = () => {
+      window.clearInterval(interval);
+      window.clearTimeout(watchdog);
+      setMessages((currentMessages) =>
+        currentMessages.map((message) =>
+          message.id === messageId
+            ? { ...message, content: fullContent, isRevealing: false }
+            : message,
+        ),
+      );
+    };
+
+    try {
+      if (!isOpen || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        finish();
+        return;
       }
-    },
-    [],
-  );
+
+      const parts = fullContent.split(/(\s+)/);
+      let nextIndex = REVEAL_CHUNK_SIZE;
+      let lastTick = Date.now();
+      interval = window.setInterval(() => {
+        // A suspended or stalled animation should resume with the complete answer.
+        const now = Date.now();
+        if (now - lastTick > REVEAL_INTERVAL_MS * 10) {
+          finish();
+          return;
+        }
+        lastTick = now;
+        nextIndex = Math.min(nextIndex + REVEAL_CHUNK_SIZE, parts.length);
+        if (nextIndex >= parts.length) {
+          finish();
+          return;
+        }
+        const content = parts.slice(0, nextIndex).join("");
+        setMessages((currentMessages) =>
+          currentMessages.map((message) =>
+            message.id === messageId ? { ...message, content } : message,
+          ),
+        );
+      }, REVEAL_INTERVAL_MS);
+      watchdog = window.setTimeout(
+        finish,
+        Math.ceil(parts.length / REVEAL_CHUNK_SIZE) * REVEAL_INTERVAL_MS + 1000,
+      );
+    } catch {
+      finish();
+    }
+
+    // Closing the panel or replacing an animation always preserves its answer.
+    return finish;
+  }, [isOpen, revealingMessageId, revealingContent]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -226,55 +270,6 @@ const PortfolioAssistant = () => {
     return "Alcanzaste el límite de mensajes. Probá nuevamente más tarde.";
   };
 
-  const revealAssistantMessage = (messageId: number, fullContent: string) => {
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-
-    if (reducedMotion) {
-      setMessages((currentMessages) =>
-        currentMessages.map((message) =>
-          message.id === messageId
-            ? { ...message, content: fullContent, isRevealing: false }
-            : message,
-        ),
-      );
-      return;
-    }
-
-    const parts = fullContent.split(/(\s+)/);
-    let nextIndex = 0;
-
-    const revealNextChunk = () => {
-      nextIndex = Math.min(nextIndex + REVEAL_CHUNK_SIZE, parts.length);
-      const visibleContent = parts.slice(0, nextIndex).join("");
-      const isComplete = nextIndex >= parts.length;
-
-      setMessages((currentMessages) =>
-        currentMessages.map((message) =>
-          message.id === messageId
-            ? {
-                ...message,
-                content: visibleContent,
-                isRevealing: !isComplete,
-              }
-            : message,
-        ),
-      );
-
-      if (!isComplete) {
-        revealTimeoutRef.current = window.setTimeout(
-          revealNextChunk,
-          REVEAL_INTERVAL_MS,
-        );
-      } else {
-        revealTimeoutRef.current = null;
-      }
-    };
-
-    revealNextChunk();
-  };
-
   const sendMessage = async (content: string) => {
     const trimmedContent = content.trim();
     if (!trimmedContent || requestInFlightRef.current) return;
@@ -294,54 +289,40 @@ const PortfolioAssistant = () => {
     setInput("");
 
     try {
-      const response = await fetch("/api/assistant", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: trimmedContent, history }),
-      });
-      const data: unknown = await response.json();
+      const fullContent = await requestAssistantMessage(trimmedContent, history);
 
-      if (response.status === 429) {
-        throw new Error(`rate_limit:${response.headers.get("Retry-After") ?? ""}`);
-      }
-
-      if (!response.ok || !isAssistantApiResponse(data)) {
-        throw new Error("Invalid assistant response");
-      }
-
+      // Capture the ID before React executes any queued state updater.
+      const assistantMessageId = nextMessageId.current++;
+      const parts = fullContent.split(/(\s+)/);
+      const visibleContent = parts.slice(0, REVEAL_CHUNK_SIZE).join("");
       setMessages((currentMessages) => [
         ...currentMessages,
         {
-          id: nextMessageId.current,
+          id: assistantMessageId,
           role: "assistant",
-          content: "",
-          fullContent: data.message,
-          isRevealing: true,
+          content: visibleContent,
+          fullContent,
+          isRevealing: parts.length > REVEAL_CHUNK_SIZE,
         },
       ]);
-      revealAssistantMessage(nextMessageId.current, data.message);
-      nextMessageId.current += 1;
     } catch (error) {
       const errorKind: AssistantApiError =
-        error instanceof Error && error.message.startsWith("rate_limit:")
-          ? "rate_limit"
-          : "generic";
-      const retryAfter =
-        errorKind === "rate_limit"
-          ? error instanceof Error
-            ? error.message.replace("rate_limit:", "") || null
-            : null
-          : null;
+        error instanceof AssistantRequestError ? error.kind : "generic";
+      const retryAfter = error instanceof AssistantRequestError
+        ? error.retryAfter
+        : null;
 
+      const errorMessageId = nextMessageId.current++;
       setMessages((currentMessages) => [
         ...currentMessages,
         {
-          id: nextMessageId.current++,
+          id: errorMessageId,
           role: "assistant",
           content:
             errorKind === "rate_limit"
               ? buildRateLimitMessage(retryAfter)
-              : genericErrorMessage,
+              : genericAssistantError,
+          retryContent: trimmedContent,
         },
       ]);
     } finally {
@@ -422,7 +403,23 @@ const PortfolioAssistant = () => {
                   }[message.role]}`}
                 >
                   {message.role === "assistant" ? (
-                    <RichMessageContent content={message.content} />
+                    <>
+                      <RichMessageContent
+                        content={
+                        getVisibleAssistantContent(message) || genericAssistantError
+                        }
+                      />
+                      {message.retryContent && (
+                        <button
+                          type="button"
+                          onClick={() => sendMessage(message.retryContent!)}
+                          disabled={isSending}
+                          className="mt-2 text-xs font-semibold text-primary underline underline-offset-2 disabled:opacity-50"
+                        >
+                          Reintentar
+                        </button>
+                      )}
+                    </>
                   ) : (
                     message.content
                   )}
