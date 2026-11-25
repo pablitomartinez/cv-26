@@ -18,27 +18,27 @@
     }
   },
   "hero": {
-    "role": "Full Stack Developer // React & Next.js",
-    "description": "Full Stack Developer with a strong frontend focus. I build end-to-end web products with React, Next.js and TypeScript, bringing together user interfaces, authentication, business logic, databases and APIs to deliver intuitive, maintainable, production-ready solutions.",
+    "role": "Full Stack Developer with a Frontend focus",
+    "description": "I develop web applications for clients and organizations: responsive interfaces with React, Next.js and TypeScript, connected to REST APIs, Supabase and PostgreSQL.",
     "viewProjects": "View projects",
     "contact": "GET IN TOUCH"
   },
   "about": {
     "label": "About me",
-    "title": "I build complete web products, from the interface to the data and logic behind them.",
-    "introduction": "I’m a <highlight>Full Stack Developer</highlight> with a strong frontend focus, specializing in React, Next.js and TypeScript. I build web applications that combine intuitive, maintainable interfaces with authentication, business logic, databases and integrations.",
-    "product": "I enjoy working closely with product teams: understanding the problem, turning it into features and contributing throughout the development lifecycle, from defining requirements to implementation, deployment and continuous improvement.",
-    "background": "Before moving into software development, I studied <highlight>Social Work</highlight>. That experience strengthened my communication skills, my ability to understand people’s needs and my approach to collaborating with diverse individuals and teams.",
+    "title": "From each project’s needs to a working web application.",
+    "introduction": "I’m a <highlight>Full Stack Developer</highlight> with a Frontend focus. I develop and maintain web applications, from gathering requirements to deployment.",
+    "product": "I implement authentication, admin dashboards and REST API integrations to digitize management processes. My work combines responsive interfaces with the data and services behind them.",
+    "background": "Alongside my training in web development and UX/UI design, I’m pursuing a <highlight>Licenciatura in Social Work</highlight> at Universidad Nacional de Jujuy.",
     "profile": {
       "title": "At a glance",
       "locationLabel": "Location",
       "location": "Argentina · Available for remote work",
-      "specialtyLabel": "Specialization",
-      "specialty": "Full Stack · React · Next.js · TypeScript",
+      "specialtyLabel": "Professional profile",
+      "specialty": "Full Stack with a Frontend focus · React · Next.js · TypeScript",
       "focusLabel": "Focus",
-      "focus": "Product · UX · Data · Maintainable code",
+      "focus": "Responsive interfaces · REST APIs · Management processes",
       "goalLabel": "Goal",
-      "goal": "To join a product team where I can contribute to end-to-end web application development and continue growing my Full Stack skills."
+      "goal": "To contribute as a Frontend Developer, React Developer or Full Stack Developer on a development team."
     }
   },
   "skills": {
@@ -46,14 +46,19 @@
     "categories": {
       "frontend": "Frontend",
       "backend": "Backend & Data",
-      "security": "Security, Tools & Deployment"
+      "tools": "Tools",
+      "ai": "AI-assisted development"
     },
     "items": {
-      "reusableComponents": "Reusable components & responsive design",
+      "responsiveDesign": "Responsive design",
       "restApis": "REST APIs",
-      "relationalDataModeling": "Relational data modeling",
       "authentication": "Authentication & Authorization",
-      "rowLevelSecurity": "Row Level Security (RLS)"
+      "rowLevelSecurity": "Row Level Security (RLS)",
+      "codeReview": "Code review",
+      "agentOrchestration": "Agent orchestration",
+      "skills": "Skills",
+      "mcp": "MCP",
+      "aiCodeReview": "AI-assisted code review"
     }
   },
   "projects": {
@@ -156,9 +161,9 @@
     "next": "Next slide"
   },
   "metadata": {
-    "title": "Pablo Martinez — Full Stack Developer",
-    "description": "Full Stack Developer with a strong frontend focus. Based in Argentina, I build web applications with React, Next.js, TypeScript, Supabase and PostgreSQL.",
-    "ogDescription": "Full Stack Developer specializing in web products built with React, Next.js, TypeScript, Supabase and PostgreSQL.",
-    "twitterDescription": "Full Stack Developer with a strong frontend focus, specializing in React, Next.js and TypeScript."
+    "title": "Pablo Martinez — Full Stack Developer with a Frontend focus",
+    "description": "Full Stack Developer with a Frontend focus. Web applications for clients and organizations with React, Next.js, TypeScript, REST APIs, Supabase and PostgreSQL.",
+    "ogDescription": "Responsive interfaces and web application development for clients and organizations with React, Next.js, TypeScript, Supabase and PostgreSQL.",
+    "twitterDescription": "Full Stack Developer with a Frontend focus. Responsive interfaces with React, Next.js and TypeScript."
   }
 }

@@ -8,34 +8,42 @@ const Skills = () => {
       title: t("skills.categories.frontend"),
       skills: [
         "React",
-        "Next.js (App Router)",
+        "Next.js",
         "TypeScript",
-        "JavaScript (ES6+)",
+        "JavaScript",
+        "HTML",
+        "CSS",
         "Tailwind CSS",
-        t("skills.items.reusableComponents")
+        t("skills.items.responsiveDesign")
       ],
     },
     {
       title: t("skills.categories.backend"),
       skills: [
         "Node.js",
-        "Supabase (Auth, Database, Storage)",
+        "Supabase",
         "PostgreSQL",
         "SQL",
         t("skills.items.restApis"),
-        t("skills.items.relationalDataModeling")
+        t("skills.items.authentication"),
+        t("skills.items.rowLevelSecurity")
       ],
     },
     {
-      title: t("skills.categories.security"),
+      title: t("skills.categories.tools"),
       skills: [
-        t("skills.items.authentication"),
-        t("skills.items.rowLevelSecurity"),
         "Git & GitHub",
         "GitHub Actions",
         "Vercel",
-        "Figma"
+        "Figma",
+        t("skills.items.codeReview")
       ],
+      complementarySkills: [
+        t("skills.items.agentOrchestration"),
+        t("skills.items.skills"),
+        t("skills.items.mcp"),
+        t("skills.items.aiCodeReview")
+      ]
     }
   ];
 
@@ -64,6 +72,21 @@ const Skills = () => {
                   </li>
                 ))}
               </ul>
+              {cat.complementarySkills && (
+                <>
+                  <h4 className="font-display text-lg mt-8 mb-4 text-foreground">
+                    {t("skills.categories.ai")}
+                  </h4>
+                  <ul className="space-y-3">
+                    {cat.complementarySkills.map((skill) => (
+                      <li key={skill} className="text-muted-foreground font-body flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 bg-primary rounded-full" />
+                        {skill}
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
             </div>
           ))}
         </div>

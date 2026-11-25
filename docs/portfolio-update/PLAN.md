@@ -4,7 +4,7 @@
 
 Preparar una actualización profesional del portfolio para oportunidades como Frontend Developer, React Developer o Full Stack Developer. El posicionamiento aprobado es **Full Stack Developer con enfoque en Frontend**. Se conserva el diseño existente y el soporte ES/EN; se incorporan experiencia y formación de manera compacta, se actualiza el CV en español y se suma desarrollo asistido por IA como competencia complementaria.
 
-Esta etapa organiza el trabajo. No autoriza cambiar el comportamiento del asistente, rediseñar el portfolio ni inferir datos profesionales o URLs.
+La planificación original organiza el trabajo. La primera etapa de implementación autoriza Hero, About, Skills, ES/EN, enlace confirmado de Jujuy Conecta, metadata y datos asociados del asistente. No autoriza cambiar su comportamiento, rediseñar el portfolio ni inferir datos profesionales o URLs. Ver `STAGE-1.md`.
 
 ## Dependencias y decisiones previas
 
@@ -12,10 +12,10 @@ Antes de editar contenido deben estar resueltos:
 
 1. Inventario final de proyectos que se mostrarán y datos de cada proyecto (descripción, stack, recursos, repositorio y estado).
 2. Fechas, cargos, organizaciones, responsabilidades y formación profesional que Pablo valide.
-3. URL de producción Vercel para Jujuy Conecta; el dominio `diario.jujuyconecta.com` venció y no debe sustituirse por una conjetura.
+3. URL Vercel para Jujuy Conecta: Pablo confirmó `https://diario-jujuyconecta-six.vercel.app/` como destino temporal asociado a develop; el dominio `diario.jujuyconecta.com` venció. El acceso sin sesión requiere revisión manual por la redirección observada al login de Vercel.
 4. Redacción aprobada para desarrollo asistido por IA y confirmación de datos del CV en español.
 
-El resto de tareas puede avanzar en preparación o inspección, pero no publicar información pendiente.
+Perfil, experiencia, formación y competencia de IA fueron aprobados para la primera etapa (ver `DECISIONS.md`). El inventario completo de proyectos sigue pendiente: no bloquea la corrección puntual del enlace confirmado. No publicar información pendiente.
 
 ## Incrementos de implementación
 

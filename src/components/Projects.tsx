@@ -197,7 +197,7 @@ const getContent = (t: TFunction): CategoryGroup[] => [
         ],
 
         links: {
-          live: "https://diario.jujuyconecta.com/",
+          live: "https://diario-jujuyconecta-six.vercel.app/",
           github:
             "https://github.com/altiora-software/diario-jujuyconecta",
         },

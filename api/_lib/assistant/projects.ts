@@ -86,6 +86,7 @@ export const projects: AssistantProject[] = [
     id: "jujuy-conecta",
     name: "Jujuy Conecta Diario",
     type: "Diario digital con CMS propio",
+    status: "Continúa publicando noticias mediante automatización. URL temporal de Vercel asociada a develop mientras se resuelve el dominio personalizado.",
     description:
       "Diario digital con un sistema propio para publicar y gestionar contenido.",
     problem:
@@ -112,7 +113,7 @@ export const projects: AssistantProject[] = [
       "GitHub Actions",
     ],
     links: {
-      live: "https://diario.jujuyconecta.com/",
+      live: "https://diario-jujuyconecta-six.vercel.app/",
       github: "https://github.com/altiora-software/diario-jujuyconecta",
     },
   },

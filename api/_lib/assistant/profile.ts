@@ -22,10 +22,10 @@ export interface AssistantProfile {
 export const profile: AssistantProfile = {
   fullName: "Pablo Ezequiel Martínez",
   professionalName: "Pablo Martínez",
-  role: "Full Stack Developer Jr con fortaleza en Frontend",
-  alternativeRoles: ["Frontend Developer Jr", "Frontend Developer Trainee"],
+  role: "Full Stack Developer con enfoque en Frontend",
+  alternativeRoles: ["Frontend Developer", "React Developer", "Full Stack Developer"],
   summary:
-    "Full Stack Developer Jr con fortaleza en Frontend. Desarrolla aplicaciones web con React, Next.js y TypeScript, integrando interfaces, autenticación, lógica de negocio, bases de datos y APIs.",
+    "Full Stack Developer con enfoque en Frontend y experiencia en aplicaciones web para clientes y organizaciones. Desarrolla interfaces responsivas y soluciones con React, Next.js, TypeScript, APIs REST, Supabase y PostgreSQL.",
   location: "San Salvador de Jujuy, Jujuy, Argentina",
   availability: [
     "Trabajo remoto",
