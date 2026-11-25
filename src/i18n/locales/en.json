@@ -26,9 +26,7 @@
   "about": {
     "label": "About me",
     "title": "From each project’s needs to a working web application.",
-    "introduction": "I’m a <highlight>Full Stack Developer</highlight> with a Frontend focus. I develop and maintain web applications, from gathering requirements to deployment.",
-    "product": "I implement authentication, admin dashboards and REST API integrations to digitize management processes. My work combines responsive interfaces with the data and services behind them.",
-    "background": "Alongside my training in web development and UX/UI design, I’m pursuing a <highlight>Licenciatura in Social Work</highlight> at Universidad Nacional de Jujuy.",
+    "introduction": "I’m a <highlight>Full Stack Developer</highlight> with a Frontend focus. My work combines responsive interfaces with the data and services behind them.",
     "profile": {
       "title": "At a glance",
       "locationLabel": "Location",
@@ -39,6 +37,39 @@
       "focus": "Responsive interfaces · REST APIs · Management processes",
       "goalLabel": "Goal",
       "goal": "To contribute as a Frontend Developer, React Developer or Full Stack Developer on a development team."
+    }
+  },
+  "career": {
+    "title": "Experience & education",
+    "experience": {
+      "title": "Professional experience",
+      "role": "Full Stack Developer",
+      "organization": "Ethercode (Freelance)",
+      "period": "2022 – Present",
+      "responsibilities": {
+        "development": "Development and maintenance of web applications for clients and organizations, from requirements gathering to deployment.",
+        "management": "Implementation of authentication, admin dashboards and REST API integrations to digitize management processes."
+      }
+    },
+    "education": {
+      "title": "Education",
+      "items": {
+        "henry": {
+          "program": "Full Stack Web Developer",
+          "institution": "Soy Henry",
+          "period": "2023"
+        },
+        "nucba": {
+          "program": "UX/UI Design",
+          "institution": "NUCBA",
+          "period": "2024"
+        },
+        "unju": {
+          "program": "Licenciatura in Social Work",
+          "institution": "Universidad Nacional de Jujuy",
+          "period": "In progress"
+        }
+      }
     }
   },
   "skills": {

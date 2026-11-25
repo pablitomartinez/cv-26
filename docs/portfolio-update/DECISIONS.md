@@ -6,7 +6,7 @@
 - **Título principal:** no incluir “Junior”.
 - **Diseño:** mantener la identidad visual y el sistema visual existentes; no rediseñar.
 - **Idiomas:** mantener español e inglés (ES/EN).
-- **Experiencia y formación:** datos validados en la primera etapa; crear bloques compactos en la siguiente tarea.
+- **Experiencia y formación:** datos validados y reconfirmados para la segunda etapa; integrados en un bloque compacto dentro de About.
 - **CV:** preservar el nuevo PDF español provisto por Pablo en `public/Pablo-Martinez-CV.pdf` y su ruta de descarga.
 - **Desarrollo asistido por IA:** orquestación de agentes, skills, MCP y revisión de código asistida, como competencia complementaria; no Machine Learning ni AI Engineering.
 - **Asistente:** actualizar exclusivamente los datos de conocimiento cuando corresponda; no modificar comportamiento.
@@ -16,10 +16,10 @@
 
 | Decisión/dato | Estado | Condición para resolver |
 |---|---|---|
-| Acceso público sin sesión a Jujuy Conecta | Requiere comprobación manual | Pablo confirmó `https://diario-jujuyconecta-six.vercel.app/`, asociada a develop y temporal mientras se resuelve el dominio personalizado. La consulta automatizada terminó en el login de Vercel. No cambiar infraestructura. |
 | Inventario final de proyectos destacados | Pendiente | Confirmar cuáles permanecen publicados y datos exactos por proyecto. |
 | Tecnología y alcance por proyecto | Pendiente | Contrastar con evidencia o confirmación del usuario, incluida autoría/participación. |
-| Revisión visual y contenido del CV PDF | Pendiente de revisión | Archivo provisto preservado por hash y copiado al build; resta abrirlo y cotejar contenido/render con los datos aprobados. |
+
+Pablo confirmó la aprobación de los ocho controles visuales de la primera etapa, incluidos el CV y el acceso al Diario desde incógnito. Esos pendientes quedan resueltos por validación del usuario, no por una nueva comprobación automatizada. Se mantiene el carácter temporal de la URL del Diario.
 
 ## Fuente profesional aprobada — primera etapa
 
@@ -43,6 +43,16 @@
 - Experiencia y formación detalladas quedan para la próxima tarea. `education.ts` ya coincide con lo aprobado; `experience.ts` conserva por ahora la organización genérica “Freelance”: al integrar la experiencia debe alinearse a Ethercode y a las responsabilidades aprobadas.
 - No se edita `.build-check/`: es un artefacto histórico versionado que conserva el enlace vencido; no es fuente de la aplicación ni salida del build actual (`dist/`).
 - Resultados técnicos y límites de QA registrados en `STAGE-1.md`.
+
+## Decisiones de implementación — segunda etapa
+
+- **Estructura elegida:** un único bloque «Experiencia y formación» dentro de About, en lugar de dos secciones independientes. Permite evaluar cargo, organización, período y formación juntos, con menos encabezados, separaciones y scroll. No se agrega una cronología extensa ni una copia del CV.
+- **Navegación:** se conserva `#about` y el menú actual; el bloque pertenece a esa sección y es accesible por scroll también en móvil. No se añade un enlace que sobrecargue el header en anchos intermedios ni un menú móvil nuevo.
+- **Sistema visual:** `Career.tsx` reutiliza `SurfaceCard`, tipografías, tokens semánticos de color y bordes laterales existentes. Una columna en móvil/tablet y dos desde `lg`; sin animaciones o dependencias nuevas. No se reutiliza `SectionHeader` porque su h2 de 5xl/7xl no corresponde a un bloque subordinado y compacto.
+- **Sin duplicación:** About mantiene presentación y tarjeta de perfil. Responsabilidades y formación se trasladan al nuevo bloque; se retiran los párrafos y las claves `about.product` y `about.background` en ambos idiomas. La introducción conserva únicamente el posicionamiento y la relación entre interfaces, datos y servicios.
+- **Contenido:** experiencia y formación reproducen los hechos aprobados, sin añadir tecnologías, métricas, certificaciones ni fechas. En inglés se conserva «Licenciatura in Social Work», sin inferir equivalencias de título.
+- **Asistente:** solo cambia `experience.ts`, conservando identificador, estructura, período y tecnologías ya existentes; cargo y organización pasan a «Full Stack Developer» y «Ethercode (Freelance)», con las dos responsabilidades aprobadas. `education.ts` ya coincide. No se modifica lógica, instrucciones, endpoint, contrato ni comportamiento.
+- **CV y alcance:** se preserva el PDF español aprobado sin regenerarlo; Hero, Projects, Skills, chatbot, configuración y dependencias no se editan. Resultados técnicos y límites de revisión registrados en `PLAN.md`.
 
 ## Principios para decisiones futuras
 

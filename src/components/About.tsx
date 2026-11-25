@@ -1,5 +1,6 @@
 import { Trans, useTranslation } from "react-i18next";
 import Reveal from "./Reveal";
+import Career from "./Career";
 
 const About = () => {
   const { t } = useTranslation();
@@ -27,18 +28,6 @@ const About = () => {
               <Reveal>
                 <p>
                   <Trans t={t} i18nKey="about.introduction" components={{ highlight: <span className="text-foreground" /> }} />
-                </p>
-              </Reveal>
-
-              <Reveal>
-                <p>
-                  {t("about.product")}
-                </p>
-              </Reveal>
-
-              <Reveal>
-                <p>
-                  <Trans t={t} i18nKey="about.background" components={{ highlight: <span className="text-foreground" /> }} />
                 </p>
               </Reveal>
 
@@ -114,6 +103,7 @@ const About = () => {
           </Reveal>
 
         </div>
+        <Career />
       </div>
     </section>
   );

@@ -6,13 +6,15 @@ Preparar una actualización profesional del portfolio para oportunidades como Fr
 
 La planificación original organiza el trabajo. La primera etapa de implementación autoriza Hero, About, Skills, ES/EN, enlace confirmado de Jujuy Conecta, metadata y datos asociados del asistente. No autoriza cambiar su comportamiento, rediseñar el portfolio ni inferir datos profesionales o URLs. Ver `STAGE-1.md`.
 
+La primera etapa fue aprobada por Pablo tras los ocho controles visuales, incluidos responsive, internacionalización, CV y acceso al Diario desde incógnito. La segunda etapa incorpora exclusivamente experiencia y formación aprobadas, su integración compacta en About, traducciones y alineación de los datos de experiencia del asistente. Sin nuevos proyectos, cambios de rama, commits, pushes ni operaciones sobre stashes.
+
 ## Dependencias y decisiones previas
 
 Antes de editar contenido deben estar resueltos:
 
 1. Inventario final de proyectos que se mostrarán y datos de cada proyecto (descripción, stack, recursos, repositorio y estado).
 2. Fechas, cargos, organizaciones, responsabilidades y formación profesional que Pablo valide.
-3. URL Vercel para Jujuy Conecta: Pablo confirmó `https://diario-jujuyconecta-six.vercel.app/` como destino temporal asociado a develop; el dominio `diario.jujuyconecta.com` venció. El acceso sin sesión requiere revisión manual por la redirección observada al login de Vercel.
+3. URL Vercel para Jujuy Conecta: Pablo confirmó `https://diario-jujuyconecta-six.vercel.app/` como destino temporal asociado a develop; el dominio `diario.jujuyconecta.com` venció. El acceso sin sesión fue aprobado por Pablo desde incógnito al cerrar la primera etapa, resolviendo la revisión manual pendiente.
 4. Redacción aprobada para desarrollo asistido por IA y confirmación de datos del CV en español.
 
 Perfil, experiencia, formación y competencia de IA fueron aprobados para la primera etapa (ver `DECISIONS.md`). El inventario completo de proyectos sigue pendiente: no bloquea la corrección puntual del enlace confirmado. No publicar información pendiente.
@@ -41,3 +43,17 @@ Cada incremento debe ser pequeño, revisable y con criterios de aceptación prop
 - Al completar implementación, ejecutar las verificaciones pertinentes disponibles: lint, build, pruebas existentes, revisión de PDF, viewport y accesibilidad; anotar controles no ejecutados y motivo.
 
 Consultar `CHECKLIST.md` para seguimiento y `DECISIONS.md` para decisiones y asuntos pendientes.
+
+## Segunda etapa — implementación y validación
+
+- Incremento C implementado: `src/components/Career.tsx` integra experiencia y formación en un único bloque dentro de About. Una columna por defecto y dos desde `lg`, sin altura mínima propia, animaciones ni dependencias nuevas.
+- About conserva su título, tarjeta de perfil y navegación `#about`. Su introducción se acorta y los detalles de responsabilidades/formación se trasladan al bloque para evitar duplicaciones.
+- Incremento E acotado: `api/_lib/assistant/experience.ts` alinea organización, cargo y responsabilidades con Ethercode y los datos aprobados. `education.ts` ya coincide y no se edita. PDF español y ruta de descarga intactos.
+- `npm run build`: exitoso. Persisten los avisos preexistentes de Browserslist y chunk mayor a 500 KB. JavaScript: 742.76 KB / 249.43 KB gzip.
+- `node --test tests/*.test.mjs`: 7/7 aprobadas, 0 fallos. Los mensajes del proveedor corresponden a escenarios negativos de las pruebas.
+- `npm run lint`: 16 errores y 8 advertencias, idénticos a la referencia comprobada antes de editar; ninguno en los archivos de implementación modificados o creados.
+- Comparación recursiva ES/EN: 124 claves equivalentes; 17 claves nuevas bajo `career`, introducción de About actualizada y dos claves redundantes retiradas en ambos idiomas.
+- Render estático React ES/EN del componente: los 17 textos aparecen traducidos; sección etiquetada y jerarquía h3/h4/h5 comprobadas. No sustituye pruebas visuales ni de tecnología asistiva en navegador.
+- `git diff --check`: sin errores; avisos de conversión futura LF/CRLF propios de la configuración existente.
+- PDF idéntico a HEAD y a la copia en `dist/`; SHA-256 aprobado preservado: `806674F36529B70C7E863AA9C72B0024B059B234D915DD7BE1398F24E485F64A`.
+- Pendiente: revisión visual de esta segunda etapa en móvil/escritorio, ES/EN y claro/oscuro; comprobar ritmo de About, ajuste de títulos y ausencia de desbordes. No se ejecutó navegador en esta etapa.

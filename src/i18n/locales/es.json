@@ -26,9 +26,7 @@
   "about": {
     "label": "Sobre mí",
     "title": "De las necesidades de cada proyecto a una aplicación web funcional.",
-    "introduction": "Soy <highlight>Full Stack Developer</highlight> con enfoque en Frontend. Trabajo en el desarrollo y mantenimiento de aplicaciones web, desde el relevamiento de requerimientos hasta el despliegue.",
-    "product": "Implemento autenticación, paneles administrativos e integraciones con APIs REST para digitalizar procesos de gestión. Mi trabajo combina interfaces responsivas con los datos y servicios que las sostienen.",
-    "background": "Además de mi formación en desarrollo web y diseño UX/UI, curso la <highlight>Licenciatura en Trabajo Social</highlight> en la Universidad Nacional de Jujuy.",
+    "introduction": "Soy <highlight>Full Stack Developer</highlight> con enfoque en Frontend. Mi trabajo combina interfaces responsivas con los datos y servicios que las sostienen.",
     "profile": {
       "title": "Perfil actual",
       "locationLabel": "Ubicación",
@@ -39,6 +37,39 @@
       "focus": "Interfaces responsivas · APIs REST · Procesos de gestión",
       "goalLabel": "Objetivo",
       "goal": "Aportar como Frontend Developer, React Developer o Full Stack Developer en un equipo de desarrollo."
+    }
+  },
+  "career": {
+    "title": "Experiencia y formación",
+    "experience": {
+      "title": "Experiencia profesional",
+      "role": "Full Stack Developer",
+      "organization": "Ethercode (Freelance)",
+      "period": "2022 – Actualidad",
+      "responsibilities": {
+        "development": "Desarrollo y mantenimiento de aplicaciones web para clientes y organizaciones, desde el relevamiento de requerimientos hasta el despliegue.",
+        "management": "Implementación de autenticación, paneles administrativos e integración de APIs REST para digitalizar procesos de gestión."
+      }
+    },
+    "education": {
+      "title": "Formación académica",
+      "items": {
+        "henry": {
+          "program": "Full Stack Web Developer",
+          "institution": "Soy Henry",
+          "period": "2023"
+        },
+        "nucba": {
+          "program": "UX/UI Design",
+          "institution": "NUCBA",
+          "period": "2024"
+        },
+        "unju": {
+          "program": "Licenciatura en Trabajo Social",
+          "institution": "Universidad Nacional de Jujuy",
+          "period": "En curso"
+        }
+      }
     }
   },
   "skills": {
