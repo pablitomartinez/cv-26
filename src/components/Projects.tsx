@@ -4,9 +4,6 @@ import { trackEvent } from "@/lib/analytics";
 import {
   ExternalLink,
   Github,
-  Rocket,
-  Beaker,
-  Briefcase,
   CheckCircle2,
   ChevronLeft,
   ChevronRight,
@@ -37,6 +34,7 @@ interface ProjectImage {
 
 interface Project {
   title: string;
+  descriptor: string;
   problem: string;
   solution: string;
   tech: string[];
@@ -58,33 +56,18 @@ interface Project {
   };
 }
 
-interface CategoryGroup {
-  id: string;
-  label: string;
-  description: string;
-  icon: React.ReactNode;
-  type: "featured" | "grid";
-  projects: Project[];
-}
-
 /* =========================================================
    DATOS DE LOS PROYECTOS
    ========================================================= */
 
-const getContent = (t: TFunction): CategoryGroup[] => [
-  {
-    id: "systems",
-    label: t("projects.categories.systems.label"),
-    description: t("projects.categories.systems.description"),
-    icon: <Rocket className="text-primary" size={20} />,
-    type: "featured",
-
-    projects: [
+// Cinco proyectos destacados en el orden aprobado.
+const getContent = (t: TFunction): Project[] => [
       /* -----------------------------------------------------
          PROYECTO 01 — BALANCE
          ----------------------------------------------------- */
       {
         title: t("projects.items.balance.title"),
+        descriptor: t("projects.items.balance.descriptor"),
         problem: t("projects.items.balance.problem"),
         solution: t("projects.items.balance.solution"),
 
@@ -95,6 +78,8 @@ const getContent = (t: TFunction): CategoryGroup[] => [
           "Supabase",
           "PostgreSQL",
           "SQL",
+          "RPC",
+          "RLS",
           "Tailwind CSS",
           "PWA",
         ],
@@ -118,14 +103,38 @@ const getContent = (t: TFunction): CategoryGroup[] => [
       },
 
       /* -----------------------------------------------------
-         PROYECTO 02 — COLEGIO DE ANTROPÓLOGOS
+         PROYECTO 02 — FERNANDA HERRERA
+         ----------------------------------------------------- */
+      {
+        title: t("projects.items.thesis.title"),
+        descriptor: t("projects.items.thesis.descriptor"),
+        problem: t("projects.items.thesis.problem"),
+        solution: t("projects.items.thesis.solution"),
+
+        tech: ["React", "Tailwind CSS", "Supabase", "SEO"],
+
+        images: [
+          {
+            src: "/projects/3.png",
+            title: t("projects.items.thesis.title"),
+          },
+        ],
+
+        links: {
+          live: "https://www.asesoramientotesis.com/",
+        },
+      },
+
+      /* -----------------------------------------------------
+         PROYECTO 03 — COLEGIO DE ANTROPÓLOGOS
          ----------------------------------------------------- */
       {
         title: t("projects.items.anthropology.title"),
+        descriptor: t("projects.items.anthropology.descriptor"),
         problem: t("projects.items.anthropology.problem"),
         solution: t("projects.items.anthropology.solution"),
 
-        tech: ["React", "Supabase", "TypeScript", "PostgreSQL"],
+        tech: ["React", "TypeScript", "Tailwind CSS", "Supabase", "PostgreSQL"],
 
         images: [
           {
@@ -154,10 +163,11 @@ const getContent = (t: TFunction): CategoryGroup[] => [
       },
 
       /* -----------------------------------------------------
-         PROYECTO 03 — JUJUY CONECTA
+         PROYECTO 04 — JUJUY CONECTA
          ----------------------------------------------------- */
       {
         title: t("projects.items.jujuyConecta.title"),
+        descriptor: t("projects.items.jujuyConecta.descriptor"),
         problem: t("projects.items.jujuyConecta.problem"),
         solution: t("projects.items.jujuyConecta.solution"),
 
@@ -197,93 +207,52 @@ const getContent = (t: TFunction): CategoryGroup[] => [
         ],
 
         links: {
-          live: "https://diario.jujuyconecta.com/",
+          live: "https://diario-jujuyconecta-six.vercel.app/",
+          statusText: t("projects.items.jujuyConecta.status"),
           github:
             "https://github.com/altiora-software/diario-jujuyconecta",
         },
       },
-    ],
-  },
-
-  {
-    id: "ecommerce",
-    label: t("projects.categories.ecommerce.label"),
-    description: t("projects.categories.ecommerce.description"),
-    icon: <Beaker className="text-primary" size={20} />,
-    type: "featured",
-
-    projects: [
       /* -----------------------------------------------------
-         PROYECTO 04 — TIERRA ARCILLA
+         PROYECTO 05 — PAPELETA
          ----------------------------------------------------- */
       {
-        title: t("projects.items.tierraArcilla.title"),
-        problem: t("projects.items.tierraArcilla.problem"),
-        solution: t("projects.items.tierraArcilla.solution"),
-
-        tech: ["React", "Vite", "TypeScript", "Supabase", "Tailwind"],
-
+        title: t("projects.items.papeleta.title"),
+        descriptor: t("projects.items.papeleta.descriptor"),
+        problem: t("projects.items.papeleta.problem"),
+        solution: t("projects.items.papeleta.solution"),
+        highlights: [
+          t("projects.items.papeleta.highlights.design"),
+          t("projects.items.papeleta.highlights.product"),
+          t("projects.items.papeleta.highlights.operations"),
+        ],
+        tech: [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Supabase",
+          "PostgreSQL",
+          "Mercado Pago",
+          "CSS Modules",
+        ],
         images: [
           {
-            src: "/projects/ta/4.png",
-            title: t("projects.items.tierraArcilla.title"),
+            src: "/projects/papeleta/2.jpeg",
+            title: t("projects.captions.papeletaLanding"),
           },
           {
-            src: "/projects/ta/10.png",
-            title: t("projects.items.tierraArcilla.title"),
+            src: "/projects/papeleta/3.png",
+            title: t("projects.captions.papeletaEvent"),
           },
           {
-            src: "/projects/ta/11.png",
-            title: t("projects.items.tierraArcilla.title"),
-          },
-          {
-            src: "/projects/ta/12.png",
-            title: t("projects.items.tierraArcilla.title"),
+            src: "/projects/papeleta/4.png",
+            title: t("projects.captions.papeletaRsvp"),
           },
         ],
-
         links: {
-          live: "https://tierra-arcilla.vercel.app/",
-          github:
-            "https://github.com/pablitomartinez/tierra-arcilla-catalog",
+          live: "https://papeleta.com.ar/",
         },
       },
-    ],
-  },
-
-  {
-    id: "business",
-    label: t("projects.categories.business.label"),
-    description: t("projects.categories.business.description"),
-    icon: <Briefcase className="text-primary" size={20} />,
-    type: "featured",
-
-    projects: [
-      /* -----------------------------------------------------
-         PROYECTO 05 — ASESORAMIENTO TESIS
-         ----------------------------------------------------- */
-      {
-        title: t("projects.items.thesis.title"),
-        problem: t("projects.items.thesis.problem"),
-        solution: t("projects.items.thesis.solution"),
-
-        tech: ["React", "Tailwind CSS", "SEO"],
-
-        images: [
-          {
-            src: "/projects/3.png",
-            title: t("projects.items.thesis.title"),
-          },
-        ],
-
-        links: {
-          live: "https://www.asesoramientotesis.com/",
-          github:
-            "https://github.com/ethercode-tech/fernanda-herrera-asesoramiento-tesis",
-        },
-      },
-    ],
-  },
 ];
 
 /* =========================================================
@@ -320,29 +289,9 @@ const Projects = () => {
 
   const language = i18n.resolvedLanguage ?? "es";
 
-  const content = getContent(
+  const projects = getContent(
     i18n.getFixedT(language)
   );
-
-  /**
-   * Convertimos las categorías existentes en una única lista.
-   *
-   * No duplicamos información y seguimos utilizando getContent().
-   */
-  const projects = content.flatMap(
-    (category) => category.projects
-  );
-
-  /**
-   * Textos cortos utilizados únicamente en el índice visual.
-   */
-  const projectDescriptors = [
-    "Finanzas compartidas",
-    "Gestión institucional",
-    "CMS + automatización",
-    "Catálogo digital",
-    "Web profesional",
-  ];
 
   const navigateProject = (direction: -1 | 1) => {
     const nextProject = activeProject + direction;
@@ -369,7 +318,7 @@ const Projects = () => {
     <section
       key={language}
       id="projects"
-      className="py-16 md:py-20 bg-background transition-colors duration-500"
+      className="py-16 md:py-20 lg:py-12 bg-background transition-colors duration-500"
     >
       <div className="container mx-auto px-6">
 
@@ -378,13 +327,13 @@ const Projects = () => {
             ===================================================== */}
 
         <Reveal>
-          <div className="mb-10 max-w-2xl text-left md:text-right md:ml-auto">
+          <div className="mb-10 lg:mb-6 max-w-2xl text-left md:text-right md:ml-auto">
 
             <p className="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-3">
               {t("projects.eyebrow")}
             </p>
 
-            <h2 className="text-foreground text-3xl sm:text-4xl md:text-5xl font-display leading-tight">
+            <h2 className="text-foreground text-3xl sm:text-4xl md:text-5xl lg:text-4xl font-display leading-tight">
               {t("projects.title")}{" "}
 
               <br className="hidden md:inline" />{" "}
@@ -445,7 +394,7 @@ const Projects = () => {
               ===================================================
 
               Desktop:
-              grilla horizontal de 5 proyectos.
+              grilla horizontal de proyectos publicados.
 
               Mobile:
               scroll horizontal con snap.
@@ -594,11 +543,7 @@ const Projects = () => {
                     {/* Descriptor */}
 
                     <span className="mt-3 hidden md:mt-1.5 md:block text-xs font-medium leading-relaxed text-muted-foreground">
-                      {
-                        projectDescriptors[
-                        index
-                        ]
-                      }
+                      {project.descriptor}
                     </span>
 
                   </button>

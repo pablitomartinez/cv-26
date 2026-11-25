@@ -18,42 +18,78 @@
     }
   },
   "hero": {
-    "role": "Full Stack Developer // React & Next.js",
-    "description": "Full Stack Developer con fortaleza en Frontend. Desarrollo productos web de punta a punta con React, Next.js y TypeScript, integrando interfaces, autenticación, lógica de negocio, bases de datos y APIs con foco en crear soluciones claras, mantenibles y listas para producción.",
+    "role": "Full Stack Developer con enfoque en Frontend",
+    "description": "Desarrollo aplicaciones web para clientes y organizaciones: interfaces responsivas con React, Next.js y TypeScript, conectadas a APIs REST, Supabase y PostgreSQL.",
     "viewProjects": "Ver proyectos",
     "contact": "ESCRIBIME"
   },
   "about": {
     "label": "Sobre mí",
-    "title": "Desarrollo productos web completos, desde la interfaz hasta los datos y la lógica que los sostiene.",
-    "introduction": "Soy <highlight>Full Stack Developer</highlight> con fortaleza en Frontend, especializado en React, Next.js y TypeScript. Desarrollo aplicaciones web combinando interfaces claras y mantenibles con autenticación, lógica de negocio, bases de datos e integraciones.",
-    "product": "Me interesa trabajar cerca del producto: entender el problema, traducirlo en funcionalidades y participar en todo el proceso de desarrollo, desde la definición de requerimientos hasta la implementación, el despliegue y la mejora continua.",
-    "background": "Antes de dedicarme al desarrollo me formé en <highlight>Trabajo Social</highlight>, una experiencia que fortaleció mi comunicación, la comprensión de necesidades y el trabajo con personas y equipos diversos.",
+    "title": "De las necesidades de cada proyecto a una aplicación web funcional.",
+    "introduction": "Soy <highlight>Full Stack Developer</highlight> con enfoque en Frontend. Mi trabajo combina interfaces responsivas con los datos y servicios que las sostienen.",
     "profile": {
       "title": "Perfil actual",
       "locationLabel": "Ubicación",
       "location": "Argentina · Disponible para trabajo remoto",
-      "specialtyLabel": "Especialidad",
-      "specialty": "Full Stack · React · Next.js · TypeScript",
+      "specialtyLabel": "Perfil profesional",
+      "specialty": "Full Stack con enfoque en Frontend · React · Next.js · TypeScript",
       "focusLabel": "Enfoque",
-      "focus": "Producto · UX · Datos · Código mantenible",
+      "focus": "Interfaces responsivas · APIs REST · Procesos de gestión",
       "goalLabel": "Objetivo",
-      "goal": "Integrarme a un equipo de producto donde pueda aportar en el desarrollo completo de aplicaciones web y seguir profundizando mis habilidades Full Stack."
+      "goal": "Aportar como Frontend Developer, React Developer o Full Stack Developer en un equipo de desarrollo."
+    }
+  },
+  "career": {
+    "title": "Experiencia y formación",
+    "experience": {
+      "title": "Experiencia profesional",
+      "role": "Full Stack Developer",
+      "organization": "Ethercode (Freelance)",
+      "period": "2022 – Actualidad",
+      "responsibilities": {
+        "development": "Desarrollo y mantenimiento de aplicaciones web para clientes y organizaciones, desde el relevamiento de requerimientos hasta el despliegue.",
+        "management": "Implementación de autenticación, paneles administrativos e integración de APIs REST para digitalizar procesos de gestión."
+      }
+    },
+    "education": {
+      "title": "Formación académica",
+      "items": {
+        "henry": {
+          "program": "Full Stack Web Developer",
+          "institution": "Soy Henry",
+          "period": "2023"
+        },
+        "nucba": {
+          "program": "UX/UI Design",
+          "institution": "NUCBA",
+          "period": "2024"
+        },
+        "unju": {
+          "program": "Licenciatura en Trabajo Social",
+          "institution": "Universidad Nacional de Jujuy",
+          "period": "En curso"
+        }
+      }
     }
   },
   "skills": {
     "title": "Stack y habilidades",
     "categories": {
       "frontend": "Frontend",
-      "backend": "Backend & Data",
-      "security": "Seguridad, Tools & Deployment"
+      "backend": "Backend y datos",
+      "tools": "Herramientas",
+      "ai": "IA aplicada al desarrollo"
     },
     "items": {
-      "reusableComponents": "Componentes reutilizables y Responsive Design",
+      "responsiveDesign": "Diseño responsivo",
       "restApis": "APIs REST",
-      "relationalDataModeling": "Modelado de datos relacionales",
-      "authentication": "Authentication & Authorization",
-      "rowLevelSecurity": "Row Level Security (RLS)"
+      "authentication": "Autenticación y autorización",
+      "rowLevelSecurity": "Seguridad a nivel de fila (RLS)",
+      "codeReview": "Revisión de código",
+      "agentOrchestration": "Orquestación de agentes",
+      "skills": "Skills",
+      "mcp": "MCP",
+      "aiCodeReview": "Revisión de código asistida"
     }
   },
   "projects": {
@@ -72,24 +108,39 @@
       }
     },
     "items": {
+      "papeleta": {
+        "title": "Papeleta",
+        "descriptor": "Invitaciones digitales",
+        "problem": "Simplificar la creación de invitaciones digitales y la organización de eventos desde una única plataforma.",
+        "solution": "Desarrollo colaborativo de una plataforma Full Stack con invitaciones personalizables, gestión de invitados y confirmaciones de asistencia.",
+        "highlights": {
+          "design": "Diseño UX/UI y desarrollo Frontend.",
+          "product": "Planificación del producto y definición de funcionalidades.",
+          "operations": "Autenticación, permisos y despliegue."
+        }
+      },
       "balance": {
-        "title": "Balance – Gestión de Gastos Compartidos",
-        "problem": "Administrar gastos en pareja o dentro de un hogar suele terminar en cuentas dispersas, transferencias difíciles de seguir y dudas sobre quién pagó, cuánto corresponde a cada persona o qué gastos siguen pendientes.",
-        "solution": "Desarrollé una aplicación web para centralizar la economía compartida de un hogar. Implementé autenticación, creación e invitación a hogares, registro de gastos, distribución de importes, aprobaciones y seguimiento de movimientos, con una arquitectura segura basada en PostgreSQL, Row Level Security y operaciones controladas mediante RPCs."
+        "title": "Balance App",
+        "descriptor": "Finanzas compartidas",
+        "problem": "Organizar los gastos compartidos de un hogar y conocer quién pagó, cuánto corresponde a cada persona y qué queda pendiente.",
+        "solution": "Desarrollé una aplicación Full Stack con hogares, distribución de gastos, aprobaciones y seguimiento de movimientos. Integra autenticación, PostgreSQL, operaciones SQL/RPC y políticas RLS para controlar el acceso a los datos."
       },
       "anthropology": {
-        "title": "Plataforma Institucional – Colegio de Antropólogos",
-        "problem": "Gestión manual de trámites con alta demora administrativa. Las consultas externas por profesionales se gestionaban por correo, tardando semanas en responderse y perdiendo oportunidades de contratación.",
-        "solution": "Desarrollé una plataforma de autogestión profesional con autenticación, panel administrativo, gestión dinámica de datos y consulta pública de profesionales. El sistema centraliza trámites y estados, permitiendo al Colegio administrar la información y a terceros consultar profesionales disponibles en tiempo real."
+        "title": "Colegio de Antropólogos",
+        "descriptor": "Matriculación digital",
+        "problem": "Digitalizar la matriculación y los trámites profesionales para centralizar la información y facilitar el seguimiento administrativo.",
+        "solution": "Desarrollé una plataforma con autenticación, panel administrativo, gestión de información profesional y seguimiento de trámites y estados. Incluye una consulta pública de profesionales."
       },
       "jujuyConecta": {
-        "title": "Jujuy Conecta Diario",
-        "problem": "Necesidad de una infraestructura ágil e independiente para gestionar un flujo de noticias diario, evitando la dependencia de CMS genéricos y pesados.",
-        "solution": "Desarrollé un diario digital con CMS propio para la publicación y gestión dinámica de contenido. Implementé panel administrativo, SEO técnico y un flujo automatizado de scraping, procesamiento y publicación de noticias utilizando Python y GitHub Actions.",
+        "title": "Jujuy Conecta",
+        "descriptor": "CMS + automatización",
+        "status": "URL pública temporal",
+        "problem": "Gestionar la publicación diaria de noticias con una plataforma propia, ágil e independiente de CMS genéricos.",
+        "solution": "Desarrollé un diario digital con CMS propio y SEO técnico, que combina el trabajo editorial con la automatización del flujo de noticias.",
         "highlights": {
-          "editorial": "Publicación manual desde un panel para editores",
-          "automation": "Scraping y publicación automatizada de noticias",
-          "management": "Autenticación, roles y gestión centralizada de contenido"
+          "editorial": "Panel de publicación para editores.",
+          "automation": "Scraping y publicación con Python y GitHub Actions.",
+          "management": "Autenticación, roles y gestión de contenido."
         }
       },
       "tierraArcilla": {
@@ -98,12 +149,16 @@
         "solution": "Desarrollé una aplicación web autogestionable con panel de administración, carga masiva de productos mediante CSV, base de datos en tiempo real y metadata dinámica para optimizar la visualización de productos al compartirlos por WhatsApp."
       },
       "thesis": {
-        "title": "Asesoramiento Tesis – Plataforma Profesional",
-        "problem": "Falta de un canal digital confiable y de alta autoridad para la captación de clientes en el ámbito académico.",
-        "solution": "Web institucional optimizada para conversión con una arquitectura de información estratégica, facilitando el embudo de captación de leads."
+        "title": "Fernanda Herrera",
+        "descriptor": "Web profesional · UX/UI",
+        "problem": "Presentar el servicio de asesoramiento académico en un sitio confiable que facilite la navegación y las consultas.",
+        "solution": "Desarrollé un sitio profesional con interfaces responsivas, enfoque en UX/UI, rendimiento, accesibilidad y SEO. Integra Supabase y organiza la información del servicio."
       }
     },
     "captions": {
+      "papeletaLanding": "Papeleta — Landing de invitaciones digitales con previsualización móvil",
+      "papeletaEvent": "Papeleta — Vista móvil de una invitación con fecha y ubicación del evento",
+      "papeletaRsvp": "Papeleta — Vista móvil de regalos y confirmación de asistencia",
       "balanceDashboard": "Balance - Dashboard de gastos compartidos",
       "balanceExpenses": "Balance - Gestión de servicios y gastos",
       "jujuyConecta": "Diario Digital - Jujuy Conecta"
@@ -156,9 +211,9 @@
     "next": "Diapositiva siguiente"
   },
   "metadata": {
-    "title": "Pablo Martinez — Full Stack Developer",
-    "description": "Full Stack Developer con fortaleza en Frontend. Desarrollo aplicaciones web con React, Next.js, TypeScript, Supabase y PostgreSQL desde Argentina.",
-    "ogDescription": "Full Stack Developer especializado en productos web con React, Next.js, TypeScript, Supabase y PostgreSQL.",
-    "twitterDescription": "Full Stack Developer con fortaleza en Frontend, especializado en React, Next.js y TypeScript."
+    "title": "Pablo Martinez — Full Stack Developer con enfoque en Frontend",
+    "description": "Full Stack Developer con enfoque en Frontend. Aplicaciones web para clientes y organizaciones con React, Next.js, TypeScript, APIs REST, Supabase y PostgreSQL.",
+    "ogDescription": "Desarrollo de interfaces responsivas y aplicaciones web para clientes y organizaciones con React, Next.js, TypeScript, Supabase y PostgreSQL.",
+    "twitterDescription": "Full Stack Developer con enfoque en Frontend. Interfaces responsivas con React, Next.js y TypeScript."
   }
 }

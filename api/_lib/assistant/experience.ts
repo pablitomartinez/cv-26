@@ -13,18 +13,16 @@ export interface ProfessionalExperience {
 export const experience: ProfessionalExperience[] = [
   {
     id: "full-stack-developer-freelance",
-    role: "Full Stack Developer Freelance",
-    organization: "Freelance",
+    role: "Full Stack Developer",
+    organization: "Ethercode (Freelance)",
     startDate: "2022",
     endDate: null,
     current: true,
     description:
-      "Desarrollo de aplicaciones web para clientes y organizaciones.",
+      "Desarrollo y mantenimiento de aplicaciones web para clientes y organizaciones, desde el relevamiento de requerimientos hasta el despliegue.",
     responsibilities: [
-      "Desarrollar aplicaciones web utilizando React, Next.js y TypeScript.",
-      "Implementar autenticación, paneles administrativos, integraciones con APIs REST y gestión de datos.",
-      "Desarrollar interfaces responsivas y componentes reutilizables con foco en experiencia de usuario y mantenibilidad.",
-      "Participar en el análisis de requerimientos, la planificación, la implementación y la evolución de funcionalidades.",
+      "Desarrollo y mantenimiento de aplicaciones web para clientes y organizaciones, desde el relevamiento de requerimientos hasta el despliegue.",
+      "Implementación de autenticación, paneles administrativos e integración de APIs REST para digitalizar procesos de gestión.",
     ],
     technologies: ["React", "Next.js", "TypeScript"],
   },
