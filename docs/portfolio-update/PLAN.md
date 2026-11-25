@@ -17,7 +17,7 @@ Antes de editar contenido deben estar resueltos:
 3. URL Vercel para Jujuy Conecta: Pablo confirmó `https://diario-jujuyconecta-six.vercel.app/` como destino temporal asociado a develop; el dominio `diario.jujuyconecta.com` venció. El acceso sin sesión fue aprobado por Pablo desde incógnito al cerrar la primera etapa, resolviendo la revisión manual pendiente.
 4. Redacción aprobada para desarrollo asistido por IA y confirmación de datos del CV en español.
 
-Perfil, experiencia, formación y competencia de IA fueron aprobados para la primera etapa (ver `DECISIONS.md`). El inventario completo de proyectos sigue pendiente: no bloquea la corrección puntual del enlace confirmado. No publicar información pendiente.
+Perfil, experiencia, formación y competencia de IA fueron aprobados (ver `DECISIONS.md`). Al iniciar la tercera etapa, Pablo aprobó también las integraciones de experiencia/formación y la corrección de la interfaz del chatbot. El pedido posterior resolvió los datos de Papeleta: la quinta ficha está incorporada. La captura privada se retiró con autorización durante la auditoría definitiva. Estado actual: **NO APTO PARA PUBLICAR** por inconsistencias de CV y LinkedIn; ver `PUBLICATION-AUDIT.md`. No publicar información pendiente ni recursos personales sin anonimizar.
 
 ## Incrementos de implementación
 
@@ -57,3 +57,26 @@ Consultar `CHECKLIST.md` para seguimiento y `DECISIONS.md` para decisiones y asu
 - `git diff --check`: sin errores; avisos de conversión futura LF/CRLF propios de la configuración existente.
 - PDF idéntico a HEAD y a la copia en `dist/`; SHA-256 aprobado preservado: `806674F36529B70C7E863AA9C72B0024B059B234D915DD7BE1398F24E485F64A`.
 - Pendiente: revisión visual de esta segunda etapa en móvil/escritorio, ES/EN y claro/oscuro; comprobar ritmo de About, ajuste de títulos y ausencia de desbordes. No se ejecutó navegador en esta etapa.
+
+## Tercera etapa — catálogo aprobado
+
+- Incrementos D/E: Balance App, Fernanda Herrera, Colegio de Antropólogos y Jujuy Conecta Diario, en ese orden; Papeleta será quinta cuando se cierre su ficha. Se retira Tierra Arcilla de destacados sin borrar recursos.
+- Projects conserva showcase, galería, navegación y patrones visuales. Los datos se ordenan en una lista directa, sin las categorías que ya no se renderizaban; cada descriptor pasa a su propia traducción. El índice desktop usa cuatro columnas mientras hay cuatro fichas publicadas.
+- Se actualiza únicamente `api/_lib/assistant/projects.ts`: cuatro destacados alineados, Papeleta como colaboración pendiente de ficha y Tierra Arcilla como proyecto anterior. Sin cambios de comportamiento, endpoint o instrucciones.
+- README y documentación distinguen catálogo aprobado de fichas publicadas. Villa del Cielo, AutoDemo AI y Huichaira no se incorporan; no se publica ningún nombre nuevo de cliente hotelero.
+- La tercera etapa no vuelve a editar Hero, About, Career, Skills, header ni chatbot. El PDF se preserva. Sin dependencias, cambios de rama, commits, pushes ni operaciones sobre stashes.
+- Evidencia, pendientes y validaciones de esta etapa: `STAGE-3.md`.
+
+## Cierre del quinto proyecto — Papeleta
+
+- Completar D/E con los datos aprobados del pedido: ficha quinta, recursos reales, ES/EN y únicamente `projects.ts` del conocimiento del asistente.
+- Mantener los otros cuatro proyectos, galería, PDF, dependencias y comportamiento del asistente. Índice de cinco columnas conservando el patrón responsive existente.
+- README, decisiones y checklist actualizados; QA y bloqueo de privacidad antes de publicar registrados en `PAPELETA.md`. Sin commits ni pushes.
+
+## Auditoría definitiva de publicación — 25 de noviembre de 2026
+
+- Alcance cerrado: retirar únicamente la captura privada no referenciada y actualizar documentación; sin cambios funcionales, estéticos, PDF, dependencias ni comportamiento del asistente.
+- Retiro autorizado completado, build limpio de ese recurso y ruta sin seguimiento ni historial Git alcanzable.
+- Build exitoso, asistente 7/7, ESLint 16 errores/8 advertencias sin regresiones, 139 claves ES/EN y matriz de producción de 16 combinaciones aprobada, incluyendo apertura/cierre del chatbot.
+- **NO APTO PARA PUBLICAR**: el PDF todavía enlaza al dominio vencido del Diario y atribuye Next.js al Colegio; además, el LinkedIn del README público de GitHub difiere del utilizado en el repositorio/PDF. No se infiere el perfil real desde HTTP 999 ni se corrige el PDF sin alcance aprobado.
+- Evidencia, límites, riesgos de privacidad residuales y condiciones para levantar el bloqueo en `PUBLICATION-AUDIT.md`.

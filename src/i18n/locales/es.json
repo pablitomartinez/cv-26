@@ -108,24 +108,39 @@
       }
     },
     "items": {
+      "papeleta": {
+        "title": "Papeleta",
+        "descriptor": "Invitaciones digitales",
+        "problem": "Simplificar la creación de invitaciones digitales y la organización de eventos desde una única plataforma.",
+        "solution": "Desarrollo colaborativo de una plataforma Full Stack con invitaciones personalizables, gestión de invitados y confirmaciones de asistencia.",
+        "highlights": {
+          "design": "Diseño UX/UI y desarrollo Frontend.",
+          "product": "Planificación del producto y definición de funcionalidades.",
+          "operations": "Autenticación, permisos y despliegue."
+        }
+      },
       "balance": {
-        "title": "Balance – Gestión de Gastos Compartidos",
-        "problem": "Administrar gastos en pareja o dentro de un hogar suele terminar en cuentas dispersas, transferencias difíciles de seguir y dudas sobre quién pagó, cuánto corresponde a cada persona o qué gastos siguen pendientes.",
-        "solution": "Desarrollé una aplicación web para centralizar la economía compartida de un hogar. Implementé autenticación, creación e invitación a hogares, registro de gastos, distribución de importes, aprobaciones y seguimiento de movimientos, con una arquitectura segura basada en PostgreSQL, Row Level Security y operaciones controladas mediante RPCs."
+        "title": "Balance App",
+        "descriptor": "Finanzas compartidas",
+        "problem": "Organizar los gastos compartidos de un hogar y conocer quién pagó, cuánto corresponde a cada persona y qué queda pendiente.",
+        "solution": "Desarrollé una aplicación Full Stack con hogares, distribución de gastos, aprobaciones y seguimiento de movimientos. Integra autenticación, PostgreSQL, operaciones SQL/RPC y políticas RLS para controlar el acceso a los datos."
       },
       "anthropology": {
-        "title": "Plataforma Institucional – Colegio de Antropólogos",
-        "problem": "Gestión manual de trámites con alta demora administrativa. Las consultas externas por profesionales se gestionaban por correo, tardando semanas en responderse y perdiendo oportunidades de contratación.",
-        "solution": "Desarrollé una plataforma de autogestión profesional con autenticación, panel administrativo, gestión dinámica de datos y consulta pública de profesionales. El sistema centraliza trámites y estados, permitiendo al Colegio administrar la información y a terceros consultar profesionales disponibles en tiempo real."
+        "title": "Colegio de Antropólogos",
+        "descriptor": "Matriculación digital",
+        "problem": "Digitalizar la matriculación y los trámites profesionales para centralizar la información y facilitar el seguimiento administrativo.",
+        "solution": "Desarrollé una plataforma con autenticación, panel administrativo, gestión de información profesional y seguimiento de trámites y estados. Incluye una consulta pública de profesionales."
       },
       "jujuyConecta": {
-        "title": "Jujuy Conecta Diario",
-        "problem": "Necesidad de una infraestructura ágil e independiente para gestionar un flujo de noticias diario, evitando la dependencia de CMS genéricos y pesados.",
-        "solution": "Desarrollé un diario digital con CMS propio para la publicación y gestión dinámica de contenido. Implementé panel administrativo, SEO técnico y un flujo automatizado de scraping, procesamiento y publicación de noticias utilizando Python y GitHub Actions.",
+        "title": "Jujuy Conecta",
+        "descriptor": "CMS + automatización",
+        "status": "URL pública temporal",
+        "problem": "Gestionar la publicación diaria de noticias con una plataforma propia, ágil e independiente de CMS genéricos.",
+        "solution": "Desarrollé un diario digital con CMS propio y SEO técnico, que combina el trabajo editorial con la automatización del flujo de noticias.",
         "highlights": {
-          "editorial": "Publicación manual desde un panel para editores",
-          "automation": "Scraping y publicación automatizada de noticias",
-          "management": "Autenticación, roles y gestión centralizada de contenido"
+          "editorial": "Panel de publicación para editores.",
+          "automation": "Scraping y publicación con Python y GitHub Actions.",
+          "management": "Autenticación, roles y gestión de contenido."
         }
       },
       "tierraArcilla": {
@@ -134,12 +149,16 @@
         "solution": "Desarrollé una aplicación web autogestionable con panel de administración, carga masiva de productos mediante CSV, base de datos en tiempo real y metadata dinámica para optimizar la visualización de productos al compartirlos por WhatsApp."
       },
       "thesis": {
-        "title": "Asesoramiento Tesis – Plataforma Profesional",
-        "problem": "Falta de un canal digital confiable y de alta autoridad para la captación de clientes en el ámbito académico.",
-        "solution": "Web institucional optimizada para conversión con una arquitectura de información estratégica, facilitando el embudo de captación de leads."
+        "title": "Fernanda Herrera",
+        "descriptor": "Web profesional · UX/UI",
+        "problem": "Presentar el servicio de asesoramiento académico en un sitio confiable que facilite la navegación y las consultas.",
+        "solution": "Desarrollé un sitio profesional con interfaces responsivas, enfoque en UX/UI, rendimiento, accesibilidad y SEO. Integra Supabase y organiza la información del servicio."
       }
     },
     "captions": {
+      "papeletaLanding": "Papeleta — Landing de invitaciones digitales con previsualización móvil",
+      "papeletaEvent": "Papeleta — Vista móvil de una invitación con fecha y ubicación del evento",
+      "papeletaRsvp": "Papeleta — Vista móvil de regalos y confirmación de asistencia",
       "balanceDashboard": "Balance - Dashboard de gastos compartidos",
       "balanceExpenses": "Balance - Gestión de servicios y gastos",
       "jujuyConecta": "Diario Digital - Jujuy Conecta"

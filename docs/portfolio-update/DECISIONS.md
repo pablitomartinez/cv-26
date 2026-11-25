@@ -16,8 +16,9 @@
 
 | Decisión/dato | Estado | Condición para resolver |
 |---|---|---|
-| Inventario final de proyectos destacados | Pendiente | Confirmar cuáles permanecen publicados y datos exactos por proyecto. |
-| Tecnología y alcance por proyecto | Pendiente | Contrastar con evidencia o confirmación del usuario, incluida autoría/participación. |
+| LinkedIn canónico | Pendiente; bloqueo de publicación | GitHub público usa `pablo-martinez-9b2991233`; web, asistente y PDF usan `pablo-ezequiel-martinez-9b2991233`. Confirmar URL real y alinear canales con autorización. HTTP 999 no demuestra identidad ni inexistencia. |
+| CV español | Inconsistencias comprobadas; bloqueo de publicación | Corregir en una tarea autorizada el dominio vencido del Diario y Next.js atribuido al Colegio (React verificado). PDF sin modificar en esta auditoría. |
+| Repositorio público de Fernanda Herrera | No accesible (404) | Confirmar acceso o una URL pública antes de volver a mostrar el botón de código. Se conserva la referencia en documentación. |
 
 Pablo confirmó la aprobación de los ocho controles visuales de la primera etapa, incluidos el CV y el acceso al Diario desde incógnito. Esos pendientes quedan resueltos por validación del usuario, no por una nueva comprobación automatizada. Se mantiene el carácter temporal de la URL del Diario.
 
@@ -54,7 +55,34 @@ Pablo confirmó la aprobación de los ocho controles visuales de la primera etap
 - **Asistente:** solo cambia `experience.ts`, conservando identificador, estructura, período y tecnologías ya existentes; cargo y organización pasan a «Full Stack Developer» y «Ethercode (Freelance)», con las dos responsabilidades aprobadas. `education.ts` ya coincide. No se modifica lógica, instrucciones, endpoint, contrato ni comportamiento.
 - **CV y alcance:** se preserva el PDF español aprobado sin regenerarlo; Hero, Projects, Skills, chatbot, configuración y dependencias no se editan. Resultados técnicos y límites de revisión registrados en `PLAN.md`.
 
+## Decisiones de implementación — tercera etapa
+
+- **Aprobaciones previas:** Pablo revisó y aprobó perfil profesional, experiencia, formación y corrección de la interfaz del chatbot. No se reabren esos cambios ni se modifica el PDF.
+- **Catálogo final:** Balance App → Fernanda Herrera → Colegio de Antropólogos → Jujuy Conecta Diario → Papeleta. Mientras Papeleta carezca de ficha validada, se publican solo los cuatro primeros; no se inventa una quinta tarjeta ni se usa Tierra Arcilla para completar el índice.
+- **Datos y diseño:** lista ordenada en Projects, mismos componentes de galería/showcase y estilo. Descriptores localizados ES/EN asociados a cada proyecto, sin array paralelo en español. Cuatro columnas desktop para las cuatro fichas actuales; al publicar la quinta deberá actualizarse ese conteo.
+- **Balance:** título aprobado y foco Full Stack, autenticación, PostgreSQL, SQL/RPC y RLS. **Fernanda Herrera:** nuevo nombre visible y enfoque responsivo, UX/UI, rendimiento, accesibilidad, SEO y Supabase; sin porcentajes ni puntuaciones de rendimiento.
+- **Colegio:** foco en matriculación digital y gestión administrativa; el `package.json` público confirma React (no Next.js), TypeScript, Vite, Tailwind y Supabase. Se resuelve la discrepancia previa del conocimiento del asistente.
+- **Diario:** CMS y automatización Python/GitHub Actions; actividad actual respaldada por confirmación de Pablo. Se conserva exactamente la URL temporal aprobada y se identifica su carácter temporal en ES/EN. La consulta automatizada vuelve a terminar en login de Vercel; no invalida ni sustituye la revisión desde incógnito aprobada por el usuario.
+- **Papeleta:** colaboración confirmada, sitio público accesible. GitHub web, API y archivo de manifiesto de referencia responden 404 sin autenticación; eso no demuestra que el repositorio no exista. No se infieren tecnologías, autoría individual ni funciones terminadas desde el marketing del sitio. No se copian gráficos del sitio ni se generan imágenes. Se registra conocimiento mínimo con estado pendiente, sin ficha en galería.
+- **Tierra Arcilla:** se retira solo de destacados. Se conservan imágenes, traducciones existentes y conocimiento como proyecto anterior. **Villa del Cielo:** fuera de la galería; no se añade su nombre a experiencia ni se necesita ampliar esa sección. AutoDemo AI y Huichaira quedan fuera del alcance.
+- **Enlaces:** se omite el enlace público al código de Fernanda Herrera, que devuelve 404; referencia preservada en `STAGE-3.md`. No se inventan reemplazos ni se cambian los demás destinos aprobados.
+
 ## Principios para decisiones futuras
+
+### Cierre de Papeleta (posterior a la tercera etapa inicial)
+
+- Ficha aprobada e incorporada en quinto lugar, con textos ES/EN y conocimiento alineado. Los cuatro proyectos previos se mantienen tal como estaban al comenzar este cierre.
+- Producto colaborativo, sin autoría exclusiva. Contribuciones confirmadas directamente por Pablo, no por atribución de commits: diseño/UX/UI, Frontend, landing, planificación, autenticación/permisos, funcionalidades, despliegue y mantenimiento.
+- Stack aprobado mediante auditoría del repositorio informada por el usuario: Next.js, React, TypeScript, Supabase, PostgreSQL, Mercado Pago y CSS Modules. No Tailwind CSS.
+- Mercado Pago presente en código, sin compra completa verificada en producción ni atribución individual a Pablo. Repositorio privado: no mostrar botón de código.
+- Galería existente sin cambios; landing y dos vistas móviles reales, omitiendo captura administrativa con datos personales. Selector pasa de cuatro a cinco columnas, sin rediseño. PDF y funcionamiento del asistente intactos.
+- Evidencia y límites actuales en `PAPELETA.md`; las decisiones previas se conservan como registro histórico.
+
+### Auditoría definitiva de publicación
+
+- `public/projects/papeleta/1.png` retirado con autorización expresa y sin referencias de código. No está en `public/`, `dist/`, índice ni historial Git alcanzable de esa ruta. No se realiza staging ni commit de recursos privados.
+- Notas de pagos/autoría siguen en documentación interna; la ficha pública usa el texto editorial compacto aprobado y tres contribuciones. Galería mantiene proporciones con `object-contain`.
+- **NO APTO PARA PUBLICAR** por los pendientes de CV/LinkedIn detallados en `PUBLICATION-AUDIT.md`. No resolverlos mediante URLs inferidas, modificación no autorizada del PDF ni cambios de funcionamiento del asistente.
 
 - Los datos profesionales no se deducen de inconsistencias entre archivos: se consultan y validan.
 - Una URL que no pudo verificarse no se presenta como funcional. Los enlaces pendientes se mantienen explícitos.

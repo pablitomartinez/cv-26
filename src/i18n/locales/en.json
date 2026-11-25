@@ -108,24 +108,39 @@
       }
     },
     "items": {
+      "papeleta": {
+        "title": "Papeleta",
+        "descriptor": "Digital invitations",
+        "problem": "Simplify digital invitation creation and event planning through a single platform.",
+        "solution": "Collaborative development of a Full Stack platform with customizable invitations, guest management and RSVPs.",
+        "highlights": {
+          "design": "UX/UI design and Frontend development.",
+          "product": "Product planning and feature definition.",
+          "operations": "Authentication, permissions and deployment."
+        }
+      },
       "balance": {
-        "title": "Balance – Shared Expense Management",
-        "problem": "Managing shared expenses as a couple or household often leads to scattered records, transfers that are hard to track and uncertainty about who paid, how much each person owes or which expenses are still outstanding.",
-        "solution": "I built a web application to bring shared household finances into one place. I implemented authentication, household creation and invitations, expense tracking, cost splitting, approvals and transaction history, with a secure architecture built on PostgreSQL, Row Level Security and controlled operations through RPCs."
+        "title": "Balance App",
+        "descriptor": "Shared finances",
+        "problem": "Organize shared household expenses and track who paid, how much each person owes and what remains outstanding.",
+        "solution": "I built a Full Stack application with households, expense splitting, approvals and transaction history. It combines authentication, PostgreSQL, SQL/RPC operations and RLS policies to control data access."
       },
       "anthropology": {
-        "title": "Institutional Platform – College of Anthropologists",
-        "problem": "Manual processing of administrative requests caused long delays. External inquiries about professionals were handled by email, with responses taking weeks and resulting in missed hiring opportunities.",
-        "solution": "I built a self-service platform for professionals with authentication, an admin dashboard, dynamic data management and a public professional directory. The system centralizes administrative requests and their status, allowing the Colegio to manage its information and external users to find available professionals in real time."
+        "title": "College of Anthropologists",
+        "descriptor": "Digital registration",
+        "problem": "Digitize professional registration and administrative requests to centralize information and simplify tracking.",
+        "solution": "I built a platform with authentication, an admin dashboard, professional information management and request status tracking. It includes a public professional directory."
       },
       "jujuyConecta": {
-        "title": "Jujuy Conecta Digital Newspaper",
-        "problem": "The project needed a lightweight, independent platform to manage a daily news publishing workflow without relying on heavyweight, general-purpose CMS platforms.",
-        "solution": "I built a digital newspaper with a custom CMS for publishing and managing content. I implemented an admin dashboard, technical SEO and an automated workflow for scraping, processing and publishing news using Python and GitHub Actions.",
+        "title": "Jujuy Conecta",
+        "descriptor": "CMS + automation",
+        "status": "Temporary public URL",
+        "problem": "Manage daily news publishing with a lightweight, independent platform rather than a general-purpose CMS.",
+        "solution": "I built a digital newspaper with a custom CMS and technical SEO, combining editorial work with news workflow automation.",
         "highlights": {
-          "editorial": "Manual publishing through an editor dashboard",
-          "automation": "Automated news scraping and publishing",
-          "management": "Authentication, roles and centralized content management"
+          "editorial": "Publishing dashboard for editors.",
+          "automation": "Scraping and publishing with Python and GitHub Actions.",
+          "management": "Authentication, roles and content management."
         }
       },
       "tierraArcilla": {
@@ -134,12 +149,16 @@
         "solution": "I built a self-managed web application with an admin dashboard, bulk product uploads via CSV, a real-time database and dynamic metadata to improve product previews when shared on WhatsApp."
       },
       "thesis": {
-        "title": "Thesis Consulting – Professional Platform",
-        "problem": "The business lacked a trustworthy, authoritative digital presence to attract clients in the academic sector.",
-        "solution": "I built a business website optimized for conversion, with a strategically structured information architecture designed to support lead generation."
+        "title": "Fernanda Herrera",
+        "descriptor": "Professional website · UX/UI",
+        "problem": "Present the academic consulting service on a trustworthy website that makes navigation and inquiries easier.",
+        "solution": "I built a professional website with responsive interfaces and a focus on UX/UI, performance, accessibility and SEO. It integrates Supabase and organizes the service information."
       }
     },
     "captions": {
+      "papeletaLanding": "Papeleta — Digital invitation landing page with a mobile preview",
+      "papeletaEvent": "Papeleta — Mobile invitation view with the event date and location",
+      "papeletaRsvp": "Papeleta — Mobile view of gifts and RSVP confirmation",
       "balanceDashboard": "Balance - Shared expense dashboard",
       "balanceExpenses": "Balance - Bills and expense management",
       "jujuyConecta": "Digital Newspaper - Jujuy Conecta"
