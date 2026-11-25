@@ -35,7 +35,6 @@ export const skills: SkillCategory[] = [
       "Supabase",
       "PostgreSQL",
       "SQL",
-      "Modelado de datos relacionales",
       "Row Level Security (RLS)",
     ],
   },
@@ -53,10 +52,17 @@ export const skills: SkillCategory[] = [
     id: "practices",
     name: "Prácticas",
     skills: [
-      "Arquitectura de componentes",
-      "Componentes reutilizables",
-      "Integración de APIs",
-      "Code review",
+      "Revisión de código",
+    ],
+  },
+  {
+    id: "ai-assisted-development",
+    name: "IA aplicada al desarrollo (competencia complementaria)",
+    skills: [
+      "Orquestación de agentes",
+      "Skills",
+      "MCP",
+      "Revisión de código asistida",
     ],
   },
 ];
