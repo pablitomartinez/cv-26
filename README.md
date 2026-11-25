@@ -44,6 +44,29 @@ Es un producto pensado como carta de presentación profesional.
 
 ---
 
+## Desarrollo local: frontend y API
+
+`npm run dev` inicia únicamente Vite en el puerto 8080. No ejecuta las funciones de `api/`: un `POST /api/assistant` devuelve 404 en ese servidor aunque funcione en producción. `npm run preview` tampoco ejecuta la API.
+
+Para probar frontend y funciones juntos, el procedimiento recomendado es **Vercel CLI**, con una versión compatible con handlers Web Standard (`export default { fetch }`). Con la CLI ya disponible y autorizada, desde la raíz:
+
+```sh
+vercel link
+vercel dev --listen 3000
+```
+
+- Vincular al **proyecto existente** y al equipo correcto; no crear otro proyecto ni ejecutar un despliegue. Si ya está vinculado, omitir `vercel link`.
+- Abrir `http://localhost:3000` (o la URL que informe Vercel), **no el puerto interno 8080 de Vite**. Vercel enruta `/api/assistant` y sirve el frontend bajo el mismo origen, sin modificar el endpoint ni añadir un proxy.
+- Usar las variables autorizadas del entorno **Development**: `OPENAI_API_KEY`, `OPENAI_MODEL`, `UPSTASH_REDIS_REST_URL` y `UPSTASH_REDIS_REST_TOKEN`. Nunca anteponer `VITE_` a secretos ni copiarlos a documentación, logs o Git. No descargar ni sobrescribir archivos de entorno sin aprobación.
+- La vinculación puede crear `.vercel/` y ajustar `.gitignore`: revisar estos cambios y no versionar datos locales ni secretos. No se ejecutó la CLI ni se modificaron variables/configuración durante esta auditoría.
+- Si la CLI no está disponible, su instalación o ejecución mediante `npx` requiere autorización previa; no es una nueva dependencia del portfolio ni se necesita una instalación global para el código de la aplicación.
+
+Comprobación inicial sin invocar proveedores: `GET /api/assistant` debe devolver **405** y `POST` con JSON `{}` debe devolver **400**, ambos en formato JSON. Después, con credenciales de desarrollo aprobadas, probar una pregunta desde la interfaz; utiliza servicios externos y está sujeta al rate limiting existente.
+
+Procedimiento propuesto, pendiente de ejecución con Vercel. Ver [auditoría del asistente](docs/assistant-ui-audit.md) y [documentación oficial de `vercel dev`](https://vercel.com/docs/cli/dev).
+
+---
+
 ## 📂 Proyectos destacados
 
 ### 📰 Jujuy Conecta Diario

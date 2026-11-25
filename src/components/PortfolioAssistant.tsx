@@ -142,6 +142,7 @@ const PortfolioAssistant = () => {
   const [isSending, setIsSending] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
+  const wasOpenRef = useRef(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const nextMessageId = useRef(2);
   const requestInFlightRef = useRef(false);
@@ -150,14 +151,19 @@ const PortfolioAssistant = () => {
   const revealingContent = revealingMessage?.fullContent;
 
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen) {
+      // Restore focus after React mounts the trigger again, but not on initial load.
+      if (wasOpenRef.current) triggerRef.current?.focus();
+      wasOpenRef.current = false;
+      return;
+    }
 
+    wasOpenRef.current = true;
     inputRef.current?.focus();
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setIsOpen(false);
-        triggerRef.current?.focus();
       }
     };
 
@@ -248,7 +254,6 @@ const PortfolioAssistant = () => {
 
   const closeAssistant = () => {
     setIsOpen(false);
-    triggerRef.current?.focus();
   };
 
   const buildHistoryPayload = (currentMessages: ChatMessage[]) =>
@@ -345,7 +350,8 @@ const PortfolioAssistant = () => {
           role="dialog"
           aria-labelledby="portfolio-assistant-title"
           aria-describedby="portfolio-assistant-description"
-          className="fixed inset-x-3 bottom-3 z-[70] flex h-[min(78dvh,680px)] flex-col overflow-hidden rounded-2xl border border-primary/20 bg-card text-card-foreground shadow-2xl sm:inset-x-auto sm:bottom-24 sm:right-5 sm:h-[min(640px,calc(100dvh-8rem))] sm:w-[min(410px,calc(100vw-2.5rem))] md:right-8"
+          // One layer above Header (100), so it cannot intercept the close button.
+          className="fixed inset-x-3 bottom-3 z-[101] flex h-[min(78dvh,680px)] flex-col overflow-hidden rounded-2xl border border-primary/20 bg-card text-card-foreground shadow-2xl sm:inset-x-auto sm:bottom-24 sm:right-5 sm:h-[min(640px,calc(100dvh-8rem))] sm:w-[min(410px,calc(100vw-2.5rem))] md:right-8"
         >
           <header className="flex items-start gap-3 border-b border-border bg-background/70 px-4 py-4 backdrop-blur-sm">
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground">
@@ -376,7 +382,7 @@ const PortfolioAssistant = () => {
               type="button"
               onClick={closeAssistant}
               aria-label="Cerrar asistente de Pablo"
-              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-card motion-reduce:transition-none"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-card motion-reduce:transition-none"
             >
               <X size={18} aria-hidden="true" />
             </button>
